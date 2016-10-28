@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>index2</title>
+</head>
+<body>
+<script type="text/javascript">
+	// Called sometime after postMessage is called
+	window.opener.postMessage("How Are You", "http://localhost:3001");
+	function receiveMessage(event)
+	{
+	  if (event.origin === "http://localhost:3001") {
+	  	console.log(event.data);
+	  }
+	}
+
+	window.addEventListener("message", receiveMessage, false);
+</script>
+</body>
+</html>
