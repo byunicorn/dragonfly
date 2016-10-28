@@ -134,4 +134,13 @@
 
     $container.removeClass('mobile-nav-on');
   });
+
+  $(".article-comment-link").on('click', function(event) {
+    var target = $(event.currentTarget);
+    if (target.attr("href")) {
+      var url = target.attr("href").replace("https://wflkaaa.github.io/dragonfly/dragonfly", "https://wflkaaa.github.io/dragonfly");
+      window.location.href = url;
+      return false;
+    }
+  });
 })(jQuery);
