@@ -20,7 +20,7 @@ hexo new "Your Post Name"
 ```
 
 hexo will generate a new md file under source/_post folder, you can open that file and start write your greate article
-
+<!-- more -->
 ## Generate html and Deploy
 
 ```

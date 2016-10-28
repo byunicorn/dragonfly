@@ -71,3 +71,6 @@ deploy:
   type: git
   repo: https://github.com/wflkaaa/dragonfly.git
   branch: gh-pages
+
+# Disqus comments
+disqus_shortname: https-wflkaaa-github-io-dragonfly
