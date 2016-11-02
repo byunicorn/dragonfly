@@ -3,3 +3,4 @@ node_modules/
 website/public/
 .deploy_git/
 db.json
+website/autoDeploy.sh
