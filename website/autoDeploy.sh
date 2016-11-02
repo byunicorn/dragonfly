@@ -6,7 +6,7 @@ echo "Error: 请输入文件名！"
 exit
 fi
 
-#my github user name 
+#my github user name and password
 user='Sebastian1011'
 pswd='1234567890a'
 
