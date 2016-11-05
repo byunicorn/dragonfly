@@ -1,7 +1,7 @@
 ---
 title: tomcat跨域请求和跨域重定向
 date: 2016-11-05 23:34:54
-tags:[cross domain, zmzhang, tomcat]
+tags:[crossDomain, zmzhang, tomcat]
 ---
 
 网站开发过程中偶尔会遇到需要跨域访问的问题，这里简单总结一下tomcat处理跨域请求以及ajax处理重定向的问题；
