@@ -5,7 +5,7 @@ tags: [跨域, zmzhang, tomcat]
 ---
 
 网站开发过程中偶尔会遇到需要跨域访问的问题，这里简单总结一下tomcat处理跨域请求以及ajax处理重定向的问题；
-###1. tomcat跨域配置
+### 1. tomcat跨域配置
 服务端配置有两种方式，原理都是一样的，一种是设置response的header由于会出现很多重复代码这里就不介绍了，另一种是在网站的web.xml文件中添加filter来允许处理所有的跨域请求，完整的配置如下：
 
 <!--more-->
@@ -74,6 +74,6 @@ $.ajax({
 
 其中主要是要修改Content-Type 为 application/x-www-form-urlencode
 
-###2. java重定向
+### 2. java重定向
 在java端使用response.sendRedirect(url), 来重定向一个url，如果是使用form提交的请求页面就会调转到相应的url，但是如果是用ajax 提交的请求就会返回302错误；
 这是因为ajax处理不了重定向的返回，会认为302错误，需要手动判断返回的状态是否是重定向，会在error的返回结果里接收到数据，或者可以使用complete状态来接收返回数据，然后手动判断返回状态码然后进行跳转。
