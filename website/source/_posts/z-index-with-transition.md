@@ -6,11 +6,12 @@ tags: [lbao, CSS]
 
 上周六帮瑞波做一个小feature，简单来说就是一堆相同大小形状的图片叠在同一个地方，页面上触发某个事件之后，这些图片中的其中一张会慢慢放大，并遮盖其他的图片。
 
-本来挺简单的一件事，图片是`abusolute`的，我瞬间就想到用z-index + transform，于是分分中给他写了下面这两段：
+本来挺简单的一件事，图片是`abusolute`的，我瞬间就想到用z-index + transform，于是分分钟给他写了下面这两段：
 
 ```html
 <img ng-src="/bula.png" ng-class="{true: 'zoom-in'}[isSelected(hit)]">
 ```
+<!-- more -->
 
 ```less
 img {
@@ -35,7 +36,7 @@ img {
 <p data-height="265" data-theme-id="0" data-slug-hash="YpPoem" data-default-tab="css,result" data-user="byunicorn" data-embed-version="2" data-pen-title="Stacking Order (solution)" class="codepen">See the Pen <a href="http://codepen.io/byunicorn/pen/YpPoem/">Stacking Order (solution)</a> by unicorn by (<a href="http://codepen.io/byunicorn">@byunicorn</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-扩展阅读：
+## 扩展阅读：
 
 今天查了下资料，`z-index`除了有和`position`非`static`的属性一起使用的限制之外，还有一些其他不太会被人注意到的限制。
 
