@@ -1,7 +1,7 @@
 ---
 title: Angular.js 版本升级指南 1.2到1.3
 date: 2016-11-01 11:31:35
-tags:[lbao,Angularjs]
+tags: [lbao,Angularjs]
 ---
 
 Reference: [AngularJS: Developer Guide: Migrating from Previous Versions](https://docs.angularjs.org/guide/migration)
