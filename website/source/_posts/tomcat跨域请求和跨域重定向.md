@@ -11,7 +11,7 @@ tags: [跨域, zmzhang, tomcat]
 <!--more-->
 
 
-```
+```xml
 <filter>
   <filter-name>CorsFilter</filter-name>
   <filter-class>org.apache.catalina.filters.CorsFilter</filter-class>
@@ -53,7 +53,7 @@ http://tomcat.apache.org/tomcat-7.0-doc/config/filter.html#CORS_Filter
 网页前端的配置，如果使用的form提交数据完全就已经可以work了，但是如果使用的是ajax提交数据，还需要增加配置如下：
 
 
-```
+```JavaScript
 $.ajax({
             url: url,
             type: 'POST',

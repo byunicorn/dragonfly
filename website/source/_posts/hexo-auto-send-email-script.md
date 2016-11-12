@@ -10,8 +10,8 @@ show me the code:
 <!-- more -->
 
 
-```
-	#!/usr/bin/python
+```python
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 import smtplib
 from email.mime.multipart import MIMEMultipart
@@ -96,7 +96,7 @@ s.close()
 
 接下来是网站图片截图，两种可选方式，可以使用selenium + chromedriver 来截图，并且可以添加对js代码的操作，但是这种方法会打开chrmoe浏览器；另一种方法是使用PyQt库：
 
-```
+```python
 #!/usr/bin/python
 import sys
 import time
