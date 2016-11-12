@@ -1,7 +1,7 @@
 ---
 title: hexo auto send email script
 date: 2016-11-11 20:50:09
-tags:
+tags: [zmzhang,hexo]
 ---
 
 继续上次的自动部署hexo的脚本之后又想要部署的同时给website的各位发送邮件的功能；所以在自动部署的脚本中增加了发邮件和屏幕截图的模块

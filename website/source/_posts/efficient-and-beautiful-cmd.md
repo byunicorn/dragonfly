@@ -1,7 +1,7 @@
 ---
 title: efficient and beautiful cmd
 date: 2016-10-29 15:35:32
-tags: [cmd,tools]
+tags: [cmd,tools,rbzhou]
 ---
 
 今天简单介绍一些实用且酷炫的cmd工具。
