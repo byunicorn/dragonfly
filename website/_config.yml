@@ -12,8 +12,8 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://wflkaaa.github.io/dragonfly
-root: /dragonfly
+url: https://wflkaaa.github.io/dragonfly/
+root: /dragonfly/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 
@@ -71,3 +71,6 @@ deploy:
   type: git
   repo: https://github.com/wflkaaa/dragonfly.git
   branch: gh-pages
+
+# Disqus comments
+disqus_shortname: dragonfly-disqus

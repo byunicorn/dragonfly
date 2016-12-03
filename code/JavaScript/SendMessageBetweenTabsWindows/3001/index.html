@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>index1</title>
+</head>
+<body>
+<button onclick="openNewTab()">click me!</button>
+<script type="text/javascript">
+	var ourWindow;
+	window.addEventListener("message", receiveMessage, false);
+
+	function receiveMessage(event)
+	{
+		console.log(event.data);
+	  	var origin = event.origin || event.originalEvent.origin; // For Chrome, the origin property is in the event.originalEvent object.
+	  	if (origin === "http://localhost:3002" && yituWindow) {
+	  		ourWindow.postMessage("Fine. Thank U. And U?", "http://localhost:3002");
+	  	}
+	}
+
+	function openNewTab() {
+		ourWindow = window.open("http://localhost:3002/index.html", "_blank");
+	}
+</script>
+</body>
+</html>
