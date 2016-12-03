@@ -1,7 +1,7 @@
 ---
 title: 在promise中修改原始结果
 date: 2016-12-03 13:26:06
-tags:kailiu,Promise
+tags: [kailiu,Promise]
 ---
 
 有时需要在promise的then中处理数据，再返回这个promise，这样别人在调用这个promise的时候就不用处理数据。
