@@ -13,7 +13,8 @@ tags: [rbzhou,tools]
 JSHint提示很多，有些提示无关紧要，当每个文件都提示，让人很不爽，所以记录一些JSHint的配置。
 
 1. 添加`angular`关键词
-	找到`Predefined(,separated)`，点击该行后方的`Set`，写入`angular`(有多个关键词时用`,`分隔)
+    ![](https://github.com/wflkaaa/dragonfly/blob/master/code/images/jshint-global-keyword.png?raw=true)
+	图中`Relaxing options`上方，找到`Predefined(,separated)`，点击该行后方的`Set`，写入`angular`(有多个关键词时用`,`分隔)
 
 2. global strict mode
 	勾选 `Supress warnings about the use of global strict mode`
