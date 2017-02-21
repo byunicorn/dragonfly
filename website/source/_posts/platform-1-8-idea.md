@@ -1,3 +1,9 @@
+---
+title: face_platform 1.8 idea 配置
+date: 2017-02-21 14:24:08
+tags: [idea, xlu]
+---
+
 ### face_platform 1.8 idea 配置
 1. open `ficus/website/face/face_platform/java_website`
 2. Project Settings - Modules
