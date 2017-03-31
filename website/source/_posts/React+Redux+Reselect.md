@@ -13,7 +13,7 @@ redux是由flux演变而来的javascript状态容器， 提供全局的可预测
 
 redux和react配合使用有很多好处，比如：
 
-* 状态可预测，可预测，可预测（重要的时请说三遍）
+* 状态可预测，可预测，可预测（重要的事情说三遍）
 
 * 单一数据源，应用的所有数据可以保存在一个state树
 
@@ -28,7 +28,7 @@ redux和react配合使用有很多好处，比如：
 
 * store 的数据冗余，比如：store中保存了一个区域和设备构成的树状数据结构store.tree，当选中一个区域的节点的时候需要保存一个选中的节点store.selectedNode, 当需要展示选中节点下的所有设备及其下级区域的设备的时候就会有一个设备的列表store.devices，但事实情况可能是selectedNode和devices只是分别在一个地方使用，而且既然存了selectedNode就已经可以知道下面所有的device节点了，没有必要都存一份;
 
-* 上述的问题还会导致另外一个问题那就是数据更新复杂以及dom的重复渲染: 因为redux每次reducer修改数据都是返回一个新的state对象，因此当更新store.tree中一个区域下设备的状态从关变成开之后，返回的就是一个新的tree，但是此时store.selectedNode 以及 store.devices中数据的开关状态还没有变，因为他们引用不是同一个对象，所以要更新store.selectedNode 以及 store.devices使其指向新的tree上的节点，使数据更新变得复杂容易露更新数据，同样因为selectedNode 和devices为新的对象可能会导致component的重新render
+* 上述的问题还会导致另外一个问题那就是数据更新复杂以及dom的重复渲染: 因为redux每次reducer修改数据都是返回一个新的state对象，因此当更新store.tree中一个区域下设备的状态从关变成开之后，返回的就是一个新的tree，但是此时store.selectedNode 以及 store.devices中数据的开关状态还没有变，因为他们引用不是同一个对象，所以要更新store.selectedNode 以及 store.devices使其指向新的tree上的节点，可以在mapStateToProps时候计算页面上由state衍生出来的数据
 
 * 前面两个问题可以通过只记录选中节点的id来避免，但是会带来新的问题，重复计算和重新render： 此时store.selectedNode只记录了选中的区域节点的id， 通过connnet的时候在mapStateToProps中计算遍历tree来找到selectedNode节点并同时声称devices的list传入component， 每次store中的数据（tree，selectedNode)发生变化都会重新进行一次计算，可能触发component重新render；
 
