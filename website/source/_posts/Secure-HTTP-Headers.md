@@ -72,9 +72,11 @@ Expires: -1
 ```
 
 其中，Cache-Control是HTTP1.1引入的Header。
-no-cache：强制所有缓存了该响应的缓存用户，在使用已存储的缓存数据前，发送带验证器的请求到原始服务器；
+
+下面是几个选项的官方定义：
+no-cache：no-cache 不意味着 "别缓存"，它强制所有缓存了该响应的用户，在使用已存储的缓存数据前，发送带验证器的请求到原始服务器；
 no-store：不可缓存客户端请求或服务端响应；
-must-revalidate:缓存必须在使用之前验证旧资源的状态，并且不可使用过期资源。
+must-revalidate: must-revalidate也不意味着 "必须做检查"，它意味着，如果本地的缓存没有过期（没超过max-age），则可以使用，否则必须重新验证。
 
 Progma是HTTP1.0里的Header。
 no-cache: 和Cache-Control里的no-cache一样。
