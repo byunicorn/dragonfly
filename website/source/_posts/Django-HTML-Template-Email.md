@@ -1,7 +1,7 @@
 ---
 title: Django HTML Template Email
 date: 2017-03-14 20:47:22
-tags:
+tags: [hbwang,Django]
 ---
 
 Create HTML template **email.html**:

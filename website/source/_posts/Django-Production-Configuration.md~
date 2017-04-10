@@ -16,7 +16,7 @@ Edit configuration in uwsgi.ini
 	[uwsgi]
 	# variables
 	projectname = license
-	projectdomain = product-license.yitu-inc.com
+	projectdomain = example.com
 	# base = /var/www/django_website
 	
 	# config
@@ -39,22 +39,22 @@ Configuration of nginx
 
 	upstream django {
 	    # server unix:///path/to/proj1/site1/site1.socket; # for a file socket
-	    server 127.0.0.1:49152; # for a web port socket (we'll use this first)
+	    server 127.0.0.1:4918; # for a web port socket (we'll use this first)
 	}
 	
 	server {
 	    listen      8000;
-	    server_name product-license.yitu-inc.com;
+	    server_name example.com;
 	    charset     utf-8;
 	
 	    client_max_body_size 75M;
 	
 	    location /media  {
-	        alias ~/license/django_website/media;
+	        alias ~/django_website/media;
 	    }
 
 		location /static {
-	        alias ~/license/django_website/static;
+	        alias ~/django_website/static;
 	    }
 	
 	    location / {

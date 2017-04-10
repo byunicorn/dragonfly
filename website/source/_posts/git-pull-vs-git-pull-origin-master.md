@@ -1,7 +1,7 @@
 ---
 title: git pull vs git pull origin master
 date: 2017-03-14 20:33:19
-tags:
+tags: [hbwang,git]
 ---
 
 今天本来要拉某个分支

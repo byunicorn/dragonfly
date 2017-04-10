@@ -1,7 +1,7 @@
 ---
 title: Django Production Configuration
 date: 2017-03-14 20:50:29
-tags:
+tags: [hbwang,Django，deploy]
 ---
 
 
