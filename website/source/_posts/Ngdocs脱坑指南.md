@@ -4,7 +4,6 @@ date: 2017-04-13 11:46:54
 tags: [hbwang,Angularjs,Ngdocs,gulp,browserSync]
 ---
 
-
 在用ngdoc写可运行的example的过程中，无数的坑在等待着你。
 
 ----------
@@ -21,9 +20,8 @@ Ngdocs官方文档三言两语，当我们真正去写注释的时候根本找�
 > - [jsdocs的标准文档](http://usejsdoc.org/) => 参考
 > - [angularjs的源码](https://github.com/angular/angular.js/tree/master/src) => 例子
 
-
 ----------
-
+<!-- more -->
 
 中级坑
 -------------------
@@ -36,7 +34,7 @@ Ngdocs官方文档三言两语，当我们真正去写注释的时候根本找�
 > - [browserSync](https://www.browsersync.io/docs/gulp) => 配置
 
 #### ngdocs最终配置 by 颖聪
-
+```JavaScript
     var gulp = require('gulp');
 	var gulpDocs = require('gulp-ngdocs');
 	var conf = require('./conf');
@@ -62,16 +60,17 @@ Ngdocs官方文档三言两语，当我们真正去写注释的时候根本找�
 	gulp.task('ngdocs-reload',['ngdocs'], function() {
 		browserSync.reload('*.html');
 	});
-
+```
 但是引入`frontend/stylesheets/app.css`这个样式文件后，生成的文档网站的背景也变成了和文竹一样的蓝黑色，而且页面没有了滚动条。解决方案是再添加一个style文件在它后面去overwrite文档网站body的样式。
-
+```JavaScript
     body{
 	    background: white;
 	    overflow: auto;
 	}
-
+```
 #### 路由转发 by 颖聪
 
+```JavaScript
 	function browserSyncInit(options) {
 	    options = _.assign(defaultOptions, options);
 	    var server = {
@@ -96,7 +95,7 @@ Ngdocs官方文档三言两语，当我们真正去写注释的时候根本找�
 	    });
 	});
 
-
+```
 ----------
 
 
@@ -106,7 +105,7 @@ Ngdocs官方文档三言两语，当我们真正去写注释的时候根本找�
 尽管上面的环境都很稳了，但写demo的过程中还是有很多坑等着我们跳。
 
 #### 坑1：引入错误module
-
+```JavaScript
     /**
 	 * @ngdoc directive
 	 * @name directives.directive:ytCheckBox
@@ -137,11 +136,11 @@ Ngdocs官方文档三言两语，当我们真正去写注释的时候根本找�
 	 </file>
 	 </example>
 	 */
-
+```
 > **Note:** 一般的，写example的时候第一行中 `<example module="directives">` 中的module要引入一个包含directives这个module，但是当我们引入app这个总module的时候，demo会运行app这个module，发出很多http请求报404错误。
 
 #### 坑2：缺少依赖注入
-
+```JavaScript
     /**
 	 * @ngdoc directive
 	 * @name directives.directive:ytDropdownList
@@ -185,12 +184,12 @@ Ngdocs官方文档三言两语，当我们真正去写注释的时候根本找�
 	 </file>
 	 </example>
 	 */
-
+```
 > **Note:** 当写ytDropdownList这个directive的demo的时候，一开始我们使用directives这个module，报出了依赖错误，因为html模板中使用了filter，所以这种状况下必须新建一个module并且包含所有依赖的module（`'filters','directives'`），只有这样，demo才能正常运行。
 
 #### 坑3：Provider
 
-
+```JavaScript
     /**
 	 * @ngdoc directive
 	 * @name directives.directive:ytSimpleMultiSelector
@@ -230,14 +229,14 @@ Ngdocs官方文档三言两语，当我们真正去写注释的时候根本找�
 	 </file>
 	 </example>
 	 */
-
+```
 > **Note:** 有些directive的demo尽管已经满足了全部依赖，但是还是会报出Provider未配置的错误。比如ytSimpleMultiSelector这个directive的html模板包含translate，这样的话就必须config配置`$translateProvider`，否则会报错。
 
 ----------
 
 
 #### 坑4：services/ui.bootstrap依赖
-
+```JavaScript
     /**
 	 * @ngdoc directive
 	 * @name directives.directive:ytRaceSelector
@@ -264,7 +263,7 @@ Ngdocs官方文档三言两语，当我们真正去写注释的时候根本找�
 	 </file>
 	 </example>
 	 */
-
+```
 
 > **Note:** 
 > 

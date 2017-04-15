@@ -11,7 +11,7 @@ AngularJS中用filter过滤某个id，比如
 	    {"id":8,"username":"betty",},
 	    {"id":14,"username":"archie",},
 	    {"id":3,"username":"jumbo1"}
-	]
+	];
   
   要把id为1的simon这个user过滤出来，如果写成
 
@@ -21,18 +21,9 @@ AngularJS中用filter过滤某个id，比如
 
     $scope.users = [
 	    {"id":1,"username":"simon",},
-	    {"id":14,"username":"archAngularJS中用filter过滤某个id，比如
+	    {"id":14,"username":"arch"}
+    ];
 
-    $scope.users = [
-	    {"id":1,"username":"simon",},
-	    {"id":8,"username":"betty",},
-	    {"id":14,"username":"archie",},
-	    {"id":3,"username":"jumbo1"}
-	]
-  
-  要把id为1的simon这个user过滤出来，如果写成
-ie",}
-	]
 
 所有id是1开头的user都出现在过滤结果中！因此，`$filter('filter')($scope.users,{id:1}）；`
 并不是精确的把id为1的simon这个user过滤出来！
