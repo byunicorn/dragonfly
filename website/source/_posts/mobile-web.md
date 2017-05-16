@@ -3,7 +3,6 @@ title: 移动端web踩坑指南
 date: 2017-05-13
 tags: [ycma, mobile, web]
 ---
-# 移动端web踩坑指南
 
 ----------
 
