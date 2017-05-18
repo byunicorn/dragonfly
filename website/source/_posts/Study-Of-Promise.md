@@ -1,7 +1,7 @@
 ---
 title: Study Of Promise
 date: 2017-05-17 22:09:22
-tags: lbao,JavaScript
+tags: [lbao,JavaScript]
 ---
 
 ## 前言
