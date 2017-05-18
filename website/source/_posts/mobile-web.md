@@ -24,6 +24,8 @@ minimum-scale， 浮点数， 允许用户缩放到最小的比例;
 maximum-scale， 浮点数， 允许用户缩放到最大的比例；
 user-scalable， yes|no， 是否允许用户缩放；
 
+<!-- more -->
+
 ### apple-mobile-web-app-capable
 ```
 <meta name="apple-mobile-web-app-capable" content="yes">
