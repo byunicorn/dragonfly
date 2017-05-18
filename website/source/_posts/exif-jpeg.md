@@ -20,6 +20,9 @@ Exif是一种图像文件格式，它的数据存储与JPEG格式是完全相同
 缩略图等。你可以利用任何可以查看JPEG文件的看图软件浏览Exif格式的照片，
 但并不是所有的图形程序都能处理Exif信息。
 
+<!-- more -->
+
+
  ![](https://github.com/wflkaaa/dragonfly/blob/master/code/images/exif.png?raw=true)
 
 [wiki exif link](https://en.wikipedia.org/wiki/Exif)
