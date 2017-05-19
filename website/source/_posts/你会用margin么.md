@@ -18,6 +18,8 @@ tags:
 
 然后就没有然后了……
 
+<!-- more -->
+
 答案就是：
 遇到负的margin，如果是margin-top或者margin-left，元素会往上往左移动，如果是margin-right或者margin-bottom，元素不会动，挨着它的元素会往左或者往上移动。
 对于非float的元素，两个元素会重叠（背景色右下覆盖左上，前景的文字重叠，和z-index无关），

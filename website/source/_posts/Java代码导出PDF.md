@@ -19,7 +19,7 @@ pom.xml
 </dependency>
 ```
 其中itextpdf是用来生成pdf的核心模块，itext-asian是为了支持中文字符。
-
+<!-- more -->
 #### 代码部分：
 ```java
 public static void toPdf(File file, List<String[]> content) throws Exception {

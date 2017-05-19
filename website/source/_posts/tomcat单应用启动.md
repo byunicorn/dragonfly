@@ -6,6 +6,7 @@ tags:
 
 #### 简述:
 tomcat自带了一个管理tomcat容器内web应用的网站，为webapps下的manager。
+<!-- more -->
 操作流程为:
 1. 修改 `module/website/origin/conf/tomcat-users.xml`, 在`<tomcat-users></tomcat-users>`中加入以下内容: 
     ```xml

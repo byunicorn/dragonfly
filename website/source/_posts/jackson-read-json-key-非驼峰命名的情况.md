@@ -7,7 +7,9 @@ tags:
 ```json
 {"Address":"xxxx","BirthDay":"19800202","Folk":"汉","IDImage":null,"Id":"310104198002027216","Name":"xx","Sex":"男","bValid":true,"strExpireData":"20350610","image":"base64jpg"}
 ```
-当变量名为ID或者Id时使用jackson 的readvalue无法读成Person.class对象中的数据。可以使用@JsonProperty注释来解决这个问题如:
+当变量名为ID或者Id时使用jackson 的readvalue无法读成Person.class对象中的数据。
+<!-- more -->
+可以使用@JsonProperty注释来解决这个问题如:
 ```java
 @JsonProperty("Id")
   private String id;
