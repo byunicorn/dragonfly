@@ -62,11 +62,16 @@ promise
 let p = $q.when(123);
 let p1;
 let p2 = p.then(function(value) {console.log(value); p1 = $q.when(value + 1); return p1;}); // console 123
-console.log(p1 === p2); // console false
+
 let p3;
 let p4 = p2.then(function(value) {console.log(value); p3 = $q.reject(value + 1); return p3; });	// console 124
-console.log(p3 === p4);	// console false
+
 let p5 = p4.then(function() {}, function(value) {console.log(value);}); // console 125
+
+$timeout(function() {
+    console.log(!angular.isUndefined(p1) && p1 === p2); // console false
+    console.log(!angular.isUndefined(p3) && p3 === p4);	// console false
+}, 100);
 ```
 
 ## 用来做什么
