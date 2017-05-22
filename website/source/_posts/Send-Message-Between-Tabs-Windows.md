@@ -11,6 +11,7 @@ tags: [JavaScript, lbao]
 2. 用户点击搜索的时候，打开一个新的tab并转到我们的页面，而不是直接跳转，然后两个页面通过`postMessage`互通消息。Reference: [Window.postMessage() - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage)
 
 <!-- more -->
+
 下面是代码片段：
 ```JavaScript
 // user page

@@ -36,6 +36,7 @@ tags: [kailiu,css]
                url(bl.png) bottom left;
     background-repeat:no-repeat;           
     ```
+<!-- more -->
 
 ## 第二章
 
