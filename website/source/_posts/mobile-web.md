@@ -308,7 +308,98 @@ if (docEl.firstElementChild) {
 
 总结： 看完了两个大厂的做法， 各有千秋， 各位看客见仁见智了！
 
+## 1px 边框问题 
+问题描述：
+border: 1px solid #ccc 边框在高倍屏上会显示得实际的1px要粗， 影响UI体验， 而且在IOS8之前， border： 0.5px 会被浏览器解析为0， 所以这就导致了我们需要寻找其它替代方案来弥补这个窟窿， 具体做法有如下几种
+1、图片
+选用一张图片（6×6）， 然后添加一些css代码(并不是直接使用这张图片， 真实的图片可以找UI要)
+![enter image description here](https://jinlong.github.io/image/css-retina-1px/border.png)
 
+```
+.border{
+    border-width: 1px;
+    border-image: url(border.gif) 2 repeat;
+}
+```
+这样的坏处是调整起来非常不方便。比如我现在需要改变颜色，那只能换一张图片；再比如我们只需要底部border， 这时候你可能需要换一张图片， 并且更改css样式；如果要实现border-radius， 你放个我吧～
+
+2、软图片
+软图片的思路就是用渐变代替背景图片
+```
+.border {
+    background: 
+	    linear-gradient(180deg, black, black 50%, transparent 50%) top    left  / 100% 1px no-repeat,
+	    linear-gradient(90deg,  black, black 50%, transparent 50%) top    right / 1px 100% no-repeat,
+	    linear-gradient(0,      black, black 50%, transparent 50%) bottom right / 100% 1px no-repeat,
+	    linear-gradient(-90deg, black, black 50%, transparent 50%) bottom left  / 1px 100% no-repeat;
+}
+```
+这种方式需要写很多css代码， 而且一样不好实现border-radius
+
+
+
+3、伪类 + transform
+思路：利用伪类模拟border， 并用transform： scale(0.5) 进行缩放， 代码如下：
+
+```
+.hairlines li{
+    position: relative;
+    border:none;
+}
+.hairlines li:after{
+    content: '';
+    position: absolute;
+    left: 0;
+    background: #000;
+    width: 100%;
+    height: 1px;
+    -webkit-transform: scaleY(0.5);
+            transform: scaleY(0.5);
+    -webkit-transform-origin: 0 0;
+            transform-origin: 0 0;
+}
+```
+该方法的问题是需要根据js设置缩放比， 而且css代码也足够复杂
+4、利用viewport
+根据不同的devicePixelRatio输出不同的meta标签。
+devicePixelRatio = 2时， 输出
+
+```
+<meta name="viewport" content="initial-scale=0.5, maximum-scale=0.5, minimum-scale=0.5, user-scalable=no">
+
+```
+devicePixelRatio = 3时， 输出
+```
+<meta name="viewport" content="initial-scale=0.3333333333333333, maximum-scale=0.3333333333333333, minimum-scale=0.3333333333333333, user-scalable=no">
+
+```
+这样只需要在css样式中写
+```
+div {
+	border: 1px solid #ccc;
+}
+```
+就ok了。 
+那如何动态修改meta标签呢？
+ 如果你不嫌麻烦，自己手写一个也很简单， 但是如果你比较懒， 那就用淘宝的[lib-flexible](https://github.com/amfe/lib-flexible)， 现成的解决方案， 不要太完美～
+
+## click 300ms延迟
+click延迟是一个历史问题。 早期手机端设计了在网页上双击放大效果， 300ms延迟就是为了确定点击是否是一个双击操作。但是对于一些单击操作， 这个延迟就会显得比较蛋疼。目前， android上的浏览器中， 如果设置了禁用缩放， 如下：
+```
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+```
+则会优化这个点击延迟， 但是在IOS上目前还不确定是否已经有这种优化。 好在市面上有一个小型的库[fastclick](https://github.com/ftlabs/fastclick)专门处理这个问题
+
+## 阻止屏幕旋转时字体自动调整
+```
+html, body, form, fieldset, p, div, h1, h2, h3, h4, h5, h6 {
+-webkit-text-size-adjust:none;
+}
+
+```
+参考
+[无线Web开发经验谈](http://am-team.github.io/amg/dev-exp-doc.html#移动-web-开发技巧)
+[web前端 —— 移动端知识的一些总结](https://segmentfault.com/a/1190000003908191)
 
 
 
