@@ -1,7 +1,7 @@
 ---
 title: debug angularjs
 date: 2017-05-20 11:27:44
-tags:
+tags: [lbao,Angularjs,Javascript]
 ---
 
 1. Chrome Extension:
@@ -11,6 +11,8 @@ Angular.js 1.x: ng-inspector，第三方开发
 缺点在于没有filter，想定位到某个scope的某个属性值，只能自己慢慢捞
 
 ![](https://github.com/wflkaaa/dragonfly/blob/master/code/images/angular-debug1.png?raw=true)
+
+<!-- more -->
 
 Angular.js 2.x: Augury
 亲儿子，Angular Team开发
