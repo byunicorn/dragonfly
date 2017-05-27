@@ -34,7 +34,6 @@ view的部分在2.0后支持template方式和jsx的方式。官方推荐使用te
 *  可以在html上指定时间类型，不如`@click.stop`, `@keyup.enter`
 *  vue的时间机制，`vm.$emit`, `vm.$on`
 *  `v-model`, 双向绑定。实际为语法糖。
-![](http://confluence.yitu-inc.com/download/attachments/107872563/image2017-4-1%2011%3A11%3A17.png?version=1&modificationDate=1491034369000&api=v2)
 
 是不是和angular非常之像？
  是的。vue在语法上和angular非常相似。
