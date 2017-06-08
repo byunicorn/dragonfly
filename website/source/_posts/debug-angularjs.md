@@ -66,7 +66,9 @@ app.filter('debug', function() {
 ```
 使用:
 
-```{{ value | debug }}```
+```
+{{ value | debug }}
+```
 
 如果有其他好用的方法，欢迎分享。
 
