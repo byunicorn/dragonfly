@@ -7,17 +7,35 @@ tags: [Angularjs,ytWebsite]
 [Modern Angular 1.x essential interview questions](https://toddmotto.com/modern-angular-interview-questions)
 
 <!-- more -->
-
-[TOC]
+## 目录
+1. [Components](#Components)
+1. [Performance and debugging](#Performance-and-debugging)
+	1. [怎样会在AngularJS里造成一个内存泄露？](#怎样会在AngularJS里造成一个内存泄露？)
+	1. [如何加速ng-repeat？](#如何加速ng-repeat？)
+	1. [使用一次性绑定的好处？](#使用一次性绑定的好处？)
+	1. [$evalAsync和$applyAsync区别是什么？](#evalAsync和-applyAsync区别是什么？)
+	1. [$watch和$watchCollection的区别是什么？](#watch和-watchCollection的区别是什么？)
+	1. [你熟悉的Angular.js debug工具？](#你熟悉的Angular-js-debug工具？)
+	1. [什么是strict-di模式？它是如何影响运行时性能的？](#什么是strict-di模式？它是如何影响运行时性能的？)
+	1. [什么是$templateCache？](#什么是-templateCache？)
+	1. [如何加快$digest?](#如何加快-digest)
+1. [Directives](#Directives)
+1. [Forms](#Forms)
+1. [Routing (ui-router 1.0.0)](#Routing-ui-router-1-0-0)
+1. [Controllers](#Controllers)
+1. [Filters](#Filters)
+1. [Services and HTTP](#Services-and-HTTP)
+1. [Events](#Events)
+1. [Testing and tooling](#Testing-and-tooling)
+1. [Modules and internals](#modules-and-internals)
 
 ## Components 
 
-### 什么是 “component”？
 
 这个是Angular.js 1.5之后的概念，在Face Platform的上下文中表示带有Template里的Directive。
 
 
-## Performance and debugging
+## Performance and debugging 
 
 ### 怎样会在AngularJS里造成一个内存泄露？
 
