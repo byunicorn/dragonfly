@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://wflkaaa.github.io/dragonfly/2017/06/07/Angular-Q-A/index.html">
 <meta property="og:site_name" content="Dragonfly Infinity">
 <meta property="og:description" content="Modern Angular 1.x essential interview questions">
-<meta property="og:updated_time" content="2017-06-08T05:27:46.776Z">
+<meta property="og:updated_time" content="2017-06-08T06:47:58.472Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Angular Q&amp;A">
 <meta name="twitter:description" content="Modern Angular 1.x essential interview questions">
@@ -92,8 +92,31 @@
       
         <p><a href="https://toddmotto.com/modern-angular-interview-questions" target="_blank" rel="external">Modern Angular 1.x essential interview questions</a></p>
 <a id="more"></a>
-<p>[TOC]</p>
-<h2 id="Components"><a href="#Components" class="headerlink" title="Components"></a>Components</h2><h3 id="什么是-“component”？"><a href="#什么是-“component”？" class="headerlink" title="什么是 “component”？"></a>什么是 “component”？</h3><p>这个是Angular.js 1.5之后的概念，在Face Platform的上下文中表示带有Template里的Directive。</p>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
+<li><a href="#Components">Components</a></li>
+<li><a href="#Performance-and-debugging">Performance and debugging</a><ol>
+<li><a href="#怎样会在AngularJS里造成一个内存泄露？">怎样会在AngularJS里造成一个内存泄露？</a></li>
+<li><a href="#如何加速ng-repeat？">如何加速ng-repeat？</a></li>
+<li><a href="#使用一次性绑定的好处？">使用一次性绑定的好处？</a></li>
+<li><a href="#evalAsync和-applyAsync区别是什么？">$evalAsync和$applyAsync区别是什么？</a></li>
+<li><a href="#watch和-watchCollection的区别是什么？">$watch和$watchCollection的区别是什么？</a></li>
+<li><a href="#你熟悉的Angular-js-debug工具？">你熟悉的Angular.js debug工具？</a></li>
+<li><a href="#什么是strict-di模式？它是如何影响运行时性能的？">什么是strict-di模式？它是如何影响运行时性能的？</a></li>
+<li><a href="#什么是-templateCache？">什么是$templateCache？</a></li>
+<li><a href="#如何加快-digest">如何加快$digest?</a></li>
+</ol>
+</li>
+<li><a href="#Directives">Directives</a></li>
+<li><a href="#Forms">Forms</a></li>
+<li><a href="#Routing-ui-router-1-0-0">Routing (ui-router 1.0.0)</a></li>
+<li><a href="#Controllers">Controllers</a></li>
+<li><a href="#Filters">Filters</a></li>
+<li><a href="#Services-and-HTTP">Services and HTTP</a></li>
+<li><a href="#Events">Events</a></li>
+<li><a href="#Testing-and-tooling">Testing and tooling</a></li>
+<li><a href="#modules-and-internals">Modules and internals</a></li>
+</ol>
+<h2 id="Components"><a href="#Components" class="headerlink" title="Components"></a>Components</h2><p>这个是Angular.js 1.5之后的概念，在Face Platform的上下文中表示带有Template里的Directive。</p>
 <h2 id="Performance-and-debugging"><a href="#Performance-and-debugging" class="headerlink" title="Performance and debugging"></a>Performance and debugging</h2><h3 id="怎样会在AngularJS里造成一个内存泄露？"><a href="#怎样会在AngularJS里造成一个内存泄露？" class="headerlink" title="怎样会在AngularJS里造成一个内存泄露？"></a>怎样会在AngularJS里造成一个内存泄露？</h3><p>比较容易的方式是<code>$scope</code>已经call <code>$destory</code>了，但还有外部的引用没有取消掉。</p>
 <ul>
 <li><code>$scope</code>销毁时没有把<code>$interval</code>给cancel掉，类似的还有<code>$timeout</code>。</li>
@@ -154,7 +177,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://wflkaaa.github.io/dragonfly/2017/06/07/Angular-Q-A/" data-id="cj3ny3dl20007cx4pxx7i2xxz" class="article-share-link">Partager</a>
+      <a data-url="https://wflkaaa.github.io/dragonfly/2017/06/07/Angular-Q-A/" data-id="cj3o0ql9b000bdl4pvnmi0amr" class="article-share-link">Partager</a>
       
         <a href="https://wflkaaa.github.io/dragonfly/2017/06/07/Angular-Q-A/#disqus_thread" class="article-comment-link">Commentaires</a>
       
