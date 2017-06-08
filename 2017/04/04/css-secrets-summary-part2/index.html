@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>《css揭秘》概要 part2 | Dragonfly Infinity</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="字体排印20.连字符断行知识点：word-wrap,word-break,hyphens See the Pen KWERLb by wflkaaa (@wflkaaa) on CodePen.   21.插入换行知识点：css后代选择器 See the Pen PpLVOd by wflkaaa (@wflkaaa) on CodePen.">
+<meta name="keywords" content="kailiu,css-secrets">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《css揭秘》概要 part2">
+<meta property="og:url" content="https://wflkaaa.github.io/dragonfly/2017/04/04/css-secrets-summary-part2/index.html">
+<meta property="og:site_name" content="Dragonfly Infinity">
+<meta property="og:description" content="字体排印20.连字符断行知识点：word-wrap,word-break,hyphens See the Pen KWERLb by wflkaaa (@wflkaaa) on CodePen.   21.插入换行知识点：css后代选择器 See the Pen PpLVOd by wflkaaa (@wflkaaa) on CodePen.">
+<meta property="og:updated_time" content="2017-06-08T04:50:10.616Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《css揭秘》概要 part2">
+<meta name="twitter:description" content="字体排印20.连字符断行知识点：word-wrap,word-break,hyphens See the Pen KWERLb by wflkaaa (@wflkaaa) on CodePen.   21.插入换行知识点：css后代选择器 See the Pen PpLVOd by wflkaaa (@wflkaaa) on CodePen.">
+  
+    <link rel="alternate" href="/atom.xml" title="Dragonfly Infinity" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/dragonfly/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/dragonfly/" id="logo">Dragonfly Infinity</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/dragonfly/" id="subtitle">Talk is cheap, Show me the code</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/dragonfly/">Home</a>
+        
+          <a class="main-nav-link" href="/dragonfly/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://wflkaaa.github.io/dragonfly"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-css-secrets-summary-part2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/dragonfly/2017/04/04/css-secrets-summary-part2/" class="article-date">
+  <time datetime="2017-04-04T07:49:29.000Z" itemprop="datePublished">2017-04-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      《css揭秘》概要 part2
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="字体排印"><a href="#字体排印" class="headerlink" title="字体排印"></a><em>字体排印</em></h3><h4 id="20-连字符断行"><a href="#20-连字符断行" class="headerlink" title="20.连字符断行"></a>20.连字符断行</h4><p><em>知识点：word-wrap,word-break,hyphens</em></p>
+<p></p><p data-height="265" data-theme-id="0" data-slug-hash="KWERLb" data-default-tab="html,result" data-user="wflkaaa" data-embed-version="2" data-pen-title="KWERLb" class="codepen">See the Pen <a href="http://codepen.io/wflkaaa/pen/KWERLb/" target="_blank" rel="external">KWERLb</a> by wflkaaa (<a href="http://codepen.io/wflkaaa" target="_blank" rel="external">@wflkaaa</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<h4 id="21-插入换行"><a href="#21-插入换行" class="headerlink" title="21.插入换行"></a>21.插入换行</h4><p><em>知识点：css后代选择器</em></p>
+<p></p><p data-height="265" data-theme-id="0" data-slug-hash="PpLVOd" data-default-tab="css,result" data-user="wflkaaa" data-embed-version="2" data-pen-title="PpLVOd" class="codepen">See the Pen <a href="http://codepen.io/wflkaaa/pen/PpLVOd/" target="_blank" rel="external">PpLVOd</a> by wflkaaa (<a href="http://codepen.io/wflkaaa" target="_blank" rel="external">@wflkaaa</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<a id="more"></a>
+<h4 id="22-文本行斑马条纹"><a href="#22-文本行斑马条纹" class="headerlink" title="22.文本行斑马条纹"></a>22.文本行斑马条纹</h4><p><em>知识点：linear-gradient</em></p>
+<p></p><p data-height="265" data-theme-id="0" data-slug-hash="bqJqJL" data-default-tab="css,result" data-user="wflkaaa" data-embed-version="2" data-pen-title="bqJqJL" class="codepen">See the Pen <a href="http://codepen.io/wflkaaa/pen/bqJqJL/" target="_blank" rel="external">bqJqJL</a> by wflkaaa (<a href="http://codepen.io/wflkaaa" target="_blank" rel="external">@wflkaaa</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<h4 id="23-调整tab的宽度"><a href="#23-调整tab的宽度" class="headerlink" title="23.调整tab的宽度"></a>23.调整tab的宽度</h4><p><em>知识点：tab-size</em></p>
+<p></p><p data-height="265" data-theme-id="0" data-slug-hash="EWJmxx" data-default-tab="html,result" data-user="wflkaaa" data-embed-version="2" data-pen-title="EWJmxx" class="codepen">See the Pen <a href="http://codepen.io/wflkaaa/pen/EWJmxx/" target="_blank" rel="external">EWJmxx</a> by wflkaaa (<a href="http://codepen.io/wflkaaa" target="_blank" rel="external">@wflkaaa</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<h4 id="24-连字（略）"><a href="#24-连字（略）" class="headerlink" title="24.连字（略）"></a>24.连字（略）</h4><h4 id="25-华丽的-amp-符号（略）"><a href="#25-华丽的-amp-符号（略）" class="headerlink" title="25.华丽的&amp;符号（略）"></a>25.华丽的&amp;符号（略）</h4><h4 id="26-自定义下划线"><a href="#26-自定义下划线" class="headerlink" title="26.自定义下划线"></a>26.自定义下划线</h4><p><em>知识点：linear-gradient,background-position,text-shadow</em></p>
+<p></p><p data-height="265" data-theme-id="0" data-slug-hash="EWJmzZ" data-default-tab="css,result" data-user="wflkaaa" data-embed-version="2" data-pen-title="EWJmzZ" class="codepen">See the Pen <a href="http://codepen.io/wflkaaa/pen/EWJmzZ/" target="_blank" rel="external">EWJmzZ</a> by wflkaaa (<a href="http://codepen.io/wflkaaa" target="_blank" rel="external">@wflkaaa</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<h4 id="27-现实中的文字效果"><a href="#27-现实中的文字效果" class="headerlink" title="27.现实中的文字效果"></a>27.现实中的文字效果</h4><p><em>知识点：text-shadow,first-child</em></p>
+<p></p><p data-height="265" data-theme-id="0" data-slug-hash="NpmXVY" data-default-tab="css,result" data-user="wflkaaa" data-embed-version="2" data-pen-title="NpmXVY" class="codepen">See the Pen <a href="http://codepen.io/wflkaaa/pen/NpmXVY/" target="_blank" rel="external">NpmXVY</a> by wflkaaa (<a href="http://codepen.io/wflkaaa" target="_blank" rel="external">@wflkaaa</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<p></p><p data-height="265" data-theme-id="0" data-slug-hash="MpRQXW" data-default-tab="css,result" data-user="wflkaaa" data-embed-version="2" data-pen-title="MpRQXW" class="codepen">See the Pen <a href="http://codepen.io/wflkaaa/pen/MpRQXW/" target="_blank" rel="external">MpRQXW</a> by wflkaaa (<a href="http://codepen.io/wflkaaa" target="_blank" rel="external">@wflkaaa</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<p></p><p data-height="265" data-theme-id="0" data-slug-hash="mWgxaZ" data-default-tab="css,result" data-user="wflkaaa" data-embed-version="2" data-pen-title="mWgxaZ" class="codepen">See the Pen <a href="http://codepen.io/wflkaaa/pen/mWgxaZ/" target="_blank" rel="external">mWgxaZ</a> by wflkaaa (<a href="http://codepen.io/wflkaaa" target="_blank" rel="external">@wflkaaa</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<h4 id="28-环形文字"><a href="#28-环形文字" class="headerlink" title="28.环形文字"></a>28.环形文字</h4><p><em>知识点：svg use,textPath</em></p>
+<p></p><p data-height="265" data-theme-id="0" data-slug-hash="Ppgeyp" data-default-tab="js,result" data-user="wflkaaa" data-embed-version="2" data-pen-title="Ppgeyp" class="codepen">See the Pen <a href="http://codepen.io/wflkaaa/pen/Ppgeyp/" target="_blank" rel="external">Ppgeyp</a> by wflkaaa (<a href="http://codepen.io/wflkaaa" target="_blank" rel="external">@wflkaaa</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<h3 id="用户体验"><a href="#用户体验" class="headerlink" title="用户体验"></a><em>用户体验</em></h3><h4 id="29-选用合适的鼠标光标"><a href="#29-选用合适的鼠标光标" class="headerlink" title="29.选用合适的鼠标光标"></a>29.选用合适的鼠标光标</h4><p><em>知识点：not-allowed,none</em></p>
+<p></p><p data-height="265" data-theme-id="0" data-slug-hash="GWLdeW" data-default-tab="css,result" data-user="wflkaaa" data-embed-version="2" data-pen-title="GWLdeW" class="codepen">See the Pen <a href="http://codepen.io/wflkaaa/pen/GWLdeW/" target="_blank" rel="external">GWLdeW</a> by wflkaaa (<a href="http://codepen.io/wflkaaa" target="_blank" rel="external">@wflkaaa</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<h4 id="30-扩大可点击区域"><a href="#30-扩大可点击区域" class="headerlink" title="30.扩大可点击区域"></a>30.扩大可点击区域</h4><p><em>知识点：padding-box,before</em></p>
+<p></p><p data-height="265" data-theme-id="0" data-slug-hash="XMQBGZ" data-default-tab="css,result" data-user="wflkaaa" data-embed-version="2" data-pen-title="XMQBGZ" class="codepen">See the Pen <a href="http://codepen.io/wflkaaa/pen/XMQBGZ/" target="_blank" rel="external">XMQBGZ</a> by wflkaaa (<a href="http://codepen.io/wflkaaa" target="_blank" rel="external">@wflkaaa</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<h4 id="31-自定义复选框"><a href="#31-自定义复选框" class="headerlink" title="31.自定义复选框"></a>31.自定义复选框</h4><p><em>知识点：checked,before,label</em></p>
+<p></p><p data-height="265" data-theme-id="0" data-slug-hash="rygVjE" data-default-tab="css,result" data-user="wflkaaa" data-embed-version="2" data-pen-title="rygVjE" class="codepen">See the Pen <a href="http://codepen.io/wflkaaa/pen/rygVjE/" target="_blank" rel="external">rygVjE</a> by wflkaaa (<a href="http://codepen.io/wflkaaa" target="_blank" rel="external">@wflkaaa</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<p></p><p data-height="265" data-theme-id="0" data-slug-hash="aJrvjE" data-default-tab="css,result" data-user="wflkaaa" data-embed-version="2" data-pen-title="aJrvjE" class="codepen">See the Pen <a href="http://codepen.io/wflkaaa/pen/aJrvjE/" target="_blank" rel="external">aJrvjE</a> by wflkaaa (<a href="http://codepen.io/wflkaaa" target="_blank" rel="external">@wflkaaa</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<p></p><p data-height="265" data-theme-id="0" data-slug-hash="gmJNqy" data-default-tab="css,result" data-user="wflkaaa" data-embed-version="2" data-pen-title="gmJNqy" class="codepen">See the Pen <a href="http://codepen.io/wflkaaa/pen/gmJNqy/" target="_blank" rel="external">gmJNqy</a> by wflkaaa (<a href="http://codepen.io/wflkaaa" target="_blank" rel="external">@wflkaaa</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<h4 id="32-通过阴影弱化背景"><a href="#32-通过阴影弱化背景" class="headerlink" title="32.通过阴影弱化背景"></a>32.通过阴影弱化背景</h4><p><em>知识点：before,box-shadow</em></p>
+<p></p><p data-height="265" data-theme-id="0" data-slug-hash="yMdBBj" data-default-tab="html,result" data-user="wflkaaa" data-embed-version="2" data-pen-title="yMdBBj" class="codepen">See the Pen <a href="http://codepen.io/wflkaaa/pen/yMdBBj/" target="_blank" rel="external">yMdBBj</a> by wflkaaa (<a href="http://codepen.io/wflkaaa" target="_blank" rel="external">@wflkaaa</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<h4 id="33-通过模糊弱化背景"><a href="#33-通过模糊弱化背景" class="headerlink" title="33.通过模糊弱化背景"></a>33.通过模糊弱化背景</h4><p><em>知识点：filter,blur</em></p>
+<p></p><p data-height="265" data-theme-id="0" data-slug-hash="EWBgPo" data-default-tab="html,result" data-user="wflkaaa" data-embed-version="2" data-pen-title="EWBgPo" class="codepen">See the Pen <a href="http://codepen.io/wflkaaa/pen/EWBgPo/" target="_blank" rel="external">EWBgPo</a> by wflkaaa (<a href="http://codepen.io/wflkaaa" target="_blank" rel="external">@wflkaaa</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<h4 id="34-滚动提示"><a href="#34-滚动提示" class="headerlink" title="34.滚动提示"></a>34.滚动提示</h4><p><em>知识点：background-attachment:local</em></p>
+<p></p><p data-height="265" data-theme-id="0" data-slug-hash="evwMWN" data-default-tab="css,result" data-user="wflkaaa" data-embed-version="2" data-pen-title="evwMWN" class="codepen">See the Pen <a href="http://codepen.io/wflkaaa/pen/evwMWN/" target="_blank" rel="external">evwMWN</a> by wflkaaa (<a href="http://codepen.io/wflkaaa" target="_blank" rel="external">@wflkaaa</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<h4 id="35-交互式图片对比控件（略）"><a href="#35-交互式图片对比控件（略）" class="headerlink" title="35.交互式图片对比控件（略）"></a>35.交互式图片对比控件（略）</h4><h3 id="结构与布局"><a href="#结构与布局" class="headerlink" title="结构与布局"></a><em>结构与布局</em></h3><h4 id="36-自适应内部元素"><a href="#36-自适应内部元素" class="headerlink" title="36.自适应内部元素"></a>36.自适应内部元素</h4><p><em>知识点：min-content</em></p>
+<p></p><p data-height="265" data-theme-id="0" data-slug-hash="qrzoVj" data-default-tab="html,result" data-user="wflkaaa" data-embed-version="2" data-pen-title="qrzoVj" class="codepen">See the Pen <a href="http://codepen.io/wflkaaa/pen/qrzoVj/" target="_blank" rel="external">qrzoVj</a> by wflkaaa (<a href="http://codepen.io/wflkaaa" target="_blank" rel="external">@wflkaaa</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<h4 id="37-精确控制表格列宽"><a href="#37-精确控制表格列宽" class="headerlink" title="37.精确控制表格列宽"></a>37.精确控制表格列宽</h4><p><em>知识点：table,table-layout:fixed</em></p>
+<p></p><p data-height="265" data-theme-id="0" data-slug-hash="OpevZr" data-default-tab="html,result" data-user="wflkaaa" data-embed-version="2" data-pen-title="OpevZr" class="codepen">See the Pen <a href="http://codepen.io/wflkaaa/pen/OpevZr/" target="_blank" rel="external">OpevZr</a> by wflkaaa (<a href="http://codepen.io/wflkaaa" target="_blank" rel="external">@wflkaaa</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<h4 id="38-根据兄弟元素的数量设置样式（略）"><a href="#38-根据兄弟元素的数量设置样式（略）" class="headerlink" title="38.根据兄弟元素的数量设置样式（略）"></a>38.根据兄弟元素的数量设置样式（略）</h4><h4 id="39-满幅的背景，定宽的内容（略）"><a href="#39-满幅的背景，定宽的内容（略）" class="headerlink" title="39.满幅的背景，定宽的内容（略）"></a>39.满幅的背景，定宽的内容（略）</h4><p><em>知识点：calc</em></p>
+<p><code>container{padding:calc(50% - 350px);}</code></p>
+<h4 id="40-垂直居中"><a href="#40-垂直居中" class="headerlink" title="40.垂直居中"></a>40.垂直居中</h4><p><em>知识点：margin,translate</em></p>
+<p><code>margin-left:50%;//父元素宽度的50%</code></p>
+<p><code>margin-top:50%;//父元素宽度的50%</code></p>
+<p><code>translateY:50%;//自身宽度的50%</code></p>
+<h4 id="41-紧贴底部的页脚"><a href="#41-紧贴底部的页脚" class="headerlink" title="41.紧贴底部的页脚"></a>41.紧贴底部的页脚</h4><p><em>知识点：min-height,calc，flex-layout</em></p>
+<p></p><p data-height="265" data-theme-id="0" data-slug-hash="bWbYaK" data-default-tab="html,result" data-user="wflkaaa" data-embed-version="2" data-pen-title="bWbYaK" class="codepen">See the Pen <a href="http://codepen.io/wflkaaa/pen/bWbYaK/" target="_blank" rel="external">bWbYaK</a> by wflkaaa (<a href="http://codepen.io/wflkaaa" target="_blank" rel="external">@wflkaaa</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<h3 id="过渡与动画"><a href="#过渡与动画" class="headerlink" title="过渡与动画"></a><em>过渡与动画</em></h3><h4 id="42-缓动效果"><a href="#42-缓动效果" class="headerlink" title="42.缓动效果"></a>42.缓动效果</h4><p><em>知识点：animation/transition-timing-function</em></p>
+<p></p><p data-height="265" data-theme-id="0" data-slug-hash="LyYJRW" data-default-tab="css,result" data-user="wflkaaa" data-embed-version="2" data-pen-title="LyYJRW" class="codepen">See the Pen <a href="http://codepen.io/wflkaaa/pen/LyYJRW/" target="_blank" rel="external">LyYJRW</a> by wflkaaa (<a href="http://codepen.io/wflkaaa" target="_blank" rel="external">@wflkaaa</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<p></p><p data-height="265" data-theme-id="0" data-slug-hash="VbZyBG" data-default-tab="css,result" data-user="wflkaaa" data-embed-version="2" data-pen-title="VbZyBG" class="codepen">See the Pen <a href="http://codepen.io/wflkaaa/pen/VbZyBG/" target="_blank" rel="external">VbZyBG</a> by wflkaaa (<a href="http://codepen.io/wflkaaa" target="_blank" rel="external">@wflkaaa</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<h4 id="43-逐帧动画"><a href="#43-逐帧动画" class="headerlink" title="43.逐帧动画"></a>43.逐帧动画</h4><p><em>知识点：steps</em></p>
+<p></p><p data-height="265" data-theme-id="0" data-slug-hash="EmKzvY" data-default-tab="css,result" data-user="wflkaaa" data-embed-version="2" data-pen-title="EmKzvY" class="codepen">See the Pen <a href="https://codepen.io/wflkaaa/pen/EmKzvY/" target="_blank" rel="external">EmKzvY</a> by wflkaaa (<a href="http://codepen.io/wflkaaa" target="_blank" rel="external">@wflkaaa</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<h4 id="44-闪烁效果"><a href="#44-闪烁效果" class="headerlink" title="44.闪烁效果"></a>44.闪烁效果</h4><p><em>知识点：blink</em></p>
+<p></p><p data-height="265" data-theme-id="0" data-slug-hash="EmKzvY" data-default-tab="css,result" data-user="wflkaaa" data-embed-version="2" data-pen-title="EmKzvY" class="codepen">See the Pen <a href="https://codepen.io/wflkaaa/pen/EmKzvY/" target="_blank" rel="external">EmKzvY</a> by wflkaaa (<a href="http://codepen.io/wflkaaa" target="_blank" rel="external">@wflkaaa</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<h4 id="45-打字动画"><a href="#45-打字动画" class="headerlink" title="45.打字动画"></a>45.打字动画</h4><p><em>知识点：ch,blink</em></p>
+<p></p><p data-height="265" data-theme-id="0" data-slug-hash="rmLjPy" data-default-tab="css,result" data-user="wflkaaa" data-embed-version="2" data-pen-title="rmLjPy" class="codepen">See the Pen <a href="https://codepen.io/wflkaaa/pen/rmLjPy/" target="_blank" rel="external">rmLjPy</a> by wflkaaa (<a href="http://codepen.io/wflkaaa" target="_blank" rel="external">@wflkaaa</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<h4 id="46-状态平滑的动画"><a href="#46-状态平滑的动画" class="headerlink" title="46.状态平滑的动画"></a>46.状态平滑的动画</h4><p><em>知识点：alternate,animation-play-state</em></p>
+<p></p><p data-height="265" data-theme-id="0" data-slug-hash="VbjzOZ" data-default-tab="css,result" data-user="wflkaaa" data-embed-version="2" data-pen-title="VbjzOZ" class="codepen">See the Pen <a href="https://codepen.io/wflkaaa/pen/VbjzOZ/" target="_blank" rel="external">VbjzOZ</a> by wflkaaa (<a href="http://codepen.io/wflkaaa" target="_blank" rel="external">@wflkaaa</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<h4 id="47-沿环形路径平移的动画"><a href="#47-沿环形路径平移的动画" class="headerlink" title="47.沿环形路径平移的动画"></a>47.沿环形路径平移的动画</h4><p><em>知识点：transform-origin,reverse</em></p>
+<p></p><p data-height="265" data-theme-id="0" data-slug-hash="NjragX" data-default-tab="css,result" data-user="wflkaaa" data-embed-version="2" data-pen-title="NjragX" class="codepen">See the Pen <a href="https://codepen.io/wflkaaa/pen/NjragX/" target="_blank" rel="external">NjragX</a> by wflkaaa (<a href="http://codepen.io/wflkaaa" target="_blank" rel="external">@wflkaaa</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://wflkaaa.github.io/dragonfly/2017/04/04/css-secrets-summary-part2/" data-id="cj3ny3dm4001ncx4pkgclhiig" class="article-share-link">Partager</a>
+      
+        <a href="https://wflkaaa.github.io/dragonfly/2017/04/04/css-secrets-summary-part2/#disqus_thread" class="article-comment-link">Commentaires</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/css-secrets/">css-secrets</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/kailiu/">kailiu</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/dragonfly/2017/04/04/Secure-HTTP-Headers/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          HTTP安全相关的Headers
+        
+      </div>
+    </a>
+  
+  
+    <a href="/dragonfly/2017/03/31/React+Redux+Reselect/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">使用Reselect配合Redux提升页面性能</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/1-7-c/">1.7.c</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Angularjs/">Angularjs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/D3/">D3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Django/">Django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Django，deploy/">Django，deploy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Ngdocs/">Ngdocs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Promise/">Promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Redux/">Redux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Reselect/">Reselect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/angular/">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/autoDeploy/">autoDeploy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/axxia/">axxia</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/bash/">bash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/browserSync/">browserSync</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/cmd/">cmd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/css-secrets/">css-secrets</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/exif/">exif</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/expect/">expect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/extend/">extend</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/face-client/">face_client</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/filter/">filter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/gulp/">gulp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/h5/">h5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/hbwang/">hbwang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/idea/">idea</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/initial/">initial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/kailiu/">kailiu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/lbao/">lbao</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/mixin/">mixin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/mobile/">mobile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/rbzhou/">rbzhou</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/responsive/">responsive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/responsive-image-background/">responsive image background</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/sass/">sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/security/">security</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/setup/">setup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/tomcat/">tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/tools/">tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/vim/">vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/xlu/">xlu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/ycma/">ycma</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/ytWebsite/">ytWebsite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/zmzhang/">zmzhang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/跨域/">跨域</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <div class="widget tagcloud">
+      <a href="/dragonfly/tags/1-7-c/" style="font-size: 10px;">1.7.c</a> <a href="/dragonfly/tags/Angularjs/" style="font-size: 19px;">Angularjs</a> <a href="/dragonfly/tags/CSS/" style="font-size: 11px;">CSS</a> <a href="/dragonfly/tags/D3/" style="font-size: 10px;">D3</a> <a href="/dragonfly/tags/Django/" style="font-size: 11px;">Django</a> <a href="/dragonfly/tags/Django，deploy/" style="font-size: 10px;">Django，deploy</a> <a href="/dragonfly/tags/JavaScript/" style="font-size: 13px;">JavaScript</a> <a href="/dragonfly/tags/Javascript/" style="font-size: 16px;">Javascript</a> <a href="/dragonfly/tags/Ngdocs/" style="font-size: 10px;">Ngdocs</a> <a href="/dragonfly/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/dragonfly/tags/React/" style="font-size: 10px;">React</a> <a href="/dragonfly/tags/Redux/" style="font-size: 10px;">Redux</a> <a href="/dragonfly/tags/Reselect/" style="font-size: 10px;">Reselect</a> <a href="/dragonfly/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/dragonfly/tags/angular/" style="font-size: 10px;">angular</a> <a href="/dragonfly/tags/autoDeploy/" style="font-size: 10px;">autoDeploy</a> <a href="/dragonfly/tags/axxia/" style="font-size: 10px;">axxia</a> <a href="/dragonfly/tags/bash/" style="font-size: 10px;">bash</a> <a href="/dragonfly/tags/browserSync/" style="font-size: 10px;">browserSync</a> <a href="/dragonfly/tags/cmd/" style="font-size: 11px;">cmd</a> <a href="/dragonfly/tags/css/" style="font-size: 11px;">css</a> <a href="/dragonfly/tags/css-secrets/" style="font-size: 10px;">css-secrets</a> <a href="/dragonfly/tags/exif/" style="font-size: 10px;">exif</a> <a href="/dragonfly/tags/expect/" style="font-size: 10px;">expect</a> <a href="/dragonfly/tags/extend/" style="font-size: 10px;">extend</a> <a href="/dragonfly/tags/face-client/" style="font-size: 10px;">face_client</a> <a href="/dragonfly/tags/filter/" style="font-size: 10px;">filter</a> <a href="/dragonfly/tags/git/" style="font-size: 10px;">git</a> <a href="/dragonfly/tags/gulp/" style="font-size: 11px;">gulp</a> <a href="/dragonfly/tags/h5/" style="font-size: 10px;">h5</a> <a href="/dragonfly/tags/hbwang/" style="font-size: 15px;">hbwang</a> <a href="/dragonfly/tags/hexo/" style="font-size: 12px;">hexo</a> <a href="/dragonfly/tags/idea/" style="font-size: 10px;">idea</a> <a href="/dragonfly/tags/initial/" style="font-size: 10px;">initial</a> <a href="/dragonfly/tags/kailiu/" style="font-size: 14px;">kailiu</a> <a href="/dragonfly/tags/lbao/" style="font-size: 20px;">lbao</a> <a href="/dragonfly/tags/linux/" style="font-size: 10px;">linux</a> <a href="/dragonfly/tags/mixin/" style="font-size: 10px;">mixin</a> <a href="/dragonfly/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/dragonfly/tags/rbzhou/" style="font-size: 18px;">rbzhou</a> <a href="/dragonfly/tags/responsive/" style="font-size: 10px;">responsive</a> <a href="/dragonfly/tags/responsive-image-background/" style="font-size: 10px;">responsive image background</a> <a href="/dragonfly/tags/sass/" style="font-size: 11px;">sass</a> <a href="/dragonfly/tags/security/" style="font-size: 10px;">security</a> <a href="/dragonfly/tags/setup/" style="font-size: 10px;">setup</a> <a href="/dragonfly/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/dragonfly/tags/tool/" style="font-size: 10px;">tool</a> <a href="/dragonfly/tags/tools/" style="font-size: 11px;">tools</a> <a href="/dragonfly/tags/vim/" style="font-size: 10px;">vim</a> <a href="/dragonfly/tags/web/" style="font-size: 10px;">web</a> <a href="/dragonfly/tags/xlu/" style="font-size: 10px;">xlu</a> <a href="/dragonfly/tags/ycma/" style="font-size: 12px;">ycma</a> <a href="/dragonfly/tags/ytWebsite/" style="font-size: 10px;">ytWebsite</a> <a href="/dragonfly/tags/zmzhang/" style="font-size: 17px;">zmzhang</a> <a href="/dragonfly/tags/跨域/" style="font-size: 10px;">跨域</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2016/10/">October 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/dragonfly/2017/06/07/Angular-Q-A/">Angular Q&amp;A</a>
+          </li>
+        
+          <li>
+            <a href="/dragonfly/2017/05/27/View-On-Vue/">View On Vue</a>
+          </li>
+        
+          <li>
+            <a href="/dragonfly/2017/05/25/underscore-js学习/">underscore.js学习</a>
+          </li>
+        
+          <li>
+            <a href="/dragonfly/2017/05/20/socket-too-many-files/">socket too many files</a>
+          </li>
+        
+          <li>
+            <a href="/dragonfly/2017/05/20/关于angular-filter/">关于angular filter</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 YT Frontend Team<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/dragonfly/" class="mobile-nav-link">Home</a>
+  
+    <a href="/dragonfly/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'dragonfly-disqus';
+  
+  var disqus_url = 'https://wflkaaa.github.io/dragonfly/2017/04/04/css-secrets-summary-part2/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/dragonfly/fancybox/jquery.fancybox.css">
+  <script src="/dragonfly/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/dragonfly/js/script.js"></script>
+
+  </div>
+</body>
+</html>

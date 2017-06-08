@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Angular Q&amp;A | Dragonfly Infinity</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Modern Angular 1.x essential interview questions">
+<meta name="keywords" content="Angularjs,ytWebsite">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Angular Q&amp;A">
+<meta property="og:url" content="https://wflkaaa.github.io/dragonfly/2017/06/07/Angular-Q-A/index.html">
+<meta property="og:site_name" content="Dragonfly Infinity">
+<meta property="og:description" content="Modern Angular 1.x essential interview questions">
+<meta property="og:updated_time" content="2017-06-08T05:27:46.776Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Angular Q&amp;A">
+<meta name="twitter:description" content="Modern Angular 1.x essential interview questions">
+  
+    <link rel="alternate" href="/atom.xml" title="Dragonfly Infinity" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/dragonfly/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/dragonfly/" id="logo">Dragonfly Infinity</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/dragonfly/" id="subtitle">Talk is cheap, Show me the code</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/dragonfly/">Home</a>
+        
+          <a class="main-nav-link" href="/dragonfly/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://wflkaaa.github.io/dragonfly"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Angular-Q-A" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/dragonfly/2017/06/07/Angular-Q-A/" class="article-date">
+  <time datetime="2017-06-07T09:30:17.000Z" itemprop="datePublished">2017-06-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Angular Q&amp;A
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://toddmotto.com/modern-angular-interview-questions" target="_blank" rel="external">Modern Angular 1.x essential interview questions</a></p>
+<a id="more"></a>
+<p>[TOC]</p>
+<h2 id="Components"><a href="#Components" class="headerlink" title="Components"></a>Components</h2><h3 id="什么是-“component”？"><a href="#什么是-“component”？" class="headerlink" title="什么是 “component”？"></a>什么是 “component”？</h3><p>这个是Angular.js 1.5之后的概念，在Face Platform的上下文中表示带有Template里的Directive。</p>
+<h2 id="Performance-and-debugging"><a href="#Performance-and-debugging" class="headerlink" title="Performance and debugging"></a>Performance and debugging</h2><h3 id="怎样会在AngularJS里造成一个内存泄露？"><a href="#怎样会在AngularJS里造成一个内存泄露？" class="headerlink" title="怎样会在AngularJS里造成一个内存泄露？"></a>怎样会在AngularJS里造成一个内存泄露？</h3><p>比较容易的方式是<code>$scope</code>已经call <code>$destory</code>了，但还有外部的引用没有取消掉。</p>
+<ul>
+<li><code>$scope</code>销毁时没有把<code>$interval</code>给cancel掉，类似的还有<code>$timeout</code>。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">app.module(<span class="string">"controllers"</span>).controller(<span class="string">"memoryLeak"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$interval</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> counter = <span class="number">0</span>;</div><div class="line">	<span class="keyword">var</span> timer = $interval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">		counter += <span class="number">1</span>;</div><div class="line">	&#125;, <span class="number">1000</span>);</div><div class="line"></div><div class="line">	$scope.on(<span class="string">"$destory"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">		$interval.cancel(timer);</div><div class="line">	&#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ul>
+<li><code>$scope</code>销毁时没有把添加的Event Listener解绑。（如果event listener是绑在directive对应的template上，则不需要手动解绑，scope destroy时Angular.js会调用<code>$element.remove</code>把template上绑定的事件给清理掉。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> onDocumentClick = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</div><div class="line">	<span class="comment">// callback bula</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line">$<span class="built_in">document</span>.on(<span class="string">"click"</span>, onDocumentClick);</div><div class="line"></div><div class="line">eventBridgeService.on(<span class="string">"someEvent"</span>, onDocumentClick);</div><div class="line"></div><div class="line">$scope.$on(<span class="string">'$destroy'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    $<span class="built_in">document</span>.off(<span class="string">"click"</span>, onDocumentClick);</div><div class="line">    eventBridgeService.off(<span class="string">"someEvent"</span>, onDocumentClick);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="如何加速ng-repeat？"><a href="#如何加速ng-repeat？" class="headerlink" title="如何加速ng-repeat？"></a>如何加速<code>ng-repeat</code>？</h3><ul>
+<li><p>使用<code>track by</code>，<code>track by __identifier__</code>会把DOM Element和scope对应起来，可以避免重复create DOM。<code>ng-repeat</code>内部会保存一个blockMap，key是repeat item的hashKey，value是对应item的scope以及DOM Element信息 。如果hashKey已存在，则直接复用，否则会新建DOM Element。这里的hashKey和我们平时理解的不同，如果item为Object / Function，则使用Angular.js内部的UUID（就是一个数字不停往上加1，与object的内容无关），否则使用<code>type + item value</code>。</p>
+</li>
+<li><p>在性能压力较大，repeat的内容高度固定时，可以考虑使用<code>md-virtual-repeat</code> + <code>md-virtual-repeat-container</code>，这两个directive通过循环利用repeat item的DOM，以及只渲染view port内item的方式，来提高repeat性能。</p>
+</li>
+</ul>
+<h3 id="使用一次性绑定的好处？"><a href="#使用一次性绑定的好处？" class="headerlink" title="使用一次性绑定的好处？"></a>使用一次性绑定的好处？</h3><p>具体可以参考官方文档：<a href="https://docs.angularjs.org/guide/expression#one-time-binding" target="_blank" rel="external">AngularJS: Developer Guide: Expressions</a><br>这里简单说明一下：一次性绑定会在绑定数据stable（变成非undefined的值）的时候注销watcher，可以减少不必要的watcher。</p>
+<h3 id="evalAsync和-applyAsync区别是什么？"><a href="#evalAsync和-applyAsync区别是什么？" class="headerlink" title="$evalAsync和$applyAsync区别是什么？"></a><code>$evalAsync</code>和<code>$applyAsync</code>区别是什么？</h3><p><code>$evalAsync</code>会把callback push到ayncQueue里；<code>$applyAsync</code>会schedule一个新的<code>$digest</code>。<br><code>$evalAsync</code>理论上会在当前的<code>$digest</code>循环比较靠后的时间运行callback，<code>$applyAsync</code>则会在当前<code>$digest</code>结束后，唤起一个新的<code>$digest</code>。</p>
+<p>digest 的伪代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Do:</div><div class="line">- - - If asyncQueue.length, flush asyncQueue.</div><div class="line">- - - Trigger all $watch handlers.</div><div class="line">- - - Check for &quot;too many&quot; $digest iterations.</div><div class="line">While: ( Dirty data || asyncQueue.length )</div></pre></td></tr></table></figure>
+<p>TL;TR</p>
+<ul>
+<li><a href="https://www.bennadel.com/blog/2605-scope-evalasync-vs-timeout-in-angularjs.htm" target="_blank" rel="external"><code>$scope.$evalAsync()</code> vs. <code>$timeout()</code> In AngularJS</a></li>
+<li><a href="https://www.bennadel.com/blog/2751-scope-applyasync-vs-scope-evalasync-in-angularjs-1-3.htm" target="_blank" rel="external"><code>$scope.$applyAsync()</code> vs. <code>$scope.$evalAsync()</code> in AngularJS 1.3</a></li>
+</ul>
+<h3 id="watch和-watchCollection的区别是什么？"><a href="#watch和-watchCollection的区别是什么？" class="headerlink" title="$watch和$watchCollection的区别是什么？"></a><code>$watch</code>和<code>$watchCollection</code>的区别是什么？</h3><p>angular本身提供了三种 watch function：$watch, $watchGroup和$watchCollection。</p>
+<p>三者的函数签名分别为:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">$watch(watchExpression: string | function, listener, objectEquality: boolean): UnregisterFn</div><div class="line">* Registers a `listener` callback to be executed whenever the `watchExpression` changes.</div><div class="line"></div><div class="line">$watchGroup(watchExpression: Array&lt;string&gt; | function, listener): UnregisterFn</div><div class="line">* A variant of &#123;@link ng.$rootScope.Scope#$watch $watch()&#125; where it watches an array of `watchExpressions`.</div><div class="line">* If any one expression in the collection changes the `listener` is executed.</div><div class="line">*</div><div class="line">* - The items in the `watchExpressions` array are observed via standard $watch operation and are examined on every</div><div class="line">* call to $digest() to see if any items changes.</div><div class="line">* - The `listener` is called whenever any expression in the `watchExpressions` array changes.</div><div class="line"></div><div class="line">$watchCollection(watchExpression: string | function, listener): UnregisterFn</div><div class="line">* Shallow watches the properties of an object and fires whenever any of the properties change</div><div class="line">* (for arrays, this implies watching the array items; for object maps, this implies watching</div><div class="line">* the properties). If a change is detected, the `listener` callback is fired.</div></pre></td></tr></table></figure>
+<p>三者都接受watchExpression 和 listener function作为参数，返回一个用来unregister自身的函数。</p>
+<p>然后是大家关注的重点，三者check equal的策略。这里列一个结论：<br>$watch 不传第三个参数objectEquality（默认值为false），则做reference equality check，objectEquality为true的情况下，会调用Angular.equals function来做equality check（deep equal，即递归地检查每个prop）。另外，若objectEquality为true，angular在做脏值检测的时候会deep copy一份expression eval的结果保存下来作为last evaluated value，因此经常看到说objectEquality为true会影响性能（deep check，deep copy）。<br>$watchGroup 是$watch function的一个变种，可以watch一个expression list，任何一个expression的reference equality发生改变，都会触发listener。<br>$watchCollection，如果watch的是一个array，则会watch array 的reference，长度，以及里面的每一个item（reference），如果watch的是一个object，则会 watch object上的properties （reference equality，只检查OwnProperty不check原形链）。</p>
+<h3 id="你熟悉的Angular-js-debug工具？"><a href="#你熟悉的Angular-js-debug工具？" class="headerlink" title="你熟悉的Angular.js debug工具？"></a>你熟悉的Angular.js debug工具？</h3><p>推荐chrome插件：AngularJS Inspect Watchers，ng-inspector for AngularJS。<br>详情见<a href="http://yt-dragonfly.tech/dragonfly/2017/05/20/debug-angularjs/" target="_blank" rel="external">debug angularjs | Dragonfly Infinity</a></p>
+<h3 id="什么是strict-di模式？它是如何影响运行时性能的？"><a href="#什么是strict-di模式？它是如何影响运行时性能的？" class="headerlink" title="什么是strict-di模式？它是如何影响运行时性能的？"></a>什么是strict-di模式？它是如何影响运行时性能的？</h3><p>strict-di即Strict Dependency Injection模式，要求开发者使用依赖注入时显式地指定dependency（用array声明的方式，或者用<code>$inject = [dependencies]</code>）</p>
+<p>对运行时性能并无太大影响：<a href="https://stackoverflow.com/questions/33494022/what-is-the-benefit-of-angularjs-strict-di-mode" target="_blank" rel="external">javascript - What is the benefit of AngularJS Strict DI mode? - Stack Overflow</a></p>
+<p>Ref: <a href="http://yt-dragonfly.tech/dragonfly/2017/05/20/angularjs%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%EF%BC%88%E4%B8%80%EF%BC%89%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/" target="_blank" rel="external">angularjs源码阅读（一）依赖注入 | Dragonfly Infinity</a></p>
+<h3 id="什么是-templateCache？"><a href="#什么是-templateCache？" class="headerlink" title="什么是$templateCache？"></a>什么是<code>$templateCache</code>？</h3><p><code>$templateCache</code>是Angular.js的一个Service，用来存放template的缓存，directive templateUrl对应的html资源会存放在<code>$templateCache</code>里。可以preload部分template到<code>$templateCache</code>里，来加速页面render。</p>
+<p><a href="https://stackoverflow.com/questions/18714690/is-there-a-way-to-preload-templates-when-using-angularjs-routing" target="_blank" rel="external">offline - Is there a way to preload templates when using AngularJS routing? - Stack Overflow</a></p>
+<h3 id="如何加快-digest"><a href="#如何加快-digest" class="headerlink" title="如何加快$digest?"></a>如何加快<code>$digest</code>?</h3><p>两个方面的考量：减少watcher数量，减少loop次数。</p>
+<p>减少watcher数量：</p>
+<ul>
+<li>使用一次性绑定</li>
+<li>use<code>ng-if</code> over <code>ng-show</code>/<code>ng-hide</code> （这条需要by case</li>
+</ul>
+<p>减少loop次数：</p>
+<ul>
+<li>没有直接的方法能够减少loop次数，但是必须要避免增加digest loop次数的写法。举个栗子，ytInfoCardContainer里的isResponsive attribute就是个为了功能牺牲性能的case。<code>$scope</code>上watch了detailPanel的高度，在detailPanel的DOM完全长出来（outerHeight稳定）之前，这个watcher会导致整个scope不停digest。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$scope.$watch(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> detailPanel &amp;&amp; detailPanel.outerHeight(<span class="literal">true</span>);</div><div class="line">&#125;, extendInfoCard);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">extendInfoCard</span> (<span class="params">newValue</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (!newValue)<span class="keyword">return</span>;</div><div class="line">    infoCard.css(<span class="string">'margin-bottom'</span>, detailPanel.outerHeight(<span class="literal">true</span>) + <span class="number">40</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>// ———————- out of scope ——————————-</p>
+<h2 id="Directives"><a href="#Directives" class="headerlink" title="Directives"></a>Directives</h2><h3 id="Why-use-ng-click-over-addEventListener"><a href="#Why-use-ng-click-over-addEventListener" class="headerlink" title="Why use ng-click over addEventListener?"></a>Why use ng-click over addEventListener?</h3><h3 id="When-would-you-use-addEventListener"><a href="#When-would-you-use-addEventListener" class="headerlink" title="When would you use addEventListener?"></a>When would you use addEventListener?</h3><h3 id="What-is-the-link-function-and-when-should-you-use-it"><a href="#What-is-the-link-function-and-when-should-you-use-it" class="headerlink" title="What is the link function and when should you use it?"></a>What is the link function and when should you use it?</h3><h3 id="How-do-you-use-the-link-function-to-communicate-back-to-the-controller"><a href="#How-do-you-use-the-link-function-to-communicate-back-to-the-controller" class="headerlink" title="How do you use the link function to communicate back to the controller?"></a>How do you use the link function to communicate back to the controller?</h3><p>What logic should live inside link, and what logic should live in the controller?<br>What is the compile function and what can it return?<br>What are the pre and post link lifecycle methods?<br>Why can the compile function be more effective than link?<br>When would you use a directive over a component?<br>What are event directives, and what are structural directives?<br>What problems have you faced when using directives?<br>What practices should you avoid when using directives?<br>What types of bindings can a directive receive?<br>When would you use require, and what effect does it have on link?<br>What is transclusion?<br>What directive properties would you recommend avoiding?<br>What directives do you tend to avoid and why?<br>What different types of scope are there?<br>What is JQLite and does it have any limitations?</p>
+<h2 id="Forms"><a href="#Forms" class="headerlink" title="Forms"></a>Forms</h2><p>How would you implement form validation using the form’s controller?<br>What do dirty, pristine, touched and untouched mean?<br>What limitations do AngularJS forms have?<br>What are some of the built-in validators?<br>What are $parsers and $formatters, and when should you use them?<br>What is the $validators pipeline, and when should you use it?<br>What is ngModelOptions and is it a good directive to implement?</p>
+<h2 id="Routing-ui-router-1-0-0"><a href="#Routing-ui-router-1-0-0" class="headerlink" title="Routing (ui-router 1.0.0)"></a>Routing (ui-router 1.0.0)</h2><p>What is routing?<br>What is component routing?<br>When would you use a template route, if ever?<br>What is a dynamic route and how do you implement it?<br>What is “HTML5 mode”?<br>How would you render a view only when the data has become available?<br>What are transition hooks and what role do they play in routing?<br>How do you create sibling views?</p>
+<h2 id="Controllers"><a href="#Controllers" class="headerlink" title="Controllers"></a>Controllers</h2><p>What is the role of a controller?<br>How would you get data into a controller?<br>When would you use $scope.$watch? Should you? How do you unwatch?<br>Explain when you would use controllerAs and the effect it has<br>When should you use $scope inside a controller?<br>When would you consider using a nested controller? Is it good practice?</p>
+<h2 id="Filters"><a href="#Filters" class="headerlink" title="Filters"></a>Filters</h2><p>What is a filter?<br>How does a filter actually work?<br>What is the most performant approach to filtering data and why?<br>How do you use multiple filters at once in templates?<br>How do you use multiple filters at once inside a controller?<br>How do you pass arguments to a custom filter?</p>
+<h2 id="Services-and-HTTP"><a href="#Services-and-HTTP" class="headerlink" title="Services and HTTP"></a>Services and HTTP</h2><p>What is a service?<br>What is a factory?<br>What is a provider?<br>What design patterns do services and factories promote?<br>What is a service’s role in an Angular application?<br>What’s the difference between $http and $resource?<br>When could it make sense to use $resource over $http?<br>What is a Promise? Name some places Angular uses them.<br>What is $q and when would you use it?<br>What is an http interceptor and what are good use cases for it?<br>What different types of authentication have you implemented?</p>
+<h2 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h2><p>When should you use events in AngularJS?<br>What’s the difference between $emit and $broadcast?<br>What’s the difference between $scope.$emit and $rootScope.$emit?<br>How does event unbinding differ in $scope and $rootScope?</p>
+<h2 id="Testing-and-tooling"><a href="#Testing-and-tooling" class="headerlink" title="Testing and tooling"></a>Testing and tooling</h2><p>What is the difference between a unit and end-to-end (e2e) test?<br>What tools have you used for unit testing?<br>What tools have you used for end-to-end (e2e) testing?<br>What tooling are you familiar with?<br>Describe how lazy-loading works<br>What build step processes are effective for faster Angular applications?<br>Are you using ES6 transpilers or TypeScript?</p>
+<h2 id="Modules-and-internals"><a href="#Modules-and-internals" class="headerlink" title="Modules and internals"></a>Modules and internals</h2><h3 id="What-are-the-key-building-blocks-of-an-Angular-application"><a href="#What-are-the-key-building-blocks-of-an-Angular-application" class="headerlink" title="What are the key building blocks of an Angular application?"></a>What are the key building blocks of an Angular application?</h3><p>How would you describe a module?<br>What use case do sub-modules have?<br>What have you learned from studying the Angular source code?<br>How do you bootstrap Angular asynchronously?<br>How can you bootstrap multiple applications at once?<br>What is dependency injection (DI)?<br>Why is dependency injection useful in Angular?<br>How does the $digest cycle work?<br>What is $rootScope and how does it differ to $scope?<br>When have you used $scope.$apply, and why?</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://wflkaaa.github.io/dragonfly/2017/06/07/Angular-Q-A/" data-id="cj3ny3dl20007cx4pxx7i2xxz" class="article-share-link">Partager</a>
+      
+        <a href="https://wflkaaa.github.io/dragonfly/2017/06/07/Angular-Q-A/#disqus_thread" class="article-comment-link">Commentaires</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/Angularjs/">Angularjs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/ytWebsite/">ytWebsite</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/dragonfly/2017/05/27/View-On-Vue/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">View On Vue</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/1-7-c/">1.7.c</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Angularjs/">Angularjs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/D3/">D3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Django/">Django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Django，deploy/">Django，deploy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Ngdocs/">Ngdocs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Promise/">Promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Redux/">Redux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Reselect/">Reselect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/angular/">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/autoDeploy/">autoDeploy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/axxia/">axxia</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/bash/">bash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/browserSync/">browserSync</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/cmd/">cmd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/css-secrets/">css-secrets</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/exif/">exif</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/expect/">expect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/extend/">extend</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/face-client/">face_client</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/filter/">filter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/gulp/">gulp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/h5/">h5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/hbwang/">hbwang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/idea/">idea</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/initial/">initial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/kailiu/">kailiu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/lbao/">lbao</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/mixin/">mixin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/mobile/">mobile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/rbzhou/">rbzhou</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/responsive/">responsive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/responsive-image-background/">responsive image background</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/sass/">sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/security/">security</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/setup/">setup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/tomcat/">tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/tools/">tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/vim/">vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/xlu/">xlu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/ycma/">ycma</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/ytWebsite/">ytWebsite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/zmzhang/">zmzhang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/跨域/">跨域</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <div class="widget tagcloud">
+      <a href="/dragonfly/tags/1-7-c/" style="font-size: 10px;">1.7.c</a> <a href="/dragonfly/tags/Angularjs/" style="font-size: 19px;">Angularjs</a> <a href="/dragonfly/tags/CSS/" style="font-size: 11px;">CSS</a> <a href="/dragonfly/tags/D3/" style="font-size: 10px;">D3</a> <a href="/dragonfly/tags/Django/" style="font-size: 11px;">Django</a> <a href="/dragonfly/tags/Django，deploy/" style="font-size: 10px;">Django，deploy</a> <a href="/dragonfly/tags/JavaScript/" style="font-size: 13px;">JavaScript</a> <a href="/dragonfly/tags/Javascript/" style="font-size: 16px;">Javascript</a> <a href="/dragonfly/tags/Ngdocs/" style="font-size: 10px;">Ngdocs</a> <a href="/dragonfly/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/dragonfly/tags/React/" style="font-size: 10px;">React</a> <a href="/dragonfly/tags/Redux/" style="font-size: 10px;">Redux</a> <a href="/dragonfly/tags/Reselect/" style="font-size: 10px;">Reselect</a> <a href="/dragonfly/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/dragonfly/tags/angular/" style="font-size: 10px;">angular</a> <a href="/dragonfly/tags/autoDeploy/" style="font-size: 10px;">autoDeploy</a> <a href="/dragonfly/tags/axxia/" style="font-size: 10px;">axxia</a> <a href="/dragonfly/tags/bash/" style="font-size: 10px;">bash</a> <a href="/dragonfly/tags/browserSync/" style="font-size: 10px;">browserSync</a> <a href="/dragonfly/tags/cmd/" style="font-size: 11px;">cmd</a> <a href="/dragonfly/tags/css/" style="font-size: 11px;">css</a> <a href="/dragonfly/tags/css-secrets/" style="font-size: 10px;">css-secrets</a> <a href="/dragonfly/tags/exif/" style="font-size: 10px;">exif</a> <a href="/dragonfly/tags/expect/" style="font-size: 10px;">expect</a> <a href="/dragonfly/tags/extend/" style="font-size: 10px;">extend</a> <a href="/dragonfly/tags/face-client/" style="font-size: 10px;">face_client</a> <a href="/dragonfly/tags/filter/" style="font-size: 10px;">filter</a> <a href="/dragonfly/tags/git/" style="font-size: 10px;">git</a> <a href="/dragonfly/tags/gulp/" style="font-size: 11px;">gulp</a> <a href="/dragonfly/tags/h5/" style="font-size: 10px;">h5</a> <a href="/dragonfly/tags/hbwang/" style="font-size: 15px;">hbwang</a> <a href="/dragonfly/tags/hexo/" style="font-size: 12px;">hexo</a> <a href="/dragonfly/tags/idea/" style="font-size: 10px;">idea</a> <a href="/dragonfly/tags/initial/" style="font-size: 10px;">initial</a> <a href="/dragonfly/tags/kailiu/" style="font-size: 14px;">kailiu</a> <a href="/dragonfly/tags/lbao/" style="font-size: 20px;">lbao</a> <a href="/dragonfly/tags/linux/" style="font-size: 10px;">linux</a> <a href="/dragonfly/tags/mixin/" style="font-size: 10px;">mixin</a> <a href="/dragonfly/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/dragonfly/tags/rbzhou/" style="font-size: 18px;">rbzhou</a> <a href="/dragonfly/tags/responsive/" style="font-size: 10px;">responsive</a> <a href="/dragonfly/tags/responsive-image-background/" style="font-size: 10px;">responsive image background</a> <a href="/dragonfly/tags/sass/" style="font-size: 11px;">sass</a> <a href="/dragonfly/tags/security/" style="font-size: 10px;">security</a> <a href="/dragonfly/tags/setup/" style="font-size: 10px;">setup</a> <a href="/dragonfly/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/dragonfly/tags/tool/" style="font-size: 10px;">tool</a> <a href="/dragonfly/tags/tools/" style="font-size: 11px;">tools</a> <a href="/dragonfly/tags/vim/" style="font-size: 10px;">vim</a> <a href="/dragonfly/tags/web/" style="font-size: 10px;">web</a> <a href="/dragonfly/tags/xlu/" style="font-size: 10px;">xlu</a> <a href="/dragonfly/tags/ycma/" style="font-size: 12px;">ycma</a> <a href="/dragonfly/tags/ytWebsite/" style="font-size: 10px;">ytWebsite</a> <a href="/dragonfly/tags/zmzhang/" style="font-size: 17px;">zmzhang</a> <a href="/dragonfly/tags/跨域/" style="font-size: 10px;">跨域</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2016/10/">October 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/dragonfly/2017/06/07/Angular-Q-A/">Angular Q&amp;A</a>
+          </li>
+        
+          <li>
+            <a href="/dragonfly/2017/05/27/View-On-Vue/">View On Vue</a>
+          </li>
+        
+          <li>
+            <a href="/dragonfly/2017/05/25/underscore-js学习/">underscore.js学习</a>
+          </li>
+        
+          <li>
+            <a href="/dragonfly/2017/05/20/socket-too-many-files/">socket too many files</a>
+          </li>
+        
+          <li>
+            <a href="/dragonfly/2017/05/20/关于angular-filter/">关于angular filter</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 YT Frontend Team<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/dragonfly/" class="mobile-nav-link">Home</a>
+  
+    <a href="/dragonfly/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'dragonfly-disqus';
+  
+  var disqus_url = 'https://wflkaaa.github.io/dragonfly/2017/06/07/Angular-Q-A/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/dragonfly/fancybox/jquery.fancybox.css">
+  <script src="/dragonfly/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/dragonfly/js/script.js"></script>
+
+  </div>
+</body>
+</html>

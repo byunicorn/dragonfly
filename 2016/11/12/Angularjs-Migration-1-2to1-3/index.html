@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Angular.js 版本升级指南 1.2到1.3 | Dragonfly Infinity</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Reference: AngularJS: Developer Guide: Migrating from Previous Versions 1.2到1.3版本升级指南：  Controller 禁止使用Global Controller1.2的版本允许你直接裸写一个controller，angular会自己到window下寻找带controller的变量来注册。   以前：   1234fun">
+<meta name="keywords" content="Angularjs,lbao">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Angular.js 版本升级指南 1.2到1.3">
+<meta property="og:url" content="https://wflkaaa.github.io/dragonfly/2016/11/12/Angularjs-Migration-1-2to1-3/index.html">
+<meta property="og:site_name" content="Dragonfly Infinity">
+<meta property="og:description" content="Reference: AngularJS: Developer Guide: Migrating from Previous Versions 1.2到1.3版本升级指南：  Controller 禁止使用Global Controller1.2的版本允许你直接裸写一个controller，angular会自己到window下寻找带controller的变量来注册。   以前：   1234fun">
+<meta property="og:updated_time" content="2017-06-08T04:50:10.616Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Angular.js 版本升级指南 1.2到1.3">
+<meta name="twitter:description" content="Reference: AngularJS: Developer Guide: Migrating from Previous Versions 1.2到1.3版本升级指南：  Controller 禁止使用Global Controller1.2的版本允许你直接裸写一个controller，angular会自己到window下寻找带controller的变量来注册。   以前：   1234fun">
+  
+    <link rel="alternate" href="/atom.xml" title="Dragonfly Infinity" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/dragonfly/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/dragonfly/" id="logo">Dragonfly Infinity</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/dragonfly/" id="subtitle">Talk is cheap, Show me the code</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/dragonfly/">Home</a>
+        
+          <a class="main-nav-link" href="/dragonfly/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://wflkaaa.github.io/dragonfly"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Angularjs-Migration-1-2to1-3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/dragonfly/2016/11/12/Angularjs-Migration-1-2to1-3/" class="article-date">
+  <time datetime="2016-11-12T03:31:35.000Z" itemprop="datePublished">2016-11-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Angular.js 版本升级指南 1.2到1.3
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Reference: <a href="https://docs.angularjs.org/guide/migration" target="_blank" rel="external">AngularJS: Developer Guide: Migrating from Previous Versions</a></p>
+<p><code>1.2</code>到<code>1.3</code>版本升级指南：</p>
+<ul>
+<li><p><code>Controller</code> 禁止使用Global Controller<br>1.2的版本允许你直接裸写一个controller，angular会自己到window下寻找带controller的变量来注册。</p>
+<p>  以前：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyController</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">// 如果这个变量定义在window context下</span></div><div class="line">  <span class="comment">// 那么angular会主动找到它并且注册到自己的controller cache中</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>  现在：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">angular.module(<span class="string">'myApp'</span>, []).controller(<span class="string">'MyController'</span>, [<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;]);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li><p>Angular Expression Parsing ($parse + $interpolate)</p>
+<ol>
+<li><p>angular expression里面不再支持<code>.apply</code>， <code>.call</code>, <code>.bind</code>等允许你改变执行上下文的操作。<br>原本angular expression是在当前scope context下被parse的，如果你改变了执行的context，angular无法保证会发生什么，所以这种用法在1.3中被全面禁止了。<a href="https://github.com/angular/angular.js/commit/77ada4c82d6b8fc6d977c26f3cdb48c2f5fbe5a5" target="_blank" rel="external">77ada4c</a></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;&#123;user.sendInfo.call(&#123;&#125;, true)&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>expression中禁用<code>__proto__</code><br><code>__proto__</code>这个用法本身已经deprecated，并不是所有浏览器都把它当作一个标准了，所以angular也抛弃了它。<a href="https://github.com/angular/angular.js/commit/6081f20769e64a800ee8075c168412b21f026d99" target="_blank" rel="external">6081f20</a><br>不了解<code>__proto__</code>的可以试着在Chrome console中运行下面的代码：定义一个构造函数，然后创建一个实例，这个实例里面就有<code>__proto__</code>这个属性，而它指向的是构造函数的prototype部分。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Bula</span>(<span class="params"></span>) </span>&#123;&#125;;</div><div class="line">Bula.prototype.aaa = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</div><div class="line"><span class="keyword">var</span> bula = <span class="keyword">new</span> Bula();</div><div class="line"><span class="built_in">console</span>.log(bula.__proto__);</div></pre></td></tr></table></figure>
+</li>
+<li><p>expression中禁用<code>{define,lookup}{Getter,Setter}</code><br><code>__defineGetter__</code>,<code>__defineSetter__</code>, <code>__lookupGetter__</code>, <code>__lookupSetter__</code>全部禁用。<a href="https://github.com/angular/angular.js/commit/48fa3aadd546036c7e69f71046f659ab1de244c6" target="_blank" rel="external">48fa3aa</a></p>
+</li>
+<li><p>expression中禁用<code>Object</code><br>所以你不能在expression里面用<code>Object.keys</code>, <code>Object.create</code>等<code>Object</code>上带的方法了。<a href="https://github.com/angular/angular.js/commit/528be29d1662122a34e204dd607e1c0bd9c16bbc" target="_blank" rel="external">528be29</a><br>p.s.这条和上一条的原因都非常的tricky，建议闲得蛋疼的同学戳进链接里去看一眼。</p>
+</li>
+<li><p><code>&#39;f&#39;, &#39;0&#39;, &#39;false&#39;, &#39;no&#39;, &#39;n&#39;, &#39;[]&#39;</code>不会再被当作falsy的值了，只有JavaScript里面原生的falsy值才会被当作false。<br>在1.2里，上述这些string值会被当作false来处理，即，后面这段代码里的div不会显示出来<code>&lt;div ng-show=&#39;&quot;false&quot;&#39;&gt;bula&lt;/div&gt;</code></p>
+</li>
+<li><p><code>$parseProvider</code> 的两个option<code>unwrapPromises</code>, <code>logPromiseWarnings</code>禁用。<a href="https://github.com/angular/angular.js/commit/fa6e411da26824a5bae55f37ce7dbb859653276d" target="_blank" rel="external">fa6e411</a> （说实话，我也不知道这两个option是干啥的，还没用过就被禁了……</p>
+</li>
+<li><p><code>$interpolate</code>parse的结果以前会放在<code>.parts</code>里，现在会放到两个数组里<code>.expressions</code>，<code>.separators</code> <a href="https://github.com/angular/angular.js/commit/88c2193c71954b9e7e7e4bdf636a2b168d36300d" target="_blank" rel="external">88c2193</a><br> 以前：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> parts = $interpolate(<span class="string">"a&#123;&#123;b&#125;&#125;C"</span>).parts;</div><div class="line">expect(parts.length).toEqual(<span class="number">3</span>);</div><div class="line">expect(parts[<span class="number">0</span>]).toEqual(<span class="string">"a"</span>);</div><div class="line">expect(parts[<span class="number">1</span>].exp).toEqual(<span class="string">"b"</span>);</div><div class="line">expect(parts[<span class="number">1</span>](&#123;<span class="attr">b</span>:<span class="number">123</span>&#125;)).toEqual(<span class="number">123</span>);</div><div class="line">expect(parts[<span class="number">2</span>]).toEqual(<span class="string">"C"</span>);</div></pre></td></tr></table></figure>
+<p> 现在：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> interpolateFn = $interpolate(<span class="string">"a&#123;&#123;b&#125;&#125;C"</span>),</div><div class="line">	separators = interpolateFn.separators, expressions = interpolateFn.expressions;</div><div class="line">expect(separators).toEqual([<span class="string">'a'</span>, <span class="string">'C'</span>]);</div><div class="line">expect(expressions.length).toEqual(<span class="number">1</span>);</div><div class="line">expect(expressions[<span class="number">0</span>].exp).toEqual(<span class="string">'b'</span>);</div><div class="line">expect(expressions[<span class="number">0</span>](&#123;<span class="attr">b</span>:<span class="number">123</span>&#125;)).toEqual(<span class="string">'123'</span>);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>Miscellaneous Angular helpers</p>
+<ol>
+<li><p><code>Angular.copy</code> 以前会把原型链上的属性直接拷贝到目标object上，现在会保留原型链。<a href="https://github.com/angular/angular.js/commit/b59b04f98a0b59eead53f6a53391ce1bbcbe9b57" target="_blank" rel="external">b59b04f</a></p>
+<p>以前：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Foo = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</div><div class="line"><span class="keyword">var</span> foo = <span class="keyword">new</span> Foo();</div><div class="line"><span class="keyword">var</span> fooCopy = angular.copy(foo);</div><div class="line">foo <span class="keyword">instanceof</span> Foo; <span class="comment">// =&gt; true</span></div><div class="line">fooCopy <span class="keyword">instanceof</span> Foo; <span class="comment">// =&gt; false</span></div></pre></td></tr></table></figure>
+<p>现在：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">foo <span class="keyword">instanceof</span> Foo; <span class="comment">// =&gt; true</span></div><div class="line">fooCopy <span class="keyword">instanceof</span> Foo; <span class="comment">// =&gt; true</span></div></pre></td></tr></table></figure>
+<p>p.s. 因为现在的实现要用到<code>Object.creaet</code>和<code>Object.getPrototypeOf</code>，而这两个方法和IE8不兼容，所以从1.3之后，Angular.js不支持IE8了。</p>
+</li>
+<li><p><code>Angular.forEach</code>现在会cache array的长度，循环过程中动态往array里面加item，依然会按照调用时的array长度来循环。<a href="https://github.com/angular/angular.js/commit/55991e33af6fece07ea347a059da061b76fc95f5" target="_blank" rel="external">55991e3</a></p>
+</li>
+<li><p><code>Angular.toJSON</code>不会自动过滤掉<code>$</code>开头的属性了，<code>$$</code>开头的还是会被过滤掉。<a href="https://github.com/angular/angular.js/commit/c054288c9722875e3595e6e6162193e0fb67a251" target="_blank" rel="external">c054288</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">expect(toJson(&#123;<span class="attr">$few</span>: <span class="string">'v'</span>, <span class="attr">$$bula</span>: <span class="string">'321'</span>&#125;, <span class="literal">false</span>)).toEqual(<span class="string">'&#123;"$few":"v"&#125;'</span>);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>jqLite / JQuery</p>
+<ol>
+<li><p>jqLite，禁止往Text/Comment节点上append data。<a href="https://github.com/angular/angular.js/commit/a196c8bca82a28c08896d31f1863cf4ecd11401c#diff-8e0d9e5c18fe4f1050484080525d4367" target="_blank" rel="external">a196c8b</a></p>
+</li>
+<li><p>jqLite，调用jQuery的<code>detach</code>方法，不会触发<code>$destroy</code>事件，如果你想要在删除元素时destroy Angular相关的data，请使用<code>remove</code><a href="https://github.com/angular/angular.js/commit/d71dbb1ae50f174680533492ce4c7db3ff74df00" target="_blank" rel="external">d71dbb1</a></p>
+<p>Angular是允许我们使用外部的jQuery的（不是它自己内置的jqLite），以前Angular在检测到外部jQuery时，会往jQuery里删除元素的方法（如remove/empty/html等）上monkey-patch一些逻辑，使得你在调用这些方法时，能够触发Angular内部的事件，但这样做需要依赖于jQuery的实现，如果将来jQuery又添加了一个叫removeChildren的方法，就需要另加一段monkey-patch，所以这个方案并不是future-safe的，现在的解决方案是不monkey-patch单个的方法，而是直接改动jQuery的一个内部方法<code>jQuery.cleanData</code>，<code>cleanData</code>在jQuery中删除元素的方法有被调用到（detach方法除外），是比较future-safe的。</p>
+</li>
+</ol>
+</li>
+<li><p>Angular HTML Compile ($compile)</p>
+<ol>
+<li><p>isolate scope的作用域改变。以前direcitve的isolate scope在创建这个directive的元素上可用，现在只能在directive内部使用了。<br>举个简单的例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">app.directive(<span class="string">"myDirective"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="keyword">return</span> &#123;</div><div class="line">    	<span class="attr">scope</span>: &#123;</div><div class="line">        	<span class="attr">isolateScopeProp</span>: <span class="string">"="</span></div><div class="line">        &#125;,</div><div class="line">        <span class="comment">// ...</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">my-directive</span> <span class="attr">isolate-scope-prop</span>=<span class="string">"myController.prop"</span> <span class="attr">ng-if</span>=<span class="string">"isolateScopeProp"</span>&gt;</span><span class="tag">&lt;/<span class="name">my-directive</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>在1.2版本是work的，在1.3就不work了（具体的例子可以看这里：<a href="http://plnkr.co/edit/giVsWj1HDjlVN8lEJaHR?p=preview" target="_blank" rel="external">Plunker</a>）<a href="https://github.com/angular/angular.js/commit/2ee29c5da81ffacdc1cabb438f5d125d5e116cb9" target="_blank" rel="external">2ee29c5</a></p>
+</li>
+<li><p>在一个元素上请求创建一个isolate scope和任何其他的scope会报异常。之前如果两个申请scope的directive执行顺序是先isolate后非isolate，则不会报错，升级到1.3之后，无论执行顺序如何，都会报<code>multidir</code>的错。<a href="https://github.com/angular/angular.js/commit/2cde927e58c8d1588569d94a797e43cdfbcedaf9" target="_blank" rel="external">2cde927</a></p>
+</li>
+<li><p>directive定义里的<code>replace</code>flag将在下一个大版本中被删除，这个flag语义有些不明确（比如，element上的attributes会被如何merge）<a href="https://github.com/angular/angular.js/commit/eec6394a342fb92fba5270eee11c83f1d895e9fb" target="_blank" rel="external">eec6394</a><br>p.s.这条争议比较大，闲得蛋疼的同学可以去看看链接里的讨论串。</p>
+</li>
+<li><p><code>attr.$observe</code>不会再返回observer function，而是会返回一个deregistration function。<a href="https://github.com/angular/angular.js/commit/299b220f5e05e1d4e26bfd58d0b2fd7329ca76b1" target="_blank" rel="external">299b220</a></p>
+<p>以前</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$observe: <span class="function"><span class="keyword">function</span>(<span class="params">key, fn</span>) </span>&#123;</div><div class="line">	<span class="comment">// do stuff</span></div><div class="line">    <span class="keyword">return</span> fn; <span class="comment">//会返回observer function本身</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>现在</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$observe: <span class="function"><span class="keyword">function</span>(<span class="params">key, fn</span>) </span>&#123;</div><div class="line">	<span class="comment">// do stuff</span></div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      arrayRemove(listeners, fn);</div><div class="line">    &#125;; <span class="comment">//会返回一个deregistion的function，调用它会将fn从listeners list里面清除</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>p.s. 感觉angular很喜欢这种写法，<code>$emit</code>和<code>$boardcast</code>也有类似的deregistion的实现。</p>
+</li>
+<li><p><code>$observe</code>不会再去observe未定义的属性。下面这种写法不会再work。<a href="https://github.com/angular/angular.js/commit/531a8de72c439d8ddd064874bf364c00cedabb11" target="_blank" rel="external">531a8de</a></p>
+<p>以前</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">my-dir</span>&gt;</span><span class="tag">&lt;/<span class="name">my-dir</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Link function for directive myDir</span></div><div class="line">link: <span class="function"><span class="keyword">function</span>(<span class="params">scope, element, attr</span>) </span>&#123;</div><div class="line">    attr.$observe(<span class="string">'myAttr'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">newVal</span>) </span>&#123;</div><div class="line">        scope.myValue = newVal ? newVal : <span class="string">'myDefaultValue'</span>;</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>现在，需要在注册之前，check是否是undefined</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">link: <span class="function"><span class="keyword">function</span>(<span class="params">scope, element, attr</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (attr.myAttr) &#123;</div><div class="line">        <span class="comment">// register the observer</span></div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="comment">// set the default</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>Forms, Inputs and ngModel</p>
+<ol>
+<li><p>如果一个expression用在<code>ng-pattern</code>（例如，<code>ng-pattern=&quot;exp&quot;</code>）或者在<code>pattern</code>属性上（例如，<code>pattern=&quot;&quot;</code>），且这个expression解析出来是个string，那么ngModel上的validator将不会尝试着去把这个string转换成正则表达式。<a href="https://github.com/angular/angular.js/commit/1be9bb9d3527e0758350c4f7417a4228d8571440#diff-c244afd8def7f268b16ee91a0341c4b2R2178" target="_blank" rel="external">1be9bb9</a></p>
+<p>以前</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$scope.exp = <span class="string">'/abc/i'</span>; <span class="comment">// 会尝试把string转换成正则表达式</span></div></pre></td></tr></table></figure>
+<p>现在</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$scope.exp = <span class="regexp">/abc/i</span>; <span class="comment">// 必须显式地写成正则表达式</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>更改了<code>NgModelController</code>上的API <a href="https://github.com/angular/angular.js/commit/adfc322b04a58158fb9697e5b99aab9ca63c80bb" target="_blank" rel="external">adfc322</a></p>
+<p><code>NgmodelController</code>顾名思义，就是<code>ngmodel</code>这个directive的controller。</p>
+<p><code>$setViewValue(value)</code> - 这个方法依然会改变<code>$viewValue</code>，但不会直接将改变apply到<code>$modelValue</code>上，直到<code>updateOn</code>trigger触发，才会做<code>$modelValue</code>的update。</p>
+<p><code>$cancelUpdate()</code> - 这个方法更名为<code>$rollbackViewValue()</code>，这个方法会把<code>$viewValue</code>回滚到<code>$lastCommittedViewValue</code>的值，从而取消掉还在pending的debounced update，并重新render input。</p>
+</li>
+<li><p>对于type为<code>date</code>,<code>time</code>,<code>datetime-local</code>,<code>month</code>,<code>week</code>的input，ngmodel会要求一个<code>Date</code>类型作为model. <a href="https://github.com/angular/angular.js/commit/46bd6dc88de252886d75426efc2ce8107a5134e9" target="_blank" rel="external">46bd6dc</a></p>
+</li>
+<li><p><code>input[checkbox]</code> 现在支持在<code>ngTrueValue</code>，<code>ngFalseValue</code>上使用常量的expression，包括boolean和int值。之前这两个directive的值会被直接当作string来处理，现在它们将被当作expression来parse，如果这个expression不是常量则会被丢掉。现在想要绑一个string的expression则要像下面的例子一样写： <a href="https://github.com/angular/angular.js/commit/c90cefe16142d973a123e945fc9058e8a874c357" target="_blank" rel="external">c90cefe</a></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">ng-model</span>=<span class="string">"..."</span> <span class="attr">ng-true-value</span>=<span class="string">"'truthyValue'"</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>Scopes and Digests ($scope)</p>
+<ol>
+<li><p>Scope.$id现在是number而不是string了。（有性能concern） <a href="https://github.com/angular/angular.js/commit/8c6a8171f9bdaa5cdabc0cc3f7d3ce10af7b434d" target="_blank" rel="external">8c6a817</a></p>
+</li>
+<li><p>一旦事件传播结束，<code>$boardcase</code>和<code>$emit</code>会将event参数的<code>currentScope</code>属性设为null。<a href="https://github.com/angular/angular.js/commit/82f45aee5bd84d1cc53fb2e8f645d2263cdaacbc" target="_blank" rel="external">82f45ae</a></p>
+</li>
+</ol>
+</li>
+<li><p>Server Requests ($http, $resource)</p>
+<ol>
+<li><p><code>$http</code> response拦截器更新 <a href="https://github.com/angular/angular.js/commit/ad4336f9359a073e272930f8f9bcd36587a8648f" target="_blank" rel="external">ad4336f</a></p>
+<p>以前</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// register the interceptor as a service</span></div><div class="line">$provide.factory(<span class="string">'myHttpInterceptor'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$q, dependency1, dependency2</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">promise</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> promise.then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</div><div class="line">      <span class="comment">// do something on success</span></div><div class="line">      <span class="keyword">return</span> response;</div><div class="line">    &#125;, <span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</div><div class="line">      <span class="comment">// do something on error</span></div><div class="line">      <span class="keyword">if</span> (canRecover(response)) &#123;</div><div class="line">        <span class="keyword">return</span> responseOrNewPromise</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">return</span> $q.reject(response);</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">$httpProvider.responseInterceptors.push(<span class="string">'myHttpInterceptor'</span>);</div></pre></td></tr></table></figure>
+<p>现在</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">$provide.factory(<span class="string">'myHttpInterceptor'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$q</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">response</span>: <span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</div><div class="line">      <span class="comment">// do something on success</span></div><div class="line">      <span class="keyword">return</span> response;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">responseError</span>: <span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</div><div class="line">      <span class="comment">// do something on error</span></div><div class="line">      <span class="keyword">if</span> (canRecover(response)) &#123;</div><div class="line">        <span class="keyword">return</span> responseOrNewPromise</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">return</span> $q.reject(response);</div><div class="line">    &#125;</div><div class="line">  &#125;;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">$httpProvider.interceptors.push(<span class="string">'myHttpInterceptor'</span>);</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>$httpBackend</code> 在没有参数的情况下调用JSONP回调时不会报错。<a href="https://github.com/angular/angular.js/commit/6680b7b97c0326a80bdccaf0a35031e4af641e0e" target="_blank" rel="external">6680b7b</a></p>
+</li>
+<li><p><code>$resource</code>现在不会自动帮你把<code>$</code>开头的变量去掉了，需要自己手动完成。<a href="https://github.com/angular/angular.js/commit/d3c50c845671f0f8bcc3f7842df9e2fb1d1b1c40" target="_blank" rel="external">d3c50c8</a></p>
+</li>
+</ol>
+</li>
+<li><p>Modules and Injector ($inject)</p>
+<p>  以前config block可以用来控制provider的注册流程，因为config block是在provider注册之前被调用的。而现在provider的注册会发生在config block运行之前，所以config不再能够控制provider的注册。<a href="https://github.com/angular/angular.js/commit/c0b4e2db9cbc8bc3164cedc4646145d3ab72536e" target="_blank" rel="external">c0b4e2d</a></p>
+<p>  以前下面这段代码是可以work的，现在不行了：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">angular.module(<span class="string">'foo'</span>, [])</div><div class="line">.provider(<span class="string">'$rootProvider'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.$get = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; ... &#125;</div><div class="line">&#125;)</div><div class="line">.config(<span class="function"><span class="keyword">function</span>(<span class="params">$rootProvider</span>) </span>&#123;</div><div class="line">  $rootProvider.dependentMode = <span class="string">"B"</span>;</div><div class="line">&#125;)</div><div class="line">.provider(<span class="string">'$dependentProvider'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$rootProvider</span>) </span>&#123;</div><div class="line">   <span class="keyword">if</span> ($rootProvider.dependentMode === <span class="string">"A"</span>) &#123;</div><div class="line">     <span class="keyword">this</span>.$get = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="comment">// Special mode!</span></div><div class="line">     &#125;</div><div class="line">   &#125; <span class="keyword">else</span> &#123;</div><div class="line">     <span class="keyword">this</span>.$get = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">       <span class="comment">// something else</span></div><div class="line">     &#125;</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>Filters (orderBy)</p>
+<p>  <code>orderBy</code>现在会把null值当作string的<code>&#39;null&#39;</code>来处理。<a href="https://github.com/angular/angular.js/commit/a097aa95b7c78beab6d1b7d521c25f7d9d7843d9" target="_blank" rel="external">a097aa9</a></p>
+</li>
+<li><p>Animation (ngAnimate)</p>
+<ol>
+<li><p>在1.2.x里，<code>$animate.move(element, parentElement, afterElement, [doneCallback]);</code>和<code>$animate.enter(element, parent, after, [doneCallback])</code>，在after元素没有指定的情况下，都会默认把插入的元素放到container的最后，现在会默认放到最前。<a href="https://github.com/angular/angular.js/commit/1cb8584e8490ecdb1b410a8846c4478c6c2c0e53" target="_blank" rel="external">1cb8584</a></p>
+<p>以前</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$animate.enter(element, parent);</div></pre></td></tr></table></figure>
+<p>现在</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$animate.enter(element, parent, angular.element(parent[<span class="number">0</span>].lastChild));</div></pre></td></tr></table></figure>
+</li>
+<li><p>任何使用transition并设置css class(如，class-add和class-remove)的基于类的动画代码，现在必须提供一个空的transition值，以确保样式会被立刻apply。(没怎么用过$animate，这条也没具体实例，可以去guide页面自己看下) <a href="https://github.com/angular/angular.js/commit/1bebe36aa938890d61188762ed618b1b5e193634" target="_blank" rel="external">1bebe36</a></p>
+</li>
+</ol>
+</li>
+<li><p>Internet Explorer 8</p>
+<p>  1.3不再支持IE8<a href="https://github.com/angular/angular.js/commit/eaa1d00b24008f590b95ad099241b4003688cdda" target="_blank" rel="external">eaa1d00</a></p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://wflkaaa.github.io/dragonfly/2016/11/12/Angularjs-Migration-1-2to1-3/" data-id="cj3ny3dl9000fcx4pqw9y5l7r" class="article-share-link">Partager</a>
+      
+        <a href="https://wflkaaa.github.io/dragonfly/2016/11/12/Angularjs-Migration-1-2to1-3/#disqus_thread" class="article-comment-link">Commentaires</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/Angularjs/">Angularjs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/lbao/">lbao</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/dragonfly/2016/11/14/bidirectional-binding-from-directive-to-controller/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          bidirectional-binding from directive to controller
+        
+      </div>
+    </a>
+  
+  
+    <a href="/dragonfly/2016/11/11/hexo-auto-send-email-script/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">hexo auto send email script</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/1-7-c/">1.7.c</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Angularjs/">Angularjs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/D3/">D3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Django/">Django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Django，deploy/">Django，deploy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Ngdocs/">Ngdocs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Promise/">Promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Redux/">Redux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Reselect/">Reselect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/angular/">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/autoDeploy/">autoDeploy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/axxia/">axxia</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/bash/">bash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/browserSync/">browserSync</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/cmd/">cmd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/css-secrets/">css-secrets</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/exif/">exif</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/expect/">expect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/extend/">extend</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/face-client/">face_client</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/filter/">filter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/gulp/">gulp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/h5/">h5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/hbwang/">hbwang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/idea/">idea</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/initial/">initial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/kailiu/">kailiu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/lbao/">lbao</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/mixin/">mixin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/mobile/">mobile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/rbzhou/">rbzhou</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/responsive/">responsive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/responsive-image-background/">responsive image background</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/sass/">sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/security/">security</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/setup/">setup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/tomcat/">tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/tools/">tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/vim/">vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/xlu/">xlu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/ycma/">ycma</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/ytWebsite/">ytWebsite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/zmzhang/">zmzhang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/跨域/">跨域</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <div class="widget tagcloud">
+      <a href="/dragonfly/tags/1-7-c/" style="font-size: 10px;">1.7.c</a> <a href="/dragonfly/tags/Angularjs/" style="font-size: 19px;">Angularjs</a> <a href="/dragonfly/tags/CSS/" style="font-size: 11px;">CSS</a> <a href="/dragonfly/tags/D3/" style="font-size: 10px;">D3</a> <a href="/dragonfly/tags/Django/" style="font-size: 11px;">Django</a> <a href="/dragonfly/tags/Django，deploy/" style="font-size: 10px;">Django，deploy</a> <a href="/dragonfly/tags/JavaScript/" style="font-size: 13px;">JavaScript</a> <a href="/dragonfly/tags/Javascript/" style="font-size: 16px;">Javascript</a> <a href="/dragonfly/tags/Ngdocs/" style="font-size: 10px;">Ngdocs</a> <a href="/dragonfly/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/dragonfly/tags/React/" style="font-size: 10px;">React</a> <a href="/dragonfly/tags/Redux/" style="font-size: 10px;">Redux</a> <a href="/dragonfly/tags/Reselect/" style="font-size: 10px;">Reselect</a> <a href="/dragonfly/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/dragonfly/tags/angular/" style="font-size: 10px;">angular</a> <a href="/dragonfly/tags/autoDeploy/" style="font-size: 10px;">autoDeploy</a> <a href="/dragonfly/tags/axxia/" style="font-size: 10px;">axxia</a> <a href="/dragonfly/tags/bash/" style="font-size: 10px;">bash</a> <a href="/dragonfly/tags/browserSync/" style="font-size: 10px;">browserSync</a> <a href="/dragonfly/tags/cmd/" style="font-size: 11px;">cmd</a> <a href="/dragonfly/tags/css/" style="font-size: 11px;">css</a> <a href="/dragonfly/tags/css-secrets/" style="font-size: 10px;">css-secrets</a> <a href="/dragonfly/tags/exif/" style="font-size: 10px;">exif</a> <a href="/dragonfly/tags/expect/" style="font-size: 10px;">expect</a> <a href="/dragonfly/tags/extend/" style="font-size: 10px;">extend</a> <a href="/dragonfly/tags/face-client/" style="font-size: 10px;">face_client</a> <a href="/dragonfly/tags/filter/" style="font-size: 10px;">filter</a> <a href="/dragonfly/tags/git/" style="font-size: 10px;">git</a> <a href="/dragonfly/tags/gulp/" style="font-size: 11px;">gulp</a> <a href="/dragonfly/tags/h5/" style="font-size: 10px;">h5</a> <a href="/dragonfly/tags/hbwang/" style="font-size: 15px;">hbwang</a> <a href="/dragonfly/tags/hexo/" style="font-size: 12px;">hexo</a> <a href="/dragonfly/tags/idea/" style="font-size: 10px;">idea</a> <a href="/dragonfly/tags/initial/" style="font-size: 10px;">initial</a> <a href="/dragonfly/tags/kailiu/" style="font-size: 14px;">kailiu</a> <a href="/dragonfly/tags/lbao/" style="font-size: 20px;">lbao</a> <a href="/dragonfly/tags/linux/" style="font-size: 10px;">linux</a> <a href="/dragonfly/tags/mixin/" style="font-size: 10px;">mixin</a> <a href="/dragonfly/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/dragonfly/tags/rbzhou/" style="font-size: 18px;">rbzhou</a> <a href="/dragonfly/tags/responsive/" style="font-size: 10px;">responsive</a> <a href="/dragonfly/tags/responsive-image-background/" style="font-size: 10px;">responsive image background</a> <a href="/dragonfly/tags/sass/" style="font-size: 11px;">sass</a> <a href="/dragonfly/tags/security/" style="font-size: 10px;">security</a> <a href="/dragonfly/tags/setup/" style="font-size: 10px;">setup</a> <a href="/dragonfly/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/dragonfly/tags/tool/" style="font-size: 10px;">tool</a> <a href="/dragonfly/tags/tools/" style="font-size: 11px;">tools</a> <a href="/dragonfly/tags/vim/" style="font-size: 10px;">vim</a> <a href="/dragonfly/tags/web/" style="font-size: 10px;">web</a> <a href="/dragonfly/tags/xlu/" style="font-size: 10px;">xlu</a> <a href="/dragonfly/tags/ycma/" style="font-size: 12px;">ycma</a> <a href="/dragonfly/tags/ytWebsite/" style="font-size: 10px;">ytWebsite</a> <a href="/dragonfly/tags/zmzhang/" style="font-size: 17px;">zmzhang</a> <a href="/dragonfly/tags/跨域/" style="font-size: 10px;">跨域</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2016/10/">October 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/dragonfly/2017/06/07/Angular-Q-A/">Angular Q&amp;A</a>
+          </li>
+        
+          <li>
+            <a href="/dragonfly/2017/05/27/View-On-Vue/">View On Vue</a>
+          </li>
+        
+          <li>
+            <a href="/dragonfly/2017/05/25/underscore-js学习/">underscore.js学习</a>
+          </li>
+        
+          <li>
+            <a href="/dragonfly/2017/05/20/socket-too-many-files/">socket too many files</a>
+          </li>
+        
+          <li>
+            <a href="/dragonfly/2017/05/20/关于angular-filter/">关于angular filter</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 YT Frontend Team<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/dragonfly/" class="mobile-nav-link">Home</a>
+  
+    <a href="/dragonfly/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'dragonfly-disqus';
+  
+  var disqus_url = 'https://wflkaaa.github.io/dragonfly/2016/11/12/Angularjs-Migration-1-2to1-3/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/dragonfly/fancybox/jquery.fancybox.css">
+  <script src="/dragonfly/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/dragonfly/js/script.js"></script>
+
+  </div>
+</body>
+</html>

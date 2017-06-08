@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Ruibo&#39;s Angular Notes | Dragonfly Infinity</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="$window, $location $window和window一模一样。123function $WindowProvider() &amp;#123;  this.$get = valueFn(window);&amp;#125;   可见，$window就是将window作为injectable的service。另外，location就是window.location，所以和$window.locatio">
+<meta name="keywords" content="rbzhou,Angularjs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ruibo&#39;s Angular Notes">
+<meta property="og:url" content="https://wflkaaa.github.io/dragonfly/2017/02/07/Ruibo-s-Angular-Nodes/index.html">
+<meta property="og:site_name" content="Dragonfly Infinity">
+<meta property="og:description" content="$window, $location $window和window一模一样。123function $WindowProvider() &amp;#123;  this.$get = valueFn(window);&amp;#125;   可见，$window就是将window作为injectable的service。另外，location就是window.location，所以和$window.locatio">
+<meta property="og:updated_time" content="2017-06-08T04:50:10.616Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ruibo&#39;s Angular Notes">
+<meta name="twitter:description" content="$window, $location $window和window一模一样。123function $WindowProvider() &amp;#123;  this.$get = valueFn(window);&amp;#125;   可见，$window就是将window作为injectable的service。另外，location就是window.location，所以和$window.locatio">
+  
+    <link rel="alternate" href="/atom.xml" title="Dragonfly Infinity" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/dragonfly/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/dragonfly/" id="logo">Dragonfly Infinity</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/dragonfly/" id="subtitle">Talk is cheap, Show me the code</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/dragonfly/">Home</a>
+        
+          <a class="main-nav-link" href="/dragonfly/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://wflkaaa.github.io/dragonfly"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Ruibo-s-Angular-Nodes" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/dragonfly/2017/02/07/Ruibo-s-Angular-Nodes/" class="article-date">
+  <time datetime="2017-02-07T04:59:50.000Z" itemprop="datePublished">2017-02-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Ruibo&#39;s Angular Notes
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="window-location"><a href="#window-location" class="headerlink" title="$window, $location"></a>$window, $location</h1><ol>
+<li><code>$window</code>和<code>window</code>一模一样。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function $WindowProvider() &#123;</div><div class="line">  this.$get = valueFn(window);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>可见，<code>$window</code>就是将<code>window</code>作为injectable的service。另外，<code>location</code>就是<code>window.location</code>，所以和<code>$window.location</code>也是同一个。<br>使用 <code>window.location.reload()</code>,<code>$window.loacation.reload()</code>,<code>location.reload()</code> 都不会触发angular的<code>digest</code>，所以的确可能存在写入locationStorage失败的情况，为什么呢？因为angular还没digest完，页面就已经跳转啦.</p>
+<ol>
+<li><p><code>$route.reload()</code>会等到digest完再重定向<br><code>$route.reload()</code>方法中，会有</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$rootScope.$evalAsync(function() &#123;</div><div class="line">  prepareRoute(fakeLocationEvent);</div><div class="line">  if (!fakeLocationEvent.defaultPrevented) commitRoute();</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p><code>$evalAsync</code>会将新的操作放到异步队列里，然后等<code>digest</code>中的下一个循环中触发，所以<code>reload</code>前可以认为操作已经做过一轮了。这个时候<code>reload</code>应该就是安全的。</p>
+</li>
+<li><p>angular中的url变化是会被<code>$location</code>探查到了</p>
+<p><code>$location</code>中会对url以及状态在<code>$rootScope</code>进行监控(watch)。所以，当某个地方调用digest的时候，<code>$rootScope</code>中的这个watch会被执行。同时，因为是使用的watch，所以当<code>params</code>没有变，调用<code>$location.search(params)</code>是不会触发任何东西的。</p>
+</li>
+</ol>
+<a id="more"></a>
+<h1 id="Attributes-observe-VS-Scope-watch"><a href="#Attributes-observe-VS-Scope-watch" class="headerlink" title="Attributes.$observe VS Scope.$watch"></a>Attributes.$observe VS Scope.$watch</h1><p><a href="http://stackoverflow.com/questions/14876112/angularjs-difference-between-the-observe-and-watch-methods" target="_blank" rel="external">observe VS watch</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$observe is only called in directive.</div><div class="line">use $observe only when attr=&quot;name: &#123;&#123;name&#125;&#125;&quot;, otherwise, use $watch on scope.</div></pre></td></tr></table></figure></p>
+<p>当<code>scope</code>中使用<code>@</code>来获取时，如果是有<code>\{\{ \}\}</code>的情况，link的时候是取不到值的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Use $observe when you need to observe/watch a DOM attribute that contains interpolation (i.e., &#123;&#123;&#125;&#125;&apos;s).</div></pre></td></tr></table></figure></p>
+<p>因为html中的<code>\{\{ \}\}</code>部分在link的时候是undefined！！！<br>如果使用 <code>=</code> 来获取时，link的时候是有数值的。</p>
+<p>所以如果attr中有<code>\{\{ \}\}</code>时，一定需要<code>$observe</code>，因为<code>$watch</code>的结果依然是<code>undefined</code>.<br>这个例子已经非常详细了, <a href="http://plnkr.co/edit/HBha8sVdeCqhJtQghGxw?p=preview" target="_blank" rel="external">example</a></p>
+<h1 id="scope-amp-scope-digest"><a href="#scope-amp-scope-digest" class="headerlink" title="scope &amp; scope.digest()"></a>scope &amp; scope.digest()</h1><p>rootScope.js是非常重要的文件，因为所有与scope相关的部分，包括<code>$digest</code>和<code>$apply</code>都在这个文件里。<br>在<code>rootScope.js</code>里面查看一些重要的method，结合<code>angular</code>的online Doc, 特别重要的是看Definition。<br><a href="https://docs.angularjs.org/api/ng/type/$rootScope.Scope" target="_blank" rel="external">rootScope.Scope</a></p>
+<p>关于<code>$digest</code>，这篇文章真的很生动。有源码的分析，有理解。<br><a href="http://teropa.info/blog/2013/11/03/make-your-own-angular-part-1-scopes-and-digest.html" target="_blank" rel="external">写一个自己的digest</a></p>
+<p>第三方需要调用scope的<code>$digest</code>，可以使用<code>$timeout( function() {$apply})</code>或者<code>$scope.$evalAsync(function() {})</code></p>
+<p>比如在某个$watch的回调中调用$evalAsync，那么在同一个digest周期内，进入下一个脏值检查的一开始，会先进行eval的动作(比如给scope上的变量赋值)。$timeout则相当于<code>$digest</code>完成后再通过<code>$apply</code>调用一次<code>$digest</code>.</p>
+<p><code>$apply</code>阶段会进行<code>$eval</code>的动作，然后从<code>$rootScope</code>进行<code>$digest</code><br><code>$digest</code>简单来说就是遍历scope中的watch直到watch的值没有变化为止。先是当前scope，在往下深度遍历子scope。每个html中的双向绑定都是一个watcher，会放在scope的<code>$$watchers</code>里面。</p>
+<p>$digest中是有个debugger手段的，可以通过$rootScope查看$$popstDigestQueue和$$applyAsyncQueue和$$asyncQueue</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://wflkaaa.github.io/dragonfly/2017/02/07/Ruibo-s-Angular-Nodes/" data-id="cj3ny3dlb000icx4puhzolrhs" class="article-share-link">Partager</a>
+      
+        <a href="https://wflkaaa.github.io/dragonfly/2017/02/07/Ruibo-s-Angular-Nodes/#disqus_thread" class="article-comment-link">Commentaires</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/Angularjs/">Angularjs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/rbzhou/">rbzhou</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/dragonfly/2017/02/20/等比自适应终极方案v1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          等比自适应终极方案v1
+        
+      </div>
+    </a>
+  
+  
+    <a href="/dragonfly/2017/02/06/face-client-1-7-c-dev-env-setup/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">face_client_1.7.c_dev_env_setup</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/1-7-c/">1.7.c</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Angularjs/">Angularjs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/D3/">D3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Django/">Django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Django，deploy/">Django，deploy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Ngdocs/">Ngdocs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Promise/">Promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Redux/">Redux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Reselect/">Reselect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/angular/">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/autoDeploy/">autoDeploy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/axxia/">axxia</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/bash/">bash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/browserSync/">browserSync</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/cmd/">cmd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/css-secrets/">css-secrets</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/exif/">exif</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/expect/">expect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/extend/">extend</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/face-client/">face_client</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/filter/">filter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/gulp/">gulp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/h5/">h5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/hbwang/">hbwang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/idea/">idea</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/initial/">initial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/kailiu/">kailiu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/lbao/">lbao</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/mixin/">mixin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/mobile/">mobile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/rbzhou/">rbzhou</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/responsive/">responsive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/responsive-image-background/">responsive image background</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/sass/">sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/security/">security</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/setup/">setup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/tomcat/">tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/tools/">tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/vim/">vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/xlu/">xlu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/ycma/">ycma</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/ytWebsite/">ytWebsite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/zmzhang/">zmzhang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/跨域/">跨域</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <div class="widget tagcloud">
+      <a href="/dragonfly/tags/1-7-c/" style="font-size: 10px;">1.7.c</a> <a href="/dragonfly/tags/Angularjs/" style="font-size: 19px;">Angularjs</a> <a href="/dragonfly/tags/CSS/" style="font-size: 11px;">CSS</a> <a href="/dragonfly/tags/D3/" style="font-size: 10px;">D3</a> <a href="/dragonfly/tags/Django/" style="font-size: 11px;">Django</a> <a href="/dragonfly/tags/Django，deploy/" style="font-size: 10px;">Django，deploy</a> <a href="/dragonfly/tags/JavaScript/" style="font-size: 13px;">JavaScript</a> <a href="/dragonfly/tags/Javascript/" style="font-size: 16px;">Javascript</a> <a href="/dragonfly/tags/Ngdocs/" style="font-size: 10px;">Ngdocs</a> <a href="/dragonfly/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/dragonfly/tags/React/" style="font-size: 10px;">React</a> <a href="/dragonfly/tags/Redux/" style="font-size: 10px;">Redux</a> <a href="/dragonfly/tags/Reselect/" style="font-size: 10px;">Reselect</a> <a href="/dragonfly/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/dragonfly/tags/angular/" style="font-size: 10px;">angular</a> <a href="/dragonfly/tags/autoDeploy/" style="font-size: 10px;">autoDeploy</a> <a href="/dragonfly/tags/axxia/" style="font-size: 10px;">axxia</a> <a href="/dragonfly/tags/bash/" style="font-size: 10px;">bash</a> <a href="/dragonfly/tags/browserSync/" style="font-size: 10px;">browserSync</a> <a href="/dragonfly/tags/cmd/" style="font-size: 11px;">cmd</a> <a href="/dragonfly/tags/css/" style="font-size: 11px;">css</a> <a href="/dragonfly/tags/css-secrets/" style="font-size: 10px;">css-secrets</a> <a href="/dragonfly/tags/exif/" style="font-size: 10px;">exif</a> <a href="/dragonfly/tags/expect/" style="font-size: 10px;">expect</a> <a href="/dragonfly/tags/extend/" style="font-size: 10px;">extend</a> <a href="/dragonfly/tags/face-client/" style="font-size: 10px;">face_client</a> <a href="/dragonfly/tags/filter/" style="font-size: 10px;">filter</a> <a href="/dragonfly/tags/git/" style="font-size: 10px;">git</a> <a href="/dragonfly/tags/gulp/" style="font-size: 11px;">gulp</a> <a href="/dragonfly/tags/h5/" style="font-size: 10px;">h5</a> <a href="/dragonfly/tags/hbwang/" style="font-size: 15px;">hbwang</a> <a href="/dragonfly/tags/hexo/" style="font-size: 12px;">hexo</a> <a href="/dragonfly/tags/idea/" style="font-size: 10px;">idea</a> <a href="/dragonfly/tags/initial/" style="font-size: 10px;">initial</a> <a href="/dragonfly/tags/kailiu/" style="font-size: 14px;">kailiu</a> <a href="/dragonfly/tags/lbao/" style="font-size: 20px;">lbao</a> <a href="/dragonfly/tags/linux/" style="font-size: 10px;">linux</a> <a href="/dragonfly/tags/mixin/" style="font-size: 10px;">mixin</a> <a href="/dragonfly/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/dragonfly/tags/rbzhou/" style="font-size: 18px;">rbzhou</a> <a href="/dragonfly/tags/responsive/" style="font-size: 10px;">responsive</a> <a href="/dragonfly/tags/responsive-image-background/" style="font-size: 10px;">responsive image background</a> <a href="/dragonfly/tags/sass/" style="font-size: 11px;">sass</a> <a href="/dragonfly/tags/security/" style="font-size: 10px;">security</a> <a href="/dragonfly/tags/setup/" style="font-size: 10px;">setup</a> <a href="/dragonfly/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/dragonfly/tags/tool/" style="font-size: 10px;">tool</a> <a href="/dragonfly/tags/tools/" style="font-size: 11px;">tools</a> <a href="/dragonfly/tags/vim/" style="font-size: 10px;">vim</a> <a href="/dragonfly/tags/web/" style="font-size: 10px;">web</a> <a href="/dragonfly/tags/xlu/" style="font-size: 10px;">xlu</a> <a href="/dragonfly/tags/ycma/" style="font-size: 12px;">ycma</a> <a href="/dragonfly/tags/ytWebsite/" style="font-size: 10px;">ytWebsite</a> <a href="/dragonfly/tags/zmzhang/" style="font-size: 17px;">zmzhang</a> <a href="/dragonfly/tags/跨域/" style="font-size: 10px;">跨域</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2016/10/">October 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/dragonfly/2017/06/07/Angular-Q-A/">Angular Q&amp;A</a>
+          </li>
+        
+          <li>
+            <a href="/dragonfly/2017/05/27/View-On-Vue/">View On Vue</a>
+          </li>
+        
+          <li>
+            <a href="/dragonfly/2017/05/25/underscore-js学习/">underscore.js学习</a>
+          </li>
+        
+          <li>
+            <a href="/dragonfly/2017/05/20/socket-too-many-files/">socket too many files</a>
+          </li>
+        
+          <li>
+            <a href="/dragonfly/2017/05/20/关于angular-filter/">关于angular filter</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 YT Frontend Team<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/dragonfly/" class="mobile-nav-link">Home</a>
+  
+    <a href="/dragonfly/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'dragonfly-disqus';
+  
+  var disqus_url = 'https://wflkaaa.github.io/dragonfly/2017/02/07/Ruibo-s-Angular-Nodes/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/dragonfly/fancybox/jquery.fancybox.css">
+  <script src="/dragonfly/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/dragonfly/js/script.js"></script>
+
+  </div>
+</body>
+</html>

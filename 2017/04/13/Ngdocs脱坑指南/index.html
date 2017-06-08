@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Ngdocs脱坑指南 | Dragonfly Infinity</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在用ngdoc写可运行的example的过程中，无数的坑在等待着你。  入门坑Ngdocs官方文档三言两语，当我们真正去写注释的时候根本找不到参考，可支持的param参数有哪些种类都查不到，这里推介一个jsdocs的标准文档，最重要的推介是直接看angularjs的源码，官方文档就是ngdocs生成的，里面的很多例子都很实用。  传送门:  gulp-ngdocs =&amp;gt; 配置 jsdocs的">
+<meta name="keywords" content="gulp,hbwang,Angularjs,Ngdocs,browserSync">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ngdocs脱坑指南">
+<meta property="og:url" content="https://wflkaaa.github.io/dragonfly/2017/04/13/Ngdocs脱坑指南/index.html">
+<meta property="og:site_name" content="Dragonfly Infinity">
+<meta property="og:description" content="在用ngdoc写可运行的example的过程中，无数的坑在等待着你。  入门坑Ngdocs官方文档三言两语，当我们真正去写注释的时候根本找不到参考，可支持的param参数有哪些种类都查不到，这里推介一个jsdocs的标准文档，最重要的推介是直接看angularjs的源码，官方文档就是ngdocs生成的，里面的很多例子都很实用。  传送门:  gulp-ngdocs =&amp;gt; 配置 jsdocs的">
+<meta property="og:updated_time" content="2017-06-08T04:50:10.616Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ngdocs脱坑指南">
+<meta name="twitter:description" content="在用ngdoc写可运行的example的过程中，无数的坑在等待着你。  入门坑Ngdocs官方文档三言两语，当我们真正去写注释的时候根本找不到参考，可支持的param参数有哪些种类都查不到，这里推介一个jsdocs的标准文档，最重要的推介是直接看angularjs的源码，官方文档就是ngdocs生成的，里面的很多例子都很实用。  传送门:  gulp-ngdocs =&amp;gt; 配置 jsdocs的">
+  
+    <link rel="alternate" href="/atom.xml" title="Dragonfly Infinity" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/dragonfly/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/dragonfly/" id="logo">Dragonfly Infinity</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/dragonfly/" id="subtitle">Talk is cheap, Show me the code</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/dragonfly/">Home</a>
+        
+          <a class="main-nav-link" href="/dragonfly/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://wflkaaa.github.io/dragonfly"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Ngdocs脱坑指南" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/dragonfly/2017/04/13/Ngdocs脱坑指南/" class="article-date">
+  <time datetime="2017-04-13T03:46:54.000Z" itemprop="datePublished">2017-04-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Ngdocs脱坑指南
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在用ngdoc写可运行的example的过程中，无数的坑在等待着你。</p>
+<hr>
+<h2 id="入门坑"><a href="#入门坑" class="headerlink" title="入门坑"></a>入门坑</h2><p>Ngdocs官方文档三言两语，当我们真正去写注释的时候根本找不到参考，可支持的param参数有哪些种类都查不到，这里推介一个<a href="http://usejsdoc.org/" target="_blank" rel="external">jsdocs的标准文档</a>，最重要的推介是直接看<a href="https://github.com/angular/angular.js/tree/master/src" target="_blank" rel="external">angularjs的源码</a>，官方文档就是ngdocs生成的，里面的很多例子都很实用。</p>
+<blockquote>
+<p><strong>传送门:</strong></p>
+<ul>
+<li><a href="https://www.browsersync.io/docs/gulp" target="_blank" rel="external">gulp-ngdocs</a> =&gt; 配置</li>
+<li><a href="http://usejsdoc.org/" target="_blank" rel="external">jsdocs的标准文档</a> =&gt; 参考</li>
+<li><a href="https://github.com/angular/angular.js/tree/master/src" target="_blank" rel="external">angularjs的源码</a> =&gt; 例子</li>
+</ul>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h2 id="中级坑"><a href="#中级坑" class="headerlink" title="中级坑"></a>中级坑</h2><ul>
+<li>问题1：当开心的写完了一个directive的例子，却发现生产的文档网站里的demo根本没有被解析！原因是demo根本没有引入包含directives的js文件，<strong>颖聪解决方案</strong>：把项目中的js文件全部提取到<code>build.js</code>。</li>
+<li>问题2：引入的directive找不到html模板，css，images都404，<strong>颖聪解决方案</strong>：browserSync转发</li>
+</ul>
+<blockquote>
+<p><strong>传送门:</strong></p>
+<ul>
+<li><a href="https://www.browsersync.io/docs/gulp" target="_blank" rel="external">browserSync</a> =&gt; 配置</li>
+</ul>
+</blockquote>
+<h4 id="ngdocs最终配置-by-颖聪"><a href="#ngdocs最终配置-by-颖聪" class="headerlink" title="ngdocs最终配置 by 颖聪"></a>ngdocs最终配置 by 颖聪</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">   <span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</div><div class="line"><span class="keyword">var</span> gulpDocs = <span class="built_in">require</span>(<span class="string">'gulp-ngdocs'</span>);</div><div class="line"><span class="keyword">var</span> conf = <span class="built_in">require</span>(<span class="string">'./conf'</span>);</div><div class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</div><div class="line"><span class="keyword">var</span> browserSync = <span class="built_in">require</span>(<span class="string">'browser-sync'</span>);</div><div class="line"><span class="built_in">require</span>(<span class="string">'./script'</span>);</div><div class="line"></div><div class="line">gulp.task(<span class="string">'ngdocs'</span>, [<span class="string">'concatJs'</span>], <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="keyword">var</span> src = conf.jsToBuild.src;</div><div class="line">	src.push(<span class="string">'!'</span> + conf.paths.src + <span class="string">'/component/virtualRepeat/*.js'</span>);</div><div class="line">	<span class="keyword">var</span> options = &#123;</div><div class="line">		<span class="attr">html5Mode</span>: <span class="literal">false</span>,</div><div class="line">		<span class="attr">title</span>: <span class="string">'Face_platform API'</span>,</div><div class="line">		<span class="attr">scripts</span>: [<span class="string">'frontend/built.js'</span>],</div><div class="line">		<span class="attr">styles</span>: [<span class="string">'frontend/stylesheets/app.css'</span>,<span class="string">'task/serve/style_rewrite.css'</span>],</div><div class="line">		<span class="attr">image</span>:<span class="string">'frontend/images/logoNew.png'</span></div><div class="line">	&#125;;</div><div class="line">	<span class="keyword">return</span> gulp.src(src)</div><div class="line">		.pipe(gulpDocs.process(options))</div><div class="line">		.pipe(gulp.dest(path.join(conf.paths.docs, <span class="string">''</span>)))</div><div class="line">&#125;);</div><div class="line"></div><div class="line">gulp.task(<span class="string">'ngdocs-reload'</span>,[<span class="string">'ngdocs'</span>], <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	browserSync.reload(<span class="string">'*.html'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>但是引入<code>frontend/stylesheets/app.css</code>这个样式文件后，生成的文档网站的背景也变成了和文竹一样的蓝黑色，而且页面没有了滚动条。解决方案是再添加一个style文件在它后面去overwrite文档网站body的样式。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">   body&#123;</div><div class="line">    <span class="attr">background</span>: white;</div><div class="line">    overflow: auto;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="路由转发-by-颖聪"><a href="#路由转发-by-颖聪" class="headerlink" title="路由转发 by 颖聪"></a>路由转发 by 颖聪</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">browserSyncInit</span>(<span class="params">options</span>) </span>&#123;</div><div class="line">    options = _.assign(defaultOptions, options);</div><div class="line">    <span class="keyword">var</span> server = &#123;</div><div class="line">        <span class="attr">baseDir</span>: options.baseDir,</div><div class="line">        <span class="attr">routes</span>: options.routes</div><div class="line">    &#125;;</div><div class="line">    browserSync.init(&#123;</div><div class="line">        <span class="attr">server</span>: server,</div><div class="line">        <span class="attr">port</span>: options.port,</div><div class="line">        <span class="attr">open</span>: options.open</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">gulp.task(<span class="string">'serve:docs'</span>, [<span class="string">'watchJsForDocs'</span>], <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    browserSyncInit(&#123;</div><div class="line">    	<span class="attr">baseDir</span>: [conf.paths.docs, conf.paths.src],</div><div class="line">        <span class="attr">routes</span>: &#123;</div><div class="line">            <span class="string">"/css/frontend/images"</span>: <span class="string">"frontend/images"</span>,</div><div class="line">        &#125;,</div><div class="line">    	<span class="attr">port</span>: <span class="number">3000</span>,</div><div class="line">    	<span class="attr">open</span>: <span class="literal">true</span></div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="高级坑"><a href="#高级坑" class="headerlink" title="高级坑"></a>高级坑</h2><p>尽管上面的环境都很稳了，但写demo的过程中还是有很多坑等着我们跳。</p>
+<h4 id="坑1：引入错误module"><a href="#坑1：引入错误module" class="headerlink" title="坑1：引入错误module"></a>坑1：引入错误module</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">  <span class="comment">/**</span></div><div class="line">* @ngdoc directive</div><div class="line">* @name directives.directive:ytCheckBox</div><div class="line">* @restrict EA</div><div class="line">* @description</div><div class="line">* The `ytCheckBox` directive is used for balaass</div><div class="line">*</div><div class="line">* Created by zmzhang2 on 12/6/16.</div><div class="line">* @element ANY</div><div class="line">* @scope</div><div class="line">* @param &#123;boolean=&#125; checkValue The value of checkbox</div><div class="line">* @param &#123;number@&#125; true true=1</div><div class="line">* @param &#123;numeber@&#125; false false=0</div><div class="line">* @param &#123;boolean=?&#125; isDisabled The value will toggle the disablity of checkbox</div><div class="line">* @param &#123;string&amp;?&#125; onChange AngularJS expression to be executed when input changes due to user interaction with the ytCheckBox.</div><div class="line">* @example</div><div class="line">&lt;example module="directives"&gt;</div><div class="line">&lt;file name="index.html"&gt;</div><div class="line">&lt;div ng-controller="ytCheckBoxCtrl"&gt;</div><div class="line">&lt;yt-check-box check-value="checkValue" true="1" false="0"&gt;&lt;/yt-check-box&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;/file&gt;</div><div class="line">&lt;file name="app.js"&gt;</div><div class="line">angular.module('directives')</div><div class="line">.controller('ytCheckBoxCtrl', ['$scope', function($scope) &#123;</div><div class="line">    $scope.checkValue = 1;</div><div class="line">&#125;]);</div><div class="line">&lt;/file&gt;</div><div class="line">&lt;/example&gt;</div><div class="line">*/</div></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>Note:</strong> 一般的，写example的时候第一行中 <code>&lt;example module=&quot;directives&quot;&gt;</code> 中的module要引入一个包含directives这个module，但是当我们引入app这个总module的时候，demo会运行app这个module，发出很多http请求报404错误。</p>
+</blockquote>
+<h4 id="坑2：缺少依赖注入"><a href="#坑2：缺少依赖注入" class="headerlink" title="坑2：缺少依赖注入"></a>坑2：缺少依赖注入</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">  <span class="comment">/**</span></div><div class="line">* @ngdoc directive</div><div class="line">* @name directives.directive:ytDropdownList</div><div class="line">* @restrict EA</div><div class="line">* @description</div><div class="line">* The `ytDropdownList` directive is used for</div><div class="line">*</div><div class="line">* Created by zmzhang2 on 12/2/16.</div><div class="line">* @element ANY</div><div class="line">* @scope</div><div class="line">* @example</div><div class="line">&lt;example module="ytDropdownListExample"&gt;</div><div class="line">&lt;file name="index.html"&gt;</div><div class="line">&lt;div ng-controller="ytDropdownListCtrl"&gt;</div><div class="line">   &lt;yt-dropdown-list on-click-option="quickSearch" placeholder="something" data-list-1="originSets" data-list-2="originUsers" ng-if="!settings.isUserLazyLoad"&gt;&lt;/yt-dropdown-list&gt;</div><div class="line">   &#123;&#123;result&#125;&#125;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;/file&gt;</div><div class="line">&lt;file name="app.js"&gt;</div><div class="line">angular.module('ytDropdownListExample',['filters','directives'])</div><div class="line">.controller('ytDropdownListCtrl', ['$scope', function($scope) &#123;</div><div class="line">    $scope.originSets = [</div><div class="line">        &#123;"id":0,"name":"option 1"&#125;,</div><div class="line">        &#123;"id":1,"name":"option 2"&#125;,</div><div class="line">        &#123;"id":2,"name":"option 3"&#125;</div><div class="line">    ];</div><div class="line">    $scope.originUsers = [</div><div class="line">        &#123;"id":0,"name":"user 1"&#125;,</div><div class="line">        &#123;"id":1,"name":"user 2"&#125;,</div><div class="line">        &#123;"id":2,"name":"user 3"&#125;</div><div class="line">    ];</div><div class="line">    $scope.quickSearch = function(option)&#123;</div><div class="line">        $scope.result = option.name;</div><div class="line">    &#125;;</div><div class="line">&#125;]);</div><div class="line">&lt;/file&gt;</div><div class="line">&lt;file name="style.css"&gt;</div><div class="line">.yt-dropdown-list&#123;</div><div class="line">   width: 80%;</div><div class="line">&#125;</div><div class="line">&lt;/file&gt;</div><div class="line">&lt;/example&gt;</div><div class="line">*/</div></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>Note:</strong> 当写ytDropdownList这个directive的demo的时候，一开始我们使用directives这个module，报出了依赖错误，因为html模板中使用了filter，所以这种状况下必须新建一个module并且包含所有依赖的module（<code>&#39;filters&#39;,&#39;directives&#39;</code>），只有这样，demo才能正常运行。</p>
+</blockquote>
+<h4 id="坑3：Provider"><a href="#坑3：Provider" class="headerlink" title="坑3：Provider"></a>坑3：Provider</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">  <span class="comment">/**</span></div><div class="line">* @ngdoc directive</div><div class="line">* @name directives.directive:ytSimpleMultiSelector</div><div class="line">* @restrict EA</div><div class="line">* @description</div><div class="line">* The `ytSimpleMultiSelector` directive is used for balaass</div><div class="line">* @element ANY</div><div class="line">* @scope</div><div class="line">* @param &#123;array=&#125; selections The available options</div><div class="line">* @param &#123;array@&#125; selected the array which contains all the selected items</div><div class="line">* @param &#123;string@&#125; selectorTitle the selector title which will be translated</div><div class="line">* @param &#123;string&amp;?&#125; onChange AngularJS expression to be executed when input changes due to user interaction with the ytSimpleMultiSelector.</div><div class="line">* @example</div><div class="line">&lt;example module="ytSimpleMultiSelectorExample"&gt;</div><div class="line">&lt;file name="index.html"&gt;</div><div class="line">&lt;div ng-controller="ytSimpleMultiSelectorCtrl"&gt;</div><div class="line">   &lt;yt-simple-multi-selector selections="selections" selected="selectedOption" selector-title="cmn.def.cluster"&gt;&lt;/yt-simple-multi-selector&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;/file&gt;</div><div class="line">&lt;file name="app.js"&gt;</div><div class="line">angular.module('ytSimpleMultiSelectorExample',['pascalprecht.translate','filters','directives'])</div><div class="line">.config(['$translateProvider',function($translateProvider)&#123;</div><div class="line">       $translateProvider</div><div class="line">           .useStaticFilesLoader(&#123;</div><div class="line">               prefix: './translations/',</div><div class="line">               suffix: '.json'</div><div class="line">           &#125;)</div><div class="line">           .useSanitizeValueStrategy('escape')</div><div class="line">           .preferredLanguage('en');</div><div class="line">&#125;])</div><div class="line">.controller('ytSimpleMultiSelectorCtrl', ['$scope', function($scope) &#123;</div><div class="line">     $scope.selections = [</div><div class="line">       "A","B","C"</div><div class="line">     ];</div><div class="line">     $scope.selectedOption = ["A","C"];</div><div class="line">&#125;]);</div><div class="line">&lt;/file&gt;</div><div class="line">&lt;/example&gt;</div><div class="line">*/</div></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>Note:</strong> 有些directive的demo尽管已经满足了全部依赖，但是还是会报出Provider未配置的错误。比如ytSimpleMultiSelector这个directive的html模板包含translate，这样的话就必须config配置<code>$translateProvider</code>，否则会报错。</p>
+</blockquote>
+<hr>
+<h4 id="坑4：services-ui-bootstrap依赖"><a href="#坑4：services-ui-bootstrap依赖" class="headerlink" title="坑4：services/ui.bootstrap依赖"></a>坑4：services/ui.bootstrap依赖</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">  <span class="comment">/**</span></div><div class="line">* @ngdoc directive</div><div class="line">* @name directives.directive:ytRaceSelector</div><div class="line">* @restrict EA</div><div class="line">* @description</div><div class="line">* The `ytRaceSelector` directive is used for balaass</div><div class="line">*</div><div class="line">* Created by ycma 03/28/17.</div><div class="line">* @element ANY</div><div class="line">* @scope</div><div class="line">* @param &#123;number=&#125; selectedRace The selected race id</div><div class="line">* @example</div><div class="line">&lt;example module="ytRaceSelectorExample"&gt;</div><div class="line">&lt;file name="index.html"&gt;</div><div class="line">&lt;div ng-controller="ytRaceSelectorCtrl"&gt;</div><div class="line">   &lt;yt-race-selector selected-race="selectedRace"&gt;&lt;/yt-race-selector&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;/file&gt;</div><div class="line">&lt;file name="app.js"&gt;</div><div class="line">angular.module('ytRaceSelectorExample',['directives', 'services', 'ui.bootstrap', 'filters'])</div><div class="line">.controller('ytRaceSelectorCtrl', ['$scope', function($scope) &#123;</div><div class="line">     $scope.selectedRace = 0;</div><div class="line">&#125;]);</div><div class="line">&lt;/file&gt;</div><div class="line">&lt;/example&gt;</div><div class="line">*/</div></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>Note:</strong> </p>
+<ul>
+<li>ytRaceSelector的demo报出一个$modal的错误，引入ui.bootstrap后解决；</li>
+<li>另外还会报出一个ytUrlMapProvider的错误，引入services后解决。</li>
+</ul>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://wflkaaa.github.io/dragonfly/2017/04/13/Ngdocs脱坑指南/" data-id="cj3ny3dle000ncx4pt6spa0sa" class="article-share-link">Partager</a>
+      
+        <a href="https://wflkaaa.github.io/dragonfly/2017/04/13/Ngdocs脱坑指南/#disqus_thread" class="article-comment-link">Commentaires</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/Angularjs/">Angularjs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/Ngdocs/">Ngdocs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/browserSync/">browserSync</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/gulp/">gulp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/hbwang/">hbwang</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/dragonfly/2017/04/25/Archive-Tips/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          Archive Tips
+        
+      </div>
+    </a>
+  
+  
+    <a href="/dragonfly/2017/04/12/d3-初探/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">D3 初探</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/1-7-c/">1.7.c</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Angularjs/">Angularjs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/D3/">D3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Django/">Django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Django，deploy/">Django，deploy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Ngdocs/">Ngdocs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Promise/">Promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Redux/">Redux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Reselect/">Reselect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/angular/">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/autoDeploy/">autoDeploy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/axxia/">axxia</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/bash/">bash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/browserSync/">browserSync</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/cmd/">cmd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/css-secrets/">css-secrets</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/exif/">exif</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/expect/">expect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/extend/">extend</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/face-client/">face_client</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/filter/">filter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/gulp/">gulp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/h5/">h5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/hbwang/">hbwang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/idea/">idea</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/initial/">initial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/kailiu/">kailiu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/lbao/">lbao</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/mixin/">mixin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/mobile/">mobile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/rbzhou/">rbzhou</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/responsive/">responsive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/responsive-image-background/">responsive image background</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/sass/">sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/security/">security</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/setup/">setup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/tomcat/">tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/tools/">tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/vim/">vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/xlu/">xlu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/ycma/">ycma</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/ytWebsite/">ytWebsite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/zmzhang/">zmzhang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/跨域/">跨域</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <div class="widget tagcloud">
+      <a href="/dragonfly/tags/1-7-c/" style="font-size: 10px;">1.7.c</a> <a href="/dragonfly/tags/Angularjs/" style="font-size: 19px;">Angularjs</a> <a href="/dragonfly/tags/CSS/" style="font-size: 11px;">CSS</a> <a href="/dragonfly/tags/D3/" style="font-size: 10px;">D3</a> <a href="/dragonfly/tags/Django/" style="font-size: 11px;">Django</a> <a href="/dragonfly/tags/Django，deploy/" style="font-size: 10px;">Django，deploy</a> <a href="/dragonfly/tags/JavaScript/" style="font-size: 13px;">JavaScript</a> <a href="/dragonfly/tags/Javascript/" style="font-size: 16px;">Javascript</a> <a href="/dragonfly/tags/Ngdocs/" style="font-size: 10px;">Ngdocs</a> <a href="/dragonfly/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/dragonfly/tags/React/" style="font-size: 10px;">React</a> <a href="/dragonfly/tags/Redux/" style="font-size: 10px;">Redux</a> <a href="/dragonfly/tags/Reselect/" style="font-size: 10px;">Reselect</a> <a href="/dragonfly/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/dragonfly/tags/angular/" style="font-size: 10px;">angular</a> <a href="/dragonfly/tags/autoDeploy/" style="font-size: 10px;">autoDeploy</a> <a href="/dragonfly/tags/axxia/" style="font-size: 10px;">axxia</a> <a href="/dragonfly/tags/bash/" style="font-size: 10px;">bash</a> <a href="/dragonfly/tags/browserSync/" style="font-size: 10px;">browserSync</a> <a href="/dragonfly/tags/cmd/" style="font-size: 11px;">cmd</a> <a href="/dragonfly/tags/css/" style="font-size: 11px;">css</a> <a href="/dragonfly/tags/css-secrets/" style="font-size: 10px;">css-secrets</a> <a href="/dragonfly/tags/exif/" style="font-size: 10px;">exif</a> <a href="/dragonfly/tags/expect/" style="font-size: 10px;">expect</a> <a href="/dragonfly/tags/extend/" style="font-size: 10px;">extend</a> <a href="/dragonfly/tags/face-client/" style="font-size: 10px;">face_client</a> <a href="/dragonfly/tags/filter/" style="font-size: 10px;">filter</a> <a href="/dragonfly/tags/git/" style="font-size: 10px;">git</a> <a href="/dragonfly/tags/gulp/" style="font-size: 11px;">gulp</a> <a href="/dragonfly/tags/h5/" style="font-size: 10px;">h5</a> <a href="/dragonfly/tags/hbwang/" style="font-size: 15px;">hbwang</a> <a href="/dragonfly/tags/hexo/" style="font-size: 12px;">hexo</a> <a href="/dragonfly/tags/idea/" style="font-size: 10px;">idea</a> <a href="/dragonfly/tags/initial/" style="font-size: 10px;">initial</a> <a href="/dragonfly/tags/kailiu/" style="font-size: 14px;">kailiu</a> <a href="/dragonfly/tags/lbao/" style="font-size: 20px;">lbao</a> <a href="/dragonfly/tags/linux/" style="font-size: 10px;">linux</a> <a href="/dragonfly/tags/mixin/" style="font-size: 10px;">mixin</a> <a href="/dragonfly/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/dragonfly/tags/rbzhou/" style="font-size: 18px;">rbzhou</a> <a href="/dragonfly/tags/responsive/" style="font-size: 10px;">responsive</a> <a href="/dragonfly/tags/responsive-image-background/" style="font-size: 10px;">responsive image background</a> <a href="/dragonfly/tags/sass/" style="font-size: 11px;">sass</a> <a href="/dragonfly/tags/security/" style="font-size: 10px;">security</a> <a href="/dragonfly/tags/setup/" style="font-size: 10px;">setup</a> <a href="/dragonfly/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/dragonfly/tags/tool/" style="font-size: 10px;">tool</a> <a href="/dragonfly/tags/tools/" style="font-size: 11px;">tools</a> <a href="/dragonfly/tags/vim/" style="font-size: 10px;">vim</a> <a href="/dragonfly/tags/web/" style="font-size: 10px;">web</a> <a href="/dragonfly/tags/xlu/" style="font-size: 10px;">xlu</a> <a href="/dragonfly/tags/ycma/" style="font-size: 12px;">ycma</a> <a href="/dragonfly/tags/ytWebsite/" style="font-size: 10px;">ytWebsite</a> <a href="/dragonfly/tags/zmzhang/" style="font-size: 17px;">zmzhang</a> <a href="/dragonfly/tags/跨域/" style="font-size: 10px;">跨域</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2016/10/">October 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/dragonfly/2017/06/07/Angular-Q-A/">Angular Q&amp;A</a>
+          </li>
+        
+          <li>
+            <a href="/dragonfly/2017/05/27/View-On-Vue/">View On Vue</a>
+          </li>
+        
+          <li>
+            <a href="/dragonfly/2017/05/25/underscore-js学习/">underscore.js学习</a>
+          </li>
+        
+          <li>
+            <a href="/dragonfly/2017/05/20/socket-too-many-files/">socket too many files</a>
+          </li>
+        
+          <li>
+            <a href="/dragonfly/2017/05/20/关于angular-filter/">关于angular filter</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 YT Frontend Team<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/dragonfly/" class="mobile-nav-link">Home</a>
+  
+    <a href="/dragonfly/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'dragonfly-disqus';
+  
+  var disqus_url = 'https://wflkaaa.github.io/dragonfly/2017/04/13/Ngdocs脱坑指南/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/dragonfly/fancybox/jquery.fancybox.css">
+  <script src="/dragonfly/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/dragonfly/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Dragonfly Infinity</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Dragonfly Infinity">
+<meta property="og:url" content="https://wflkaaa.github.io/dragonfly/page/3/index.html">
+<meta property="og:site_name" content="Dragonfly Infinity">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Dragonfly Infinity">
+  
+    <link rel="alternate" href="/atom.xml" title="Dragonfly Infinity" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/dragonfly/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/dragonfly/" id="logo">Dragonfly Infinity</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/dragonfly/" id="subtitle">Talk is cheap, Show me the code</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/dragonfly/">Home</a>
+        
+          <a class="main-nav-link" href="/dragonfly/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://wflkaaa.github.io/dragonfly"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-js检验字符串是不是valid的数字" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/dragonfly/2017/05/19/js检验字符串是不是valid的数字/" class="article-date">
+  <time datetime="2017-05-19T04:52:07.000Z" itemprop="datePublished">2017-05-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/dragonfly/2017/05/19/js检验字符串是不是valid的数字/">js检验字符串是不是valid的数字</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>js里面，需要验证input框中输入的string是不是一个valid的数字，可以使用这些方法：</p>
+<p>isNaN，无论字符串是数字形式还是数字，会返回true，否则会返回false，可以判断用来判断“123”是不是一个数字。</p>
+<p>+num，可以把数字形式的字符串变成数字，否则变成NaN，很奇怪的是， +”” 这个会转化为0。</p>
+<p><a href="http://stackoverflow.com/questions/175739/is-there-a-built-in-way-in-javascript-to-check-if-a-string-is-a-valid-number" target="_blank" rel="external">http://stackoverflow.com/questions/175739/is-there-a-built-in-way-in-javascript-to-check-if-a-string-is-a-valid-number</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://wflkaaa.github.io/dragonfly/2017/05/19/js检验字符串是不是valid的数字/" data-id="cj3ny3dmy005acx4pvde4vmj7" class="article-share-link">Partager</a>
+      
+        <a href="https://wflkaaa.github.io/dragonfly/2017/05/19/js检验字符串是不是valid的数字/#disqus_thread" class="article-comment-link">Commentaires</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-你会用margin么" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/dragonfly/2017/05/19/你会用margin么/" class="article-date">
+  <time datetime="2017-05-19T04:51:53.000Z" itemprop="datePublished">2017-05-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/dragonfly/2017/05/19/你会用margin么/">你会用margin么</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这其实是以前我去面阿里前端的时候被问到的问题，今天拿来面小朋友了：</p>
+<p>问：两个block元素，上面的那个margin: 10px; 下面的那个margin: 20px; 问这两个元素最终的上下间距是多少</p>
+<p>答：so easy，block元素之间的margin会重叠，所以最后的间距是20px</p>
+<p>问：嗯，那如果上面的元素margin: -10px；下面的元素margin:-20px; 问这两个元素间距又会是多少呢？</p>
+<p>答：应该……会有10px的overlap……吧？（</p>
+<p>问：哪个元素在上面呢？如果元素是float的呢？bulabula……</p>
+<p>然后就没有然后了……</p>
+        
+          <p class="article-more-link">
+            <a href="/dragonfly/2017/05/19/你会用margin么/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://wflkaaa.github.io/dragonfly/2017/05/19/你会用margin么/" data-id="cj3ny3dnp006ocx4p9fmr8ifp" class="article-share-link">Partager</a>
+      
+        <a href="https://wflkaaa.github.io/dragonfly/2017/05/19/你会用margin么/#disqus_thread" class="article-comment-link">Commentaires</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-关于变量提升" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/dragonfly/2017/05/19/关于变量提升/" class="article-date">
+  <time datetime="2017-05-19T04:50:43.000Z" itemprop="datePublished">2017-05-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/dragonfly/2017/05/19/关于变量提升/">关于变量提升</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>下面两个语句都能定义一个叫foo的函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// function declaration</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line"></div><div class="line"><span class="comment">// function expression</span></div><div class="line"><span class="keyword">var</span> foo = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;;</div></pre></td></tr></table></figure>
+<p>前者是函数声明，后者是函数表达式，两者有一些不同。</p>
+        
+          <p class="article-more-link">
+            <a href="/dragonfly/2017/05/19/关于变量提升/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://wflkaaa.github.io/dragonfly/2017/05/19/关于变量提升/" data-id="cj3ny3dnr006scx4pmn3s1j2z" class="article-share-link">Partager</a>
+      
+        <a href="https://wflkaaa.github.io/dragonfly/2017/05/19/关于变量提升/#disqus_thread" class="article-comment-link">Commentaires</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-exif-jpeg" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/dragonfly/2017/05/18/exif-jpeg/" class="article-date">
+  <time datetime="2017-05-18T12:45:53.000Z" itemprop="datePublished">2017-05-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/dragonfly/2017/05/18/exif-jpeg/">exif-jpeg</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="JPEG文件的EXIF信息"><a href="#JPEG文件的EXIF信息" class="headerlink" title="JPEG文件的EXIF信息"></a>JPEG文件的EXIF信息</h2><p>手机H5网页可以调用手机原生的拍照功能来获取图片，但是不同的机型获得的<br>照片的格式会有差异，比如iphone6拍照入库之后是竖屏的，但是iphone5s<br>拍的照片在手机和电脑上看都是竖屏的，但是入库之后会变成横屏的图片（向左旋转了90度），后来发现iphone的图片<br>浏览器和电脑的图片浏览器会对图片进行自动的旋转，让图片看起来是竖屏的，<br>但是图片本身的数据是横屏。手机拍摄的照片都会有EXIF信息，我们可以根据<br>EXIF 的meta信息对图片进行处理，从而获得想要的结果（exif只支持jpeg格式）。</p>
+<p>Exif是一种图像文件格式，它的数据存储与JPEG格式是完全相同的。<br>实际上Exif格式就是在JPEG格式头部插入了数码照片的信息，<br>包括拍摄时的光圈、快门、白平衡、ISO、焦距、日期时间等各种和拍摄条件<br>以及相机品牌、型号、色彩编码、拍摄时录制的声音以及GPS全球定位系统数据、<br>缩略图等。你可以利用任何可以查看JPEG文件的看图软件浏览Exif格式的照片，<br>但并不是所有的图形程序都能处理Exif信息。</p>
+        
+          <p class="article-more-link">
+            <a href="/dragonfly/2017/05/18/exif-jpeg/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://wflkaaa.github.io/dragonfly/2017/05/18/exif-jpeg/" data-id="cj3ny3dm6001scx4pj06yqfyo" class="article-share-link">Partager</a>
+      
+        <a href="https://wflkaaa.github.io/dragonfly/2017/05/18/exif-jpeg/#disqus_thread" class="article-comment-link">Commentaires</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/exif/">exif</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/h5/">h5</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/zmzhang/">zmzhang</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Study-Of-Promise" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/dragonfly/2017/05/17/Study-Of-Promise/" class="article-date">
+  <time datetime="2017-05-17T14:09:22.000Z" itemprop="datePublished">2017-05-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/dragonfly/2017/05/17/Study-Of-Promise/">Study Of Promise</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>如果回答下面的问题对你来说有点困难，那么这篇文章可能对你还是有些帮助的：</p>
+<ol>
+<li><p>下面的代码会console出啥：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> promise = $q(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</div><div class="line">	resolve(<span class="number">233</span>);</div><div class="line">&#125;);</div><div class="line">promise</div><div class="line">.then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">throw</span> <span class="number">123</span>; &#125;)</div><div class="line">.then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="number">1</span>); &#125;)</div><div class="line">.then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="number">2</span>); &#125;, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;<span class="built_in">console</span>.log(<span class="number">3</span>);&#125;)</div><div class="line">.then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="number">4</span>); &#125;, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;<span class="built_in">console</span>.log(<span class="number">5</span>);&#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>给你一个基础的promise实现，让你extend一个finally function出来，你咋写？</p>
+</li>
+</ol>
+        
+          <p class="article-more-link">
+            <a href="/dragonfly/2017/05/17/Study-Of-Promise/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://wflkaaa.github.io/dragonfly/2017/05/17/Study-Of-Promise/" data-id="cj3ny3dls0019cx4pdq4hq5se" class="article-share-link">Partager</a>
+      
+        <a href="https://wflkaaa.github.io/dragonfly/2017/05/17/Study-Of-Promise/#disqus_thread" class="article-comment-link">Commentaires</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/lbao/">lbao</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-mobile-web" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/dragonfly/2017/05/13/mobile-web/" class="article-date">
+  <time datetime="2017-05-12T16:00:00.000Z" itemprop="datePublished">2017-05-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/dragonfly/2017/05/13/mobile-web/">移动端web踩坑指南</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h2 id="meta标签"><a href="#meta标签" class="headerlink" title="meta标签"></a>meta标签</h2><p><a href="https://developer.apple.com/library/content/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html" target="_blank" rel="external">Apple-Specific Meta Tag Keys</a><br><a href="http://open.mb.qq.com/web/doc?id=1201" target="_blank" rel="external">x5内核定制<meta>标签说明</a></p>
+<h3 id="viewport"><a href="#viewport" class="headerlink" title="viewport"></a>viewport</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, minimum-scale=1.0,  maximum-scale=1.0, user-scalable=no&quot;&gt;</div></pre></td></tr></table></figure>
+<p>visual viewport: The visual viewport is the part of the page that’s currently shown on-screen.(在屏幕上可以看见的那部分视图，露出到海面上的冰山)<br>layout viewport: The layout viewport can be considerably wider than the visual viewport, and contains elements that appear and do not appear on the screen.(整座冰山)</p>
+<p>content中的各参数解读<br>width设置的是layout viewport，支持数值， 范围从200到10,000， 默认为980像素，也可以设置成device-width，即屏幕宽度（虚拟像素， 不是实际像素）;<br>initial-scale， 浮点数， 初始的缩放比例， 范围从0 - 10;<br>minimum-scale， 浮点数， 允许用户缩放到最小的比例;<br>maximum-scale， 浮点数， 允许用户缩放到最大的比例；<br>user-scalable， yes|no， 是否允许用户缩放；</p>
+        
+          <p class="article-more-link">
+            <a href="/dragonfly/2017/05/13/mobile-web/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://wflkaaa.github.io/dragonfly/2017/05/13/mobile-web/" data-id="cj3ny3dnu0073cx4pcp7h0rsk" class="article-share-link">Partager</a>
+      
+        <a href="https://wflkaaa.github.io/dragonfly/2017/05/13/mobile-web/#disqus_thread" class="article-comment-link">Commentaires</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/mobile/">mobile</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/web/">web</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/ycma/">ycma</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Archive-Tips" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/dragonfly/2017/04/25/Archive-Tips/" class="article-date">
+  <time datetime="2017-04-25T03:01:28.000Z" itemprop="datePublished">2017-04-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/dragonfly/2017/04/25/Archive-Tips/">Archive Tips</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="zip指令"><a href="#zip指令" class="headerlink" title="zip指令"></a>zip指令</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">zip -q -r $&#123;file_name&#125;.zip dir</div></pre></td></tr></table></figure>
+<p>注意点: 打包进去的时候会保留dir的接口。比如<code>zip -q -r example.zip dir1/file1</code>, 那么<code>example.zip</code>里会有一个文件夹叫<code>dir1</code>，而不仅仅是<code>file1</code>。<br>所以，在把<code>dist</code>文件夹下的内容打到war里的时候，需要先<code>cd dist</code>再使用<code>zip</code>指令。</p>
+<h1 id="gulp-src排除文件"><a href="#gulp-src排除文件" class="headerlink" title="gulp src排除文件"></a>gulp src排除文件</h1><p>生成<code>dist</code>文件夹的时候，<code>data</code>文件夹本来是不需要的，但是其中有一个文件<code>cameraMeta.json</code>是需要的。这个时候想在<code>gulp.src</code>的时候写配置，语法是有点麻烦的。如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">    var src = [path.join(conf.paths.src, &apos;/**/*&apos;)].concat(conf.buildExclude.map(function (item) &#123;</div><div class="line">       return &apos;!&apos; + item;</div><div class="line">    &#125;));</div><div class="line">    return gulp.src(src, &#123;dot: true&#125;).pipe(gulp.dest(conf.paths.dist));</div><div class="line">    </div><div class="line">exports.buildExclude = [</div><div class="line">    &apos;frontend/data&apos;,</div><div class="line">    &apos;frontend/data/**/!(cameraMeta.json)&apos;,</div><div class="line">    &apos;frontend/old&apos;,</div><div class="line">    &apos;frontend/old/**&apos;,</div><div class="line">    &apos;frontend/sass&apos;,</div><div class="line">    &apos;frontend/sass/**&apos;,</div><div class="line">    &apos;frontend/index.html&apos;,</div><div class="line">    &apos;frontend/karma.conf.js&apos;,</div><div class="line">    &apos;frontend/valid_nginx.conf&apos;</div><div class="line">];</div></pre></td></tr></table></figure></p>
+<p><a href="http://stackoverflow.com/questions/26485612/glob-minimatch-how-to-gulp-src-everything-then-exclude-folder-but-keep-one" target="_blank" rel="external">references</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://wflkaaa.github.io/dragonfly/2017/04/25/Archive-Tips/" data-id="cj3ny3dkn0000cx4pq6mwq3lq" class="article-share-link">Partager</a>
+      
+        <a href="https://wflkaaa.github.io/dragonfly/2017/04/25/Archive-Tips/#disqus_thread" class="article-comment-link">Commentaires</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/gulp/">gulp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/rbzhou/">rbzhou</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Ngdocs脱坑指南" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/dragonfly/2017/04/13/Ngdocs脱坑指南/" class="article-date">
+  <time datetime="2017-04-13T03:46:54.000Z" itemprop="datePublished">2017-04-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/dragonfly/2017/04/13/Ngdocs脱坑指南/">Ngdocs脱坑指南</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在用ngdoc写可运行的example的过程中，无数的坑在等待着你。</p>
+<hr>
+<h2 id="入门坑"><a href="#入门坑" class="headerlink" title="入门坑"></a>入门坑</h2><p>Ngdocs官方文档三言两语，当我们真正去写注释的时候根本找不到参考，可支持的param参数有哪些种类都查不到，这里推介一个<a href="http://usejsdoc.org/" target="_blank" rel="external">jsdocs的标准文档</a>，最重要的推介是直接看<a href="https://github.com/angular/angular.js/tree/master/src" target="_blank" rel="external">angularjs的源码</a>，官方文档就是ngdocs生成的，里面的很多例子都很实用。</p>
+<blockquote>
+<p><strong>传送门:</strong></p>
+<ul>
+<li><a href="https://www.browsersync.io/docs/gulp" target="_blank" rel="external">gulp-ngdocs</a> =&gt; 配置</li>
+<li><a href="http://usejsdoc.org/" target="_blank" rel="external">jsdocs的标准文档</a> =&gt; 参考</li>
+<li><a href="https://github.com/angular/angular.js/tree/master/src" target="_blank" rel="external">angularjs的源码</a> =&gt; 例子</li>
+</ul>
+</blockquote>
+<hr>
+        
+          <p class="article-more-link">
+            <a href="/dragonfly/2017/04/13/Ngdocs脱坑指南/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://wflkaaa.github.io/dragonfly/2017/04/13/Ngdocs脱坑指南/" data-id="cj3ny3dle000ncx4pt6spa0sa" class="article-share-link">Partager</a>
+      
+        <a href="https://wflkaaa.github.io/dragonfly/2017/04/13/Ngdocs脱坑指南/#disqus_thread" class="article-comment-link">Commentaires</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/Angularjs/">Angularjs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/Ngdocs/">Ngdocs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/browserSync/">browserSync</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/gulp/">gulp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/hbwang/">hbwang</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-d3-初探" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/dragonfly/2017/04/12/d3-初探/" class="article-date">
+  <time datetime="2017-04-12T10:41:53.000Z" itemprop="datePublished">2017-04-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/dragonfly/2017/04/12/d3-初探/">D3 初探</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>D3是Data-Driven Documents的简称， 中文是数据驱动文档。<br>听名字就觉得这个东西很牛逼啊！<br>不信？<br>不信的话看看人家的<a href="https://d3js.org/" target="_blank" rel="external">官网</a>,首页上的banner，那就一个字： 酷炫！<br>感觉一般？<br>就是这么个一般的东西，在<a href="https://github.com/d3/d3" target="_blank" rel="external">github</a>上有60000+个star！！<br>对60000没有概念？<br>angular 也才55000个star啊！！<br>请接受我的膝盖～～</p>
+<h2 id="从Hello-World-开始"><a href="#从Hello-World-开始" class="headerlink" title="从Hello World 开始"></a>从Hello World 开始</h2><p></p><p data-height="265" data-theme-id="0" data-slug-hash="zwYJYx" data-default-tab="result" data-user="devil_myc" data-embed-version="2" data-pen-title="zwYJYx" class="codepen">See the Pen <a href="https://codepen.io/devil_myc/pen/zwYJYx/" target="_blank" rel="external">zwYJYx</a> by ycma (<a href="http://codepen.io/devil_myc" target="_blank" rel="external">@devil_myc</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+        
+          <p class="article-more-link">
+            <a href="/dragonfly/2017/04/12/d3-初探/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://wflkaaa.github.io/dragonfly/2017/04/12/d3-初探/" data-id="cj3ny3dm0001fcx4p4eps8r4c" class="article-share-link">Partager</a>
+      
+        <a href="https://wflkaaa.github.io/dragonfly/2017/04/12/d3-初探/#disqus_thread" class="article-comment-link">Commentaires</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/D3/">D3</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/ycma/">ycma</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-angularjs-filter准确过滤" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/dragonfly/2017/04/10/angularjs-filter准确过滤/" class="article-date">
+  <time datetime="2017-04-10T03:52:03.000Z" itemprop="datePublished">2017-04-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/dragonfly/2017/04/10/angularjs-filter准确过滤/">Angularjs filter准确过滤</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>AngularJS中用filter过滤某个id，比如<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">   $scope.users = [</div><div class="line">    &#123;<span class="string">"id"</span>:<span class="number">1</span>,<span class="string">"username"</span>:<span class="string">"simon"</span>,&#125;,</div><div class="line">    &#123;<span class="string">"id"</span>:<span class="number">8</span>,<span class="string">"username"</span>:<span class="string">"betty"</span>,&#125;,</div><div class="line">    &#123;<span class="string">"id"</span>:<span class="number">14</span>,<span class="string">"username"</span>:<span class="string">"archie"</span>,&#125;,</div><div class="line">    &#123;<span class="string">"id"</span>:<span class="number">3</span>,<span class="string">"username"</span>:<span class="string">"jumbo1"</span>&#125;</div><div class="line">];</div></pre></td></tr></table></figure></p>
+<p>  要把id为1的simon这个user过滤出来，如果写成<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$scope.users =  $filter(<span class="string">'filter'</span>)($scope.users,&#123;<span class="attr">id</span>:<span class="number">1</span>&#125;）；</div></pre></td></tr></table></figure></p>
+<p>得到的结果是<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$scope.users = [</div><div class="line"> &#123;<span class="string">"id"</span>:<span class="number">1</span>,<span class="string">"username"</span>:<span class="string">"simon"</span>,&#125;,</div><div class="line"> &#123;<span class="string">"id"</span>:<span class="number">14</span>,<span class="string">"username"</span>:<span class="string">"arch"</span>&#125;</div><div class="line">];</div></pre></td></tr></table></figure></p>
+<p>所有id是1开头的user都出现在过滤结果中！因此，<code>$filter(&#39;filter&#39;)($scope.users,{id:1}）；</code><br>并不是精确的把id为1的simon这个user过滤出来！</p>
+        
+          <p class="article-more-link">
+            <a href="/dragonfly/2017/04/10/angularjs-filter准确过滤/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://wflkaaa.github.io/dragonfly/2017/04/10/angularjs-filter准确过滤/" data-id="cj3ny3dlk000xcx4pj9an1kcz" class="article-share-link">Partager</a>
+      
+        <a href="https://wflkaaa.github.io/dragonfly/2017/04/10/angularjs-filter准确过滤/#disqus_thread" class="article-comment-link">Commentaires</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/Angularjs/">Angularjs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/filter/">filter</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/hbwang/">hbwang</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/dragonfly/page/2/">&laquo; __('prev')</a><a class="page-number" href="/dragonfly/">1</a><a class="page-number" href="/dragonfly/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/dragonfly/page/4/">4</a><a class="page-number" href="/dragonfly/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/dragonfly/page/7/">7</a><a class="extend next" rel="next" href="/dragonfly/page/4/">__('next') &raquo;</a>
+  </nav>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/1-7-c/">1.7.c</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Angularjs/">Angularjs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/D3/">D3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Django/">Django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Django，deploy/">Django，deploy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Ngdocs/">Ngdocs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Promise/">Promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Redux/">Redux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Reselect/">Reselect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/angular/">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/autoDeploy/">autoDeploy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/axxia/">axxia</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/bash/">bash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/browserSync/">browserSync</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/cmd/">cmd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/css-secrets/">css-secrets</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/exif/">exif</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/expect/">expect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/extend/">extend</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/face-client/">face_client</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/filter/">filter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/gulp/">gulp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/h5/">h5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/hbwang/">hbwang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/idea/">idea</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/initial/">initial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/kailiu/">kailiu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/lbao/">lbao</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/mixin/">mixin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/mobile/">mobile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/rbzhou/">rbzhou</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/responsive/">responsive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/responsive-image-background/">responsive image background</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/sass/">sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/security/">security</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/setup/">setup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/tomcat/">tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/tools/">tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/vim/">vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/xlu/">xlu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/ycma/">ycma</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/ytWebsite/">ytWebsite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/zmzhang/">zmzhang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/跨域/">跨域</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <div class="widget tagcloud">
+      <a href="/dragonfly/tags/1-7-c/" style="font-size: 10px;">1.7.c</a> <a href="/dragonfly/tags/Angularjs/" style="font-size: 19px;">Angularjs</a> <a href="/dragonfly/tags/CSS/" style="font-size: 11px;">CSS</a> <a href="/dragonfly/tags/D3/" style="font-size: 10px;">D3</a> <a href="/dragonfly/tags/Django/" style="font-size: 11px;">Django</a> <a href="/dragonfly/tags/Django，deploy/" style="font-size: 10px;">Django，deploy</a> <a href="/dragonfly/tags/JavaScript/" style="font-size: 13px;">JavaScript</a> <a href="/dragonfly/tags/Javascript/" style="font-size: 16px;">Javascript</a> <a href="/dragonfly/tags/Ngdocs/" style="font-size: 10px;">Ngdocs</a> <a href="/dragonfly/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/dragonfly/tags/React/" style="font-size: 10px;">React</a> <a href="/dragonfly/tags/Redux/" style="font-size: 10px;">Redux</a> <a href="/dragonfly/tags/Reselect/" style="font-size: 10px;">Reselect</a> <a href="/dragonfly/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/dragonfly/tags/angular/" style="font-size: 10px;">angular</a> <a href="/dragonfly/tags/autoDeploy/" style="font-size: 10px;">autoDeploy</a> <a href="/dragonfly/tags/axxia/" style="font-size: 10px;">axxia</a> <a href="/dragonfly/tags/bash/" style="font-size: 10px;">bash</a> <a href="/dragonfly/tags/browserSync/" style="font-size: 10px;">browserSync</a> <a href="/dragonfly/tags/cmd/" style="font-size: 11px;">cmd</a> <a href="/dragonfly/tags/css/" style="font-size: 11px;">css</a> <a href="/dragonfly/tags/css-secrets/" style="font-size: 10px;">css-secrets</a> <a href="/dragonfly/tags/exif/" style="font-size: 10px;">exif</a> <a href="/dragonfly/tags/expect/" style="font-size: 10px;">expect</a> <a href="/dragonfly/tags/extend/" style="font-size: 10px;">extend</a> <a href="/dragonfly/tags/face-client/" style="font-size: 10px;">face_client</a> <a href="/dragonfly/tags/filter/" style="font-size: 10px;">filter</a> <a href="/dragonfly/tags/git/" style="font-size: 10px;">git</a> <a href="/dragonfly/tags/gulp/" style="font-size: 11px;">gulp</a> <a href="/dragonfly/tags/h5/" style="font-size: 10px;">h5</a> <a href="/dragonfly/tags/hbwang/" style="font-size: 15px;">hbwang</a> <a href="/dragonfly/tags/hexo/" style="font-size: 12px;">hexo</a> <a href="/dragonfly/tags/idea/" style="font-size: 10px;">idea</a> <a href="/dragonfly/tags/initial/" style="font-size: 10px;">initial</a> <a href="/dragonfly/tags/kailiu/" style="font-size: 14px;">kailiu</a> <a href="/dragonfly/tags/lbao/" style="font-size: 20px;">lbao</a> <a href="/dragonfly/tags/linux/" style="font-size: 10px;">linux</a> <a href="/dragonfly/tags/mixin/" style="font-size: 10px;">mixin</a> <a href="/dragonfly/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/dragonfly/tags/rbzhou/" style="font-size: 18px;">rbzhou</a> <a href="/dragonfly/tags/responsive/" style="font-size: 10px;">responsive</a> <a href="/dragonfly/tags/responsive-image-background/" style="font-size: 10px;">responsive image background</a> <a href="/dragonfly/tags/sass/" style="font-size: 11px;">sass</a> <a href="/dragonfly/tags/security/" style="font-size: 10px;">security</a> <a href="/dragonfly/tags/setup/" style="font-size: 10px;">setup</a> <a href="/dragonfly/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/dragonfly/tags/tool/" style="font-size: 10px;">tool</a> <a href="/dragonfly/tags/tools/" style="font-size: 11px;">tools</a> <a href="/dragonfly/tags/vim/" style="font-size: 10px;">vim</a> <a href="/dragonfly/tags/web/" style="font-size: 10px;">web</a> <a href="/dragonfly/tags/xlu/" style="font-size: 10px;">xlu</a> <a href="/dragonfly/tags/ycma/" style="font-size: 12px;">ycma</a> <a href="/dragonfly/tags/ytWebsite/" style="font-size: 10px;">ytWebsite</a> <a href="/dragonfly/tags/zmzhang/" style="font-size: 17px;">zmzhang</a> <a href="/dragonfly/tags/跨域/" style="font-size: 10px;">跨域</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2016/10/">October 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/dragonfly/2017/06/07/Angular-Q-A/">Angular Q&amp;A</a>
+          </li>
+        
+          <li>
+            <a href="/dragonfly/2017/05/27/View-On-Vue/">View On Vue</a>
+          </li>
+        
+          <li>
+            <a href="/dragonfly/2017/05/25/underscore-js学习/">underscore.js学习</a>
+          </li>
+        
+          <li>
+            <a href="/dragonfly/2017/05/20/socket-too-many-files/">socket too many files</a>
+          </li>
+        
+          <li>
+            <a href="/dragonfly/2017/05/20/关于angular-filter/">关于angular filter</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 YT Frontend Team<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/dragonfly/" class="mobile-nav-link">Home</a>
+  
+    <a href="/dragonfly/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'dragonfly-disqus';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/dragonfly/fancybox/jquery.fancybox.css">
+  <script src="/dragonfly/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/dragonfly/js/script.js"></script>
+
+  </div>
+</body>
+</html>

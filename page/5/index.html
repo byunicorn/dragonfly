@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Dragonfly Infinity</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Dragonfly Infinity">
+<meta property="og:url" content="https://wflkaaa.github.io/dragonfly/page/5/index.html">
+<meta property="og:site_name" content="Dragonfly Infinity">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Dragonfly Infinity">
+  
+    <link rel="alternate" href="/atom.xml" title="Dragonfly Infinity" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/dragonfly/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/dragonfly/" id="logo">Dragonfly Infinity</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/dragonfly/" id="subtitle">Talk is cheap, Show me the code</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/dragonfly/">Home</a>
+        
+          <a class="main-nav-link" href="/dragonfly/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://wflkaaa.github.io/dragonfly"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-django-dev-tips" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/dragonfly/2017/03/14/django-dev-tips/" class="article-date">
+  <time datetime="2017-03-14T11:47:32.000Z" itemprop="datePublished">2017-03-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/dragonfly/2017/03/14/django-dev-tips/">django dev tips</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-Basic-Structure"><a href="#1-Basic-Structure" class="headerlink" title="1. Basic Structure"></a>1. Basic Structure</h2><hr>
+<p>###1.1 One site with multiple apps<br>Django’s primary goal is to ease the creation of complex, database-driven websites. Django emphasizes reusability and “pluggability” of components, rapid development, and the principle of don’t repeat yourself. </p>
+<p><img src="https://image.slidesharecdn.com/djangoappdeployment-140825015610-phpapp02/95/django-app-deployment-in-azure-by-saurabh-agarwal-5-638.jpg?cb=1410754269" alt="enter image description here"></p>
+<p>Python is used throughout, even for settings files and data models. Django also provides an optional administrative create, read, update and delete interface that is generated dynamically through introspection and configured via admin models.</p>
+<pre><code>INSTALLED_APPS = [
+    &apos;django.contrib.admin&apos;,
+    &apos;django.contrib.auth&apos;,
+    &apos;django.contrib.contenttypes&apos;,
+    &apos;django.contrib.sessions&apos;,
+    &apos;django.contrib.messages&apos;,
+    &apos;django.contrib.staticfiles&apos;,
+    &apos;rest_framework&apos;,
+    &apos;django.contrib.sessions&apos;,
+    &apos;django.contrib.messages&apos;,
+    &apos;django.contrib.staticfiles&apos;,
+    &apos;rest_framework&apos;,
+    &apos;rest_framework_jwt&apos;,
+    &apos;corsheaders&apos;,
+    &apos;api&apos;,
+]
+</code></pre><p>###1.2 MVT</p>
+<p>The <strong>Model-View-Template (MVT)</strong> is slightly different from MVC. In fact the main difference between the two patterns is that Django itself takes care of the Controller part (Software Code that controls the interactions between the Model and View), leaving us with the template. The template is a HTML file mixed with Django Template Language (DTL).</p>
+<p><i class="icon-link"></i>URLS <i class="icon-left"></i> <i class="icon-eye"></i> Views <i class="icon-left"></i> <i class="icon-shield"></i> Models <i class="icon-left"></i><i class="icon-briefcase">Database</i></p>
+<p><img src="http://wiki.openhatch.org/images/thumb/f/fd/Mtv-diagram.png/400px-Mtv-diagram.png" alt="enter image description here"></p>
+<p><i class="icon-link"></i>URLS <i class="icon-left"></i> <i class="icon-retweet"></i> Middlewares  <i class="icon-left"></i> <i class="icon-eye"></i> Views <i class="icon-left"></i> <i class="icon-shield"></i> Models <i class="icon-left"></i><i class="icon-briefcase">Database</i></p>
+<pre><code>MIDDLEWARE = [
+    &apos;django.contrib.sessions.middleware.SessionMiddleware&apos;,
+    &apos;django.middleware.common.CommonMiddleware&apos;,
+    &apos;django.middleware.csrf.CsrfViewMiddleware&apos;,
+    &apos;django.contrib.auth.middleware.AuthenticationMiddleware&apos;,
+    &apos;django.contrib.messages.middleware.MessageMiddleware&apos;,
+    &apos;django.middleware.clickjacking.XFrameOptionsMiddleware&apos;,
+    &apos;corsheaders.middleware.CorsMiddleware&apos;,
+    &apos;django.middleware.security.SecurityMiddleware&apos;,
+    # &apos;api.auth.JWTAuthenticationMiddleware&apos;,
+]
+</code></pre><p>###1.3 DB sync<br>Migrations are Django’s way of propagating changes you make to your models (adding a field, deleting a model, etc.) into your database schema. </p>
+<pre><code>$ python3 manage.py makemigrations api
+$ python3 manage.py migrate
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://wflkaaa.github.io/dragonfly/2017/03/14/django-dev-tips/" data-id="cj3ny3dn2005ecx4p11vw9nep" class="article-share-link">Partager</a>
+      
+        <a href="https://wflkaaa.github.io/dragonfly/2017/03/14/django-dev-tips/#disqus_thread" class="article-comment-link">Commentaires</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/Django/">Django</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/hbwang/">hbwang</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-import-once-sass" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/dragonfly/2017/03/11/import-once-sass/" class="article-date">
+  <time datetime="2017-03-11T05:17:58.000Z" itemprop="datePublished">2017-03-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/dragonfly/2017/03/11/import-once-sass/">compass import once</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gem install compass-import-once</div></pre></td></tr></table></figure>
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><p>add it to your config.rb file</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">require &apos;compass/import-once/activate&apos;</div></pre></td></tr></table></figure>
+<p>see <a href="https://github.com/Compass/compass/tree/master/import-once" target="_blank" rel="external">details</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://wflkaaa.github.io/dragonfly/2017/03/11/import-once-sass/" data-id="cj3ny3dn0005ccx4p74y7sqph" class="article-share-link">Partager</a>
+      
+        <a href="https://wflkaaa.github.io/dragonfly/2017/03/11/import-once-sass/#disqus_thread" class="article-comment-link">Commentaires</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/sass/">sass</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/ycma/">ycma</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-platform-1-8-idea" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/dragonfly/2017/02/21/platform-1-8-idea/" class="article-date">
+  <time datetime="2017-02-21T06:24:08.000Z" itemprop="datePublished">2017-02-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/dragonfly/2017/02/21/platform-1-8-idea/">face_platform 1.8 idea 配置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="face-platform-1-8-idea-配置"><a href="#face-platform-1-8-idea-配置" class="headerlink" title="face_platform 1.8 idea 配置"></a>face_platform 1.8 idea 配置</h3><ol>
+<li>open <code>ficus/website/face/face_platform/java_website</code></li>
+<li>Project Settings - Modules<ul>
+<li>add Web<ul>
+<li>Deplyment Descriptors Path<br><code>your position/ficus/website/face/face_platform/java_website/src/main/webapp/WEB-INF/web.xml</code></li>
+<li>Web Resource Directories<br><code>your position/ficus/website/face/face_platform/java_website/src/main/webapp</code></li>
+</ul>
+</li>
+<li>add Spring<ul>
+<li>New Application Context</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Project Setting - Libraries<ul>
+<li>add - java<br><code>your position/ficus/website/face/face_platform/java_website/lib</code></li>
+</ul>
+</li>
+<li>Project Setting - Artifacts<ul>
+<li>add Web Application : exploded  From Modules</li>
+</ul>
+</li>
+<li>Run/Debug Configurations<ul>
+<li>add Tomcat Server local<ul>
+<li>Server / HTTP port : 10110</li>
+<li>Deployment / add Artifact / Application context: /face</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://wflkaaa.github.io/dragonfly/2017/02/21/platform-1-8-idea/" data-id="cj3ny3dn6005icx4pyfdwtywr" class="article-share-link">Partager</a>
+      
+        <a href="https://wflkaaa.github.io/dragonfly/2017/02/21/platform-1-8-idea/#disqus_thread" class="article-comment-link">Commentaires</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/idea/">idea</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/xlu/">xlu</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-等比自适应终极方案v1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/dragonfly/2017/02/20/等比自适应终极方案v1/" class="article-date">
+  <time datetime="2017-02-20T07:22:56.000Z" itemprop="datePublished">2017-02-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/dragonfly/2017/02/20/等比自适应终极方案v1/">等比自适应终极方案v1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>长久以来,我们饱受自适应的困扰,各种<code>media query</code>,还为1024专门定制了一套css,其他项目也正在或将要面临这个问题.现在,是时候解决这个问题了.</p>
+<p>所幸,我们的自适应只是<strong>等比缩放</strong> <em>(相比于设计图等比缩小或放大)</em>,所以这套solution也只针对这个场景.希望做到的效果是,根据设计图只写一套代码,<strong>等比</strong>自适应所有分辨率.</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>页面内<strong>所有的尺寸</strong> <em>(宽高,边距,字体等等)</em>,都相对于<strong>根元素</strong> <em>(即html)</em>的<strong>字号大小</strong>的<strong>百分比</strong>来定义.</p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p><a href="https://www.google.com.hk/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;cad=rja&amp;uact=8&amp;ved=0ahUKEwia6Pjix57SAhXEpJQKHX3BCYIQFggaMAA&amp;url=https%3A%2F%2Fwww.sitepoint.com%2Funderstanding-and-using-rem-units-in-css%2F&amp;usg=AFQjCNHuplTPUCeK3FClBflSfBC4RP_YGA&amp;sig2=lf8fQs3vOS4RkzzSpoQ_Xw" target="_blank" rel="external">rem</a>: font size of the root element. <em>(root指的是html,而不是body)</em></p>
+<p>所以我们只要在页面加载或resize时为html设置一个绝对的font-size,其他使用rem的元素就会自动resize.</p>
+<p>现在问题就变成,要为html设置多大的font-size,也就是<code>1rem = ?px</code>.先说结论,<code>1rem = 100px</code>.</p>
+<p><strong>原因</strong>:</p>
+<ul>
+<li>其实理论上,设置<code>1rem = 任意px</code>都行,只是使用时写成<code>1rem</code>和<code>10rem</code>的区别</li>
+<li>但是chrome不支持小于12px(所有小于12px的都被chrome当成12px),所以最方便的<code>1rem = 1(0)px</code>所代表的<code>&lt; 12px</code>的计算方式都被排除了</li>
+<li>计算方式本身要能方便使用,所以<code>1rem = 100px</code>,如果设计图上标<code>100px</code>,我们css里就写<code>1rem</code></li>
+</ul>
+<p>到目前为止,我们只解决了计算方式的问题,还没有实现自适应.但已经能脑补出实现方案了:</p>
+<p>页面首次加载或者resize时,设置<code>htmlFontSize = 100px * windowWidth / designWidth</code></p>
+        
+          <p class="article-more-link">
+            <a href="/dragonfly/2017/02/20/等比自适应终极方案v1/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://wflkaaa.github.io/dragonfly/2017/02/20/等比自适应终极方案v1/" data-id="cj3ny3dnt006ycx4po23kkmqk" class="article-share-link">Partager</a>
+      
+        <a href="https://wflkaaa.github.io/dragonfly/2017/02/20/等比自适应终极方案v1/#disqus_thread" class="article-comment-link">Commentaires</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/kailiu/">kailiu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/responsive/">responsive</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Ruibo-s-Angular-Nodes" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/dragonfly/2017/02/07/Ruibo-s-Angular-Nodes/" class="article-date">
+  <time datetime="2017-02-07T04:59:50.000Z" itemprop="datePublished">2017-02-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/dragonfly/2017/02/07/Ruibo-s-Angular-Nodes/">Ruibo&#39;s Angular Notes</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="window-location"><a href="#window-location" class="headerlink" title="$window, $location"></a>$window, $location</h1><ol>
+<li><code>$window</code>和<code>window</code>一模一样。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function $WindowProvider() &#123;</div><div class="line">  this.$get = valueFn(window);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>可见，<code>$window</code>就是将<code>window</code>作为injectable的service。另外，<code>location</code>就是<code>window.location</code>，所以和<code>$window.location</code>也是同一个。<br>使用 <code>window.location.reload()</code>,<code>$window.loacation.reload()</code>,<code>location.reload()</code> 都不会触发angular的<code>digest</code>，所以的确可能存在写入locationStorage失败的情况，为什么呢？因为angular还没digest完，页面就已经跳转啦.</p>
+<ol>
+<li><p><code>$route.reload()</code>会等到digest完再重定向<br><code>$route.reload()</code>方法中，会有</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$rootScope.$evalAsync(function() &#123;</div><div class="line">  prepareRoute(fakeLocationEvent);</div><div class="line">  if (!fakeLocationEvent.defaultPrevented) commitRoute();</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p><code>$evalAsync</code>会将新的操作放到异步队列里，然后等<code>digest</code>中的下一个循环中触发，所以<code>reload</code>前可以认为操作已经做过一轮了。这个时候<code>reload</code>应该就是安全的。</p>
+</li>
+<li><p>angular中的url变化是会被<code>$location</code>探查到了</p>
+<p><code>$location</code>中会对url以及状态在<code>$rootScope</code>进行监控(watch)。所以，当某个地方调用digest的时候，<code>$rootScope</code>中的这个watch会被执行。同时，因为是使用的watch，所以当<code>params</code>没有变，调用<code>$location.search(params)</code>是不会触发任何东西的。</p>
+</li>
+</ol>
+        
+          <p class="article-more-link">
+            <a href="/dragonfly/2017/02/07/Ruibo-s-Angular-Nodes/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://wflkaaa.github.io/dragonfly/2017/02/07/Ruibo-s-Angular-Nodes/" data-id="cj3ny3dlb000icx4puhzolrhs" class="article-share-link">Partager</a>
+      
+        <a href="https://wflkaaa.github.io/dragonfly/2017/02/07/Ruibo-s-Angular-Nodes/#disqus_thread" class="article-comment-link">Commentaires</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/Angularjs/">Angularjs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/rbzhou/">rbzhou</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-face-client-1-7-c-dev-env-setup" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/dragonfly/2017/02/06/face-client-1-7-c-dev-env-setup/" class="article-date">
+  <time datetime="2017-02-06T06:53:18.000Z" itemprop="datePublished">2017-02-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/dragonfly/2017/02/06/face-client-1-7-c-dev-env-setup/">face_client_1.7.c_dev_env_setup</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1-7-c-dev环境搭建"><a href="#1-7-c-dev环境搭建" class="headerlink" title="1.7.c dev环境搭建"></a>1.7.c dev环境搭建</h1><h3 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h3><ul>
+<li>切分支: git checkout project/website/face/client/1.7.c</li>
+<li>git pull origin project/website/face/client/1.7.</li>
+<li>webstorm打开项目路径: ficus/website/face/client/react_website</li>
+<li>安装依赖: npm install</li>
+<li>修改配置文件: webpack-dev-server.js, proxy 中修改对应后台的api, app.listen(port) 其中port为访问的端口号（注： 与server.listen()的端口号不同）</li>
+<li>前端server配置<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">run &gt; Edit Configuration</div><div class="line"></div><div class="line">添加node.js</div><div class="line"></div><div class="line">Node interpreter: NodePath (推荐适用nvm进行node版本管理)</div><div class="line"></div><div class="line">Node parameters: webpack/webpack-dev-server --env.dev</div><div class="line"></div><div class="line">run</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="java端"><a href="#java端" class="headerlink" title="java端"></a>java端</h3><ul>
+<li>intellij打开ia项目路径: ficus/website/face/client/java_website</li>
+<li>配置方法：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">导入maven项目</div><div class="line"></div><div class="line">修改project structure 配置</div><div class="line"></div><div class="line">Project SDK 1.7</div><div class="line"></div><div class="line">Modules java_website: Web Module Deployment Descriptor: ficus/website/face/client/java_website/src/main/webapp/web.xml</div><div class="line"></div><div class="line">Modules java_website: web Resource Directory: ficus/website/face/client/java_website/src/main/webapp</div><div class="line"></div><div class="line">Artifacts 中 java_website:Web exploded 添加右侧所有lib包</div><div class="line">设置src/main/java 为source文件夹</div></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://wflkaaa.github.io/dragonfly/2017/02/06/face-client-1-7-c-dev-env-setup/" data-id="cj3ny3dmt0051cx4p5tn6axvv" class="article-share-link">Partager</a>
+      
+        <a href="https://wflkaaa.github.io/dragonfly/2017/02/06/face-client-1-7-c-dev-env-setup/#disqus_thread" class="article-comment-link">Commentaires</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/1-7-c/">1.7.c</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/face-client/">face_client</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/setup/">setup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/zmzhang/">zmzhang</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-misc" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/dragonfly/2017/01/11/misc/" class="article-date">
+  <time datetime="2017-01-11T13:07:11.000Z" itemprop="datePublished">2017-01-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/dragonfly/2017/01/11/misc/">福建网站反应迟缓复盘</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>福建的版本一直都非常危险,各种adhoc，并且问题频出。这里面有历史的形成，也有网站设计上的问题。现在准备复盘并整理一下。</p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>版本是1.6.4, 从1.5.x的版本升级上来。1.6.4也不是正式发布的版本，并且中途加了一些升级的adhoc修改。后台的服务器规模不在我们的scope内，但需要考虑网站会与一些其他的应用共用一个后台。</p>
+<h2 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h2><ul>
+<li>访问网站时，显示不出内容。</li>
+<li>偶尔可以出现页面，加载时间都在20s以上，且经常不能正常跳转。</li>
+<li>白天非常卡顿，不能使用，晚上很流畅。</li>
+</ul>
+<h2 id="原因定位"><a href="#原因定位" class="headerlink" title="原因定位"></a>原因定位</h2><p>整个网站的流程访问流程如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome -&gt; nginx -&gt; java后台(即tomcat) -&gt; 大平台</div></pre></td></tr></table></figure></p>
+<p>排查过程从浏览器端开始。</p>
+        
+          <p class="article-more-link">
+            <a href="/dragonfly/2017/01/11/misc/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://wflkaaa.github.io/dragonfly/2017/01/11/misc/" data-id="cj3ny3dn7005kcx4pqutkhwr3" class="article-share-link">Partager</a>
+      
+        <a href="https://wflkaaa.github.io/dragonfly/2017/01/11/misc/#disqus_thread" class="article-comment-link">Commentaires</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/rbzhou/">rbzhou</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Webstorm-JSHint" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/dragonfly/2016/12/07/Webstorm-JSHint/" class="article-date">
+  <time datetime="2016-12-07T05:04:55.000Z" itemprop="datePublished">2016-12-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/dragonfly/2016/12/07/Webstorm-JSHint/">Webstorm+JSHint</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在Webstorm里面启用jshint功能，就能对js语法进行提示。<br>设置方法：<br> <code>File</code> -&gt; <code>Settings</code> -&gt; <code>Languages &amp; Frameworks</code> -&gt; <code>Code Quality Tools</code> -&gt; `JSHint</p>
+<p>勾选<code>enable</code>。</p>
+<p>JSHint提示很多，有些提示无关紧要，当每个文件都提示，让人很不爽，所以记录一些JSHint的配置。</p>
+<ol>
+<li><p>添加<code>angular</code>,<code>_</code>,<code>console</code>,<code>confirm</code>关键词<br> <img src="https://github.com/wflkaaa/dragonfly/blob/master/code/images/jshint-global-keyword.png?raw=true" alt=""><br> 图中<code>Relaxing options</code>上方，找到<code>Predefined(,separated)</code>，点击该行后方的<code>Set</code>，写入<code>angular</code>(有多个关键词时用<code>,</code>分隔)</p>
+</li>
+<li><p>global strict mode<br> 勾选 <code>Supress warnings about the use of global strict mode</code></p>
+</li>
+<li><p>W030<br> <code>Relaxing options</code>勾选 <code>Supress aarnings about the use of expressions as statements</code></p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://wflkaaa.github.io/dragonfly/2016/12/07/Webstorm-JSHint/" data-id="cj3ny3dlh000qcx4pie9ykzki" class="article-share-link">Partager</a>
+      
+        <a href="https://wflkaaa.github.io/dragonfly/2016/12/07/Webstorm-JSHint/#disqus_thread" class="article-comment-link">Commentaires</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/rbzhou/">rbzhou</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/tools/">tools</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-CSS属性重置及相关关键字" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/dragonfly/2016/12/03/CSS属性重置及相关关键字/" class="article-date">
+  <time datetime="2016-12-03T06:49:02.000Z" itemprop="datePublished">2016-12-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/dragonfly/2016/12/03/CSS属性重置及相关关键字/">CSS属性重置及相关关键字</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><em>注：这里说的css属性重置并不是在css的最开始重置成各浏览器一致的样式</em></p>
+<p>事情是这样的，有时别人或者第三方库定义了某些元素的style，比如bootstrap会定义：<code>img:{max-width:100%;}</code></p>
+<p>但是在下图的table中，想要实现图片放大镜效果，如果不重置掉img的max-width属性，放大图片的宽高比会变（拉伸）</p>
+<p><img src="http://ohpf8h425.bkt.clouddn.com/hexo.jpg" alt=""> </p>
+<p>对这个case，做法可以是 <code>img{max-width：auto;}</code> 或者 <code>img{max-width：initial;}</code></p>
+<h4 id="但是区别究竟是什么，重置其他元素的属性时该选哪个？"><a href="#但是区别究竟是什么，重置其他元素的属性时该选哪个？" class="headerlink" title="但是区别究竟是什么，重置其他元素的属性时该选哪个？"></a>但是区别究竟是什么，重置其他元素的属性时该选哪个？</h4><p><strong>简单来说，不考虑IE的情况下，全部用initial</strong></p>
+<p><em>详细说明：元素的属性有默认值，但不一定都是auto。为了避免每次查表，可以统一用initial。initial对除IE之外的浏览器支持度很好（早期版本就已支持），但是IE即使高版本也不支持。如果要兼容IE，请手动查表找到默认值。</em></p>
+<p>需要重置样式的场景，不仅仅是被覆盖，也有可能是来自继承，比如定义了div的color，内部span的color会继承。</p>
+        
+          <p class="article-more-link">
+            <a href="/dragonfly/2016/12/03/CSS属性重置及相关关键字/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://wflkaaa.github.io/dragonfly/2016/12/03/CSS属性重置及相关关键字/" data-id="cj3ny3dkr0001cx4pfa1kjviu" class="article-share-link">Partager</a>
+      
+        <a href="https://wflkaaa.github.io/dragonfly/2016/12/03/CSS属性重置及相关关键字/#disqus_thread" class="article-comment-link">Commentaires</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/initial/">initial</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/kailiu/">kailiu</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-promise-then" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/dragonfly/2016/12/03/promise-then/" class="article-date">
+  <time datetime="2016-12-03T05:26:06.000Z" itemprop="datePublished">2016-12-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/dragonfly/2016/12/03/promise-then/">在promise中修改原始结果</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>有时需要在promise的then中处理数据，再返回这个promise，这样别人在调用这个promise的时候就不用处理数据。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> promise = DataService.queryRemote(<span class="string">'GET'</span>, url, <span class="literal">null</span>, isCache);</div><div class="line">promise.then(<span class="function"><span class="keyword">function</span> (<span class="params">data, status, headers, config</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(data.rtn === <span class="number">0</span>)&#123;</div><div class="line">        <span class="keyword">return</span> _.filter(data.cameras,<span class="function"><span class="keyword">function</span>(<span class="params">object</span>)</span>&#123;</div><div class="line">            <span class="keyword">return</span> object.type === <span class="number">0</span>;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"><span class="keyword">return</span> promise;</div></pre></td></tr></table></figure></p>
+<p>但这段code返回的promise，在controller里调用then并未返回的仍然时未经过滤的数据，说明then里的code没生效。</p>
+<p><strong>原因：查api发现，<code>promise.then</code>会返回一个新的promise，这里return的是旧的</strong></p>
+<p>所以写法应该是：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> promise = DataService.queryRemote(<span class="string">'GET'</span>, url, <span class="literal">null</span>, isCache);</div><div class="line"><span class="keyword">return</span> promise.then(<span class="function"><span class="keyword">function</span> (<span class="params">data, status, headers, config</span>) </span>&#123;</div><div class="line">	<span class="keyword">if</span>(data.rtn === <span class="number">0</span>)&#123;</div><div class="line">		<span class="keyword">return</span> _.filter(data.cameras,<span class="function"><span class="keyword">function</span>(<span class="params">object</span>)</span>&#123;</div><div class="line">			<span class="keyword">return</span> object.type === <span class="number">0</span>;</div><div class="line">		&#125;);</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://wflkaaa.github.io/dragonfly/2016/12/03/promise-then/" data-id="cj3ny3dn8005pcx4pbyqkeaey" class="article-share-link">Partager</a>
+      
+        <a href="https://wflkaaa.github.io/dragonfly/2016/12/03/promise-then/#disqus_thread" class="article-comment-link">Commentaires</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/Promise/">Promise</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/kailiu/">kailiu</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/dragonfly/page/4/">&laquo; __('prev')</a><a class="page-number" href="/dragonfly/">1</a><span class="space">&hellip;</span><a class="page-number" href="/dragonfly/page/3/">3</a><a class="page-number" href="/dragonfly/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/dragonfly/page/6/">6</a><a class="page-number" href="/dragonfly/page/7/">7</a><a class="extend next" rel="next" href="/dragonfly/page/6/">__('next') &raquo;</a>
+  </nav>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/1-7-c/">1.7.c</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Angularjs/">Angularjs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/D3/">D3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Django/">Django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Django，deploy/">Django，deploy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Ngdocs/">Ngdocs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Promise/">Promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Redux/">Redux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Reselect/">Reselect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/angular/">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/autoDeploy/">autoDeploy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/axxia/">axxia</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/bash/">bash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/browserSync/">browserSync</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/cmd/">cmd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/css-secrets/">css-secrets</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/exif/">exif</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/expect/">expect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/extend/">extend</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/face-client/">face_client</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/filter/">filter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/gulp/">gulp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/h5/">h5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/hbwang/">hbwang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/idea/">idea</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/initial/">initial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/kailiu/">kailiu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/lbao/">lbao</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/mixin/">mixin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/mobile/">mobile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/rbzhou/">rbzhou</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/responsive/">responsive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/responsive-image-background/">responsive image background</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/sass/">sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/security/">security</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/setup/">setup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/tomcat/">tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/tools/">tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/vim/">vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/xlu/">xlu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/ycma/">ycma</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/ytWebsite/">ytWebsite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/zmzhang/">zmzhang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/跨域/">跨域</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <div class="widget tagcloud">
+      <a href="/dragonfly/tags/1-7-c/" style="font-size: 10px;">1.7.c</a> <a href="/dragonfly/tags/Angularjs/" style="font-size: 19px;">Angularjs</a> <a href="/dragonfly/tags/CSS/" style="font-size: 11px;">CSS</a> <a href="/dragonfly/tags/D3/" style="font-size: 10px;">D3</a> <a href="/dragonfly/tags/Django/" style="font-size: 11px;">Django</a> <a href="/dragonfly/tags/Django，deploy/" style="font-size: 10px;">Django，deploy</a> <a href="/dragonfly/tags/JavaScript/" style="font-size: 13px;">JavaScript</a> <a href="/dragonfly/tags/Javascript/" style="font-size: 16px;">Javascript</a> <a href="/dragonfly/tags/Ngdocs/" style="font-size: 10px;">Ngdocs</a> <a href="/dragonfly/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/dragonfly/tags/React/" style="font-size: 10px;">React</a> <a href="/dragonfly/tags/Redux/" style="font-size: 10px;">Redux</a> <a href="/dragonfly/tags/Reselect/" style="font-size: 10px;">Reselect</a> <a href="/dragonfly/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/dragonfly/tags/angular/" style="font-size: 10px;">angular</a> <a href="/dragonfly/tags/autoDeploy/" style="font-size: 10px;">autoDeploy</a> <a href="/dragonfly/tags/axxia/" style="font-size: 10px;">axxia</a> <a href="/dragonfly/tags/bash/" style="font-size: 10px;">bash</a> <a href="/dragonfly/tags/browserSync/" style="font-size: 10px;">browserSync</a> <a href="/dragonfly/tags/cmd/" style="font-size: 11px;">cmd</a> <a href="/dragonfly/tags/css/" style="font-size: 11px;">css</a> <a href="/dragonfly/tags/css-secrets/" style="font-size: 10px;">css-secrets</a> <a href="/dragonfly/tags/exif/" style="font-size: 10px;">exif</a> <a href="/dragonfly/tags/expect/" style="font-size: 10px;">expect</a> <a href="/dragonfly/tags/extend/" style="font-size: 10px;">extend</a> <a href="/dragonfly/tags/face-client/" style="font-size: 10px;">face_client</a> <a href="/dragonfly/tags/filter/" style="font-size: 10px;">filter</a> <a href="/dragonfly/tags/git/" style="font-size: 10px;">git</a> <a href="/dragonfly/tags/gulp/" style="font-size: 11px;">gulp</a> <a href="/dragonfly/tags/h5/" style="font-size: 10px;">h5</a> <a href="/dragonfly/tags/hbwang/" style="font-size: 15px;">hbwang</a> <a href="/dragonfly/tags/hexo/" style="font-size: 12px;">hexo</a> <a href="/dragonfly/tags/idea/" style="font-size: 10px;">idea</a> <a href="/dragonfly/tags/initial/" style="font-size: 10px;">initial</a> <a href="/dragonfly/tags/kailiu/" style="font-size: 14px;">kailiu</a> <a href="/dragonfly/tags/lbao/" style="font-size: 20px;">lbao</a> <a href="/dragonfly/tags/linux/" style="font-size: 10px;">linux</a> <a href="/dragonfly/tags/mixin/" style="font-size: 10px;">mixin</a> <a href="/dragonfly/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/dragonfly/tags/rbzhou/" style="font-size: 18px;">rbzhou</a> <a href="/dragonfly/tags/responsive/" style="font-size: 10px;">responsive</a> <a href="/dragonfly/tags/responsive-image-background/" style="font-size: 10px;">responsive image background</a> <a href="/dragonfly/tags/sass/" style="font-size: 11px;">sass</a> <a href="/dragonfly/tags/security/" style="font-size: 10px;">security</a> <a href="/dragonfly/tags/setup/" style="font-size: 10px;">setup</a> <a href="/dragonfly/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/dragonfly/tags/tool/" style="font-size: 10px;">tool</a> <a href="/dragonfly/tags/tools/" style="font-size: 11px;">tools</a> <a href="/dragonfly/tags/vim/" style="font-size: 10px;">vim</a> <a href="/dragonfly/tags/web/" style="font-size: 10px;">web</a> <a href="/dragonfly/tags/xlu/" style="font-size: 10px;">xlu</a> <a href="/dragonfly/tags/ycma/" style="font-size: 12px;">ycma</a> <a href="/dragonfly/tags/ytWebsite/" style="font-size: 10px;">ytWebsite</a> <a href="/dragonfly/tags/zmzhang/" style="font-size: 17px;">zmzhang</a> <a href="/dragonfly/tags/跨域/" style="font-size: 10px;">跨域</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2016/10/">October 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/dragonfly/2017/06/07/Angular-Q-A/">Angular Q&amp;A</a>
+          </li>
+        
+          <li>
+            <a href="/dragonfly/2017/05/27/View-On-Vue/">View On Vue</a>
+          </li>
+        
+          <li>
+            <a href="/dragonfly/2017/05/25/underscore-js学习/">underscore.js学习</a>
+          </li>
+        
+          <li>
+            <a href="/dragonfly/2017/05/20/socket-too-many-files/">socket too many files</a>
+          </li>
+        
+          <li>
+            <a href="/dragonfly/2017/05/20/关于angular-filter/">关于angular filter</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 YT Frontend Team<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/dragonfly/" class="mobile-nav-link">Home</a>
+  
+    <a href="/dragonfly/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'dragonfly-disqus';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/dragonfly/fancybox/jquery.fancybox.css">
+  <script src="/dragonfly/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/dragonfly/js/script.js"></script>
+
+  </div>
+</body>
+</html>

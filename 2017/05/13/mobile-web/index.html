@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>移动端web踩坑指南 | Dragonfly Infinity</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="meta标签Apple-Specific Meta Tag Keysx5内核定制标签说明 viewport1&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1.0, minimum-scale=1.0,  maximum-scale=1.0, user-scalable=no&amp;q">
+<meta name="keywords" content="ycma,mobile,web">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动端web踩坑指南">
+<meta property="og:url" content="https://wflkaaa.github.io/dragonfly/2017/05/13/mobile-web/index.html">
+<meta property="og:site_name" content="Dragonfly Infinity">
+<meta property="og:description" content="meta标签Apple-Specific Meta Tag Keysx5内核定制标签说明 viewport1&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1.0, minimum-scale=1.0,  maximum-scale=1.0, user-scalable=no&amp;q">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/12554487/19838265/762bb6ba-9f06-11e6-9de5-1047ad489f91.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wflkaaa/dragonfly/master/code/images/device-list.png">
+<meta property="og:image" content="https://jinlong.github.io/image/css-retina-1px/border.png">
+<meta property="og:updated_time" content="2017-06-08T04:50:10.620Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="移动端web踩坑指南">
+<meta name="twitter:description" content="meta标签Apple-Specific Meta Tag Keysx5内核定制标签说明 viewport1&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1.0, minimum-scale=1.0,  maximum-scale=1.0, user-scalable=no&amp;q">
+<meta name="twitter:image" content="https://cloud.githubusercontent.com/assets/12554487/19838265/762bb6ba-9f06-11e6-9de5-1047ad489f91.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Dragonfly Infinity" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/dragonfly/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/dragonfly/" id="logo">Dragonfly Infinity</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/dragonfly/" id="subtitle">Talk is cheap, Show me the code</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/dragonfly/">Home</a>
+        
+          <a class="main-nav-link" href="/dragonfly/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://wflkaaa.github.io/dragonfly"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-mobile-web" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/dragonfly/2017/05/13/mobile-web/" class="article-date">
+  <time datetime="2017-05-12T16:00:00.000Z" itemprop="datePublished">2017-05-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      移动端web踩坑指南
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h2 id="meta标签"><a href="#meta标签" class="headerlink" title="meta标签"></a>meta标签</h2><p><a href="https://developer.apple.com/library/content/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html" target="_blank" rel="external">Apple-Specific Meta Tag Keys</a><br><a href="http://open.mb.qq.com/web/doc?id=1201" target="_blank" rel="external">x5内核定制<meta>标签说明</a></p>
+<h3 id="viewport"><a href="#viewport" class="headerlink" title="viewport"></a>viewport</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, minimum-scale=1.0,  maximum-scale=1.0, user-scalable=no&quot;&gt;</div></pre></td></tr></table></figure>
+<p>visual viewport: The visual viewport is the part of the page that’s currently shown on-screen.(在屏幕上可以看见的那部分视图，露出到海面上的冰山)<br>layout viewport: The layout viewport can be considerably wider than the visual viewport, and contains elements that appear and do not appear on the screen.(整座冰山)</p>
+<p>content中的各参数解读<br>width设置的是layout viewport，支持数值， 范围从200到10,000， 默认为980像素，也可以设置成device-width，即屏幕宽度（虚拟像素， 不是实际像素）;<br>initial-scale， 浮点数， 初始的缩放比例， 范围从0 - 10;<br>minimum-scale， 浮点数， 允许用户缩放到最小的比例;<br>maximum-scale， 浮点数， 允许用户缩放到最大的比例；<br>user-scalable， yes|no， 是否允许用户缩放；</p>
+<a id="more"></a>
+<h3 id="apple-mobile-web-app-capable"><a href="#apple-mobile-web-app-capable" class="headerlink" title="apple-mobile-web-app-capable"></a>apple-mobile-web-app-capable</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot;&gt;</div></pre></td></tr></table></figure>
+<p>是否启动webapp功能， 会删除默认的苹果工具栏和菜单栏。</p>
+<h3 id="apple-mobile-web-app-status-bar-style"><a href="#apple-mobile-web-app-status-bar-style" class="headerlink" title="apple-mobile-web-app-status-bar-style"></a>apple-mobile-web-app-status-bar-style</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;apple-mobile-web-app-status-bar-style&quot; content=&quot;black&quot;&gt;</div></pre></td></tr></table></figure>
+<p>当启动webpp功能时， 显示手机信号、时间、电池的顶部导航栏的颜色。 默认值为default（白色），可以定位black（黑色）和black-translucent(灰色半透明)</p>
+<h3 id="format-detection"><a href="#format-detection" class="headerlink" title="format-detection"></a>format-detection</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;format-detection&quot; content=&quot;telphone=no, email=no&quot;&gt;</div></pre></td></tr></table></figure>
+<p>格式检测，忽略页面中的数字识别为电话号码， 邮箱</p>
+<h3 id="X-UA-Compatible"><a href="#X-UA-Compatible" class="headerlink" title="X-UA-Compatible"></a>X-UA-Compatible</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</div></pre></td></tr></table></figure>
+<p>避免IE使用兼容模式</p>
+<h3 id="x5-orientation"><a href="#x5-orientation" class="headerlink" title="x5-orientation"></a>x5-orientation</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;x5-orientation&quot; content=&quot;portrait&quot;&gt;</div></pre></td></tr></table></figure>
+<p>QQ强制竖屏</p>
+<h3 id="x5-fullscreen"><a href="#x5-fullscreen" class="headerlink" title="x5-fullscreen"></a>x5-fullscreen</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;x5-fullscreen&quot; content=&quot;yes&quot;&gt;</div></pre></td></tr></table></figure>
+<p>QQ强制竖屏</p>
+<h3 id="x5-page-mode"><a href="#x5-page-mode" class="headerlink" title="x5-page-mode"></a>x5-page-mode</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;x5-page-mode&quot; content=&quot;app&quot;&gt;</div></pre></td></tr></table></figure>
+<p>QQ应用模式</p>
+<hr>
+<h2 id="页面滚动卡顿"><a href="#页面滚动卡顿" class="headerlink" title="页面滚动卡顿"></a>页面滚动卡顿</h2><p>在IOS5之前， 页面中不支持局部滚动，如果要实现局部滚动效果， 只能引用第三方库（例如iscroll等）, 但是在IOS5之后，出现了支持局部滚动的css属性， -webkit-overflow-scrolling: touch<br>如果你在开发中发现滑动卡顿，请尝试添加上述属性</p>
+<hr>
+<h2 id="点击高亮"><a href="#点击高亮" class="headerlink" title="点击高亮"></a>点击高亮</h2><p>IOS上默认会有点击高亮的效果， 如果想要禁用它， 可以添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">* &#123;</div><div class="line">-webkit-tap-highlight-color: transparent;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="隐藏滚动条"><a href="#隐藏滚动条" class="headerlink" title="隐藏滚动条"></a>隐藏滚动条</h2><p>在IOS上想要隐藏滚动条， 尝试了如下代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">element::-webkit-scrollbar &#123;</div><div class="line">	display: none;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这段代码在PC可以正常work， 但是在IOS无法正常工作。 目前为止， 并没有找到合适办法可以隐藏滚动条。</p>
+<hr>
+<h2 id="出界问题"><a href="#出界问题" class="headerlink" title="出界问题"></a>出界问题</h2><p>在ios里引发出界：<br>全局滚动：滚动到页面顶部或底部时继续向下向上滑动，就会出现<br>局部滚动：滚动到页面顶部或底部时，手指离开停下，再继续向下向上滑动，就会出现<br>大概的效果如下（<a href="**https://github.com/muwenzi/Program-Blog/issues/42**">盗图一张</a>）：<br><img src="https://cloud.githubusercontent.com/assets/12554487/19838265/762bb6ba-9f06-11e6-9de5-1047ad489f91.png" alt="enter image description here"></p>
+<p>解决方法：<br>对于全局滚动<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">document.body.addEventListener(&apos;touchmove&apos;, function(e)&#123;</div><div class="line">	// 添加一些橡皮筋动画</div><div class="line">	e.stopPropagation();</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>对于局部滚动， 一般的dom结构如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;container&quot;&gt;</div><div class="line">	&lt;div class=&quot;scroller&quot;&gt;</div><div class="line">		&lt;!-- 这里是正文 --&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>css 样式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">body &#123;</div><div class="line">	-webkit-overflow-scrolling: touch;</div><div class="line">&#125;</div><div class="line">.container &#123;</div><div class="line">	height: 500px;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>js如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var startY;</div><div class="line">var scroller = $(&apos;.scroller&apos;);</div><div class="line">scroller.on(&apos;touchstart&apos;, function(e) &#123;</div><div class="line">	startY = e.touches[0].clientY;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">scroller.on(&apos;touchmove&apos;, function(e)&#123;</div><div class="line">	curY = e.touches[0].clientY</div><div class="line">	// 根据 curY 和 startY 判断滑动方向</div><div class="line">	// 计算当前的滚动到的位置， 然后与滑动方向综合考虑是否还能继续滑动</div><div class="line">	// 当已经滑动到底部或者顶部还要继续向下或者向上滑动， 则还可以添加一些橡皮筋效果， 然后阻止事件冒泡</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="滚动穿透"><a href="#滚动穿透" class="headerlink" title="滚动穿透"></a>滚动穿透</h2><p>在IOS中， 如果在可以滚动的元素外面遮上一层蒙版， 此时， 在蒙版上做滑动操作， 会导致蒙版下面的元素发生滚动， 最常见的DOM结构如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&lt;!doctype&gt;</div><div class="line">&lt;html&gt;</div><div class="line">	&lt;head&gt;</div><div class="line">		&lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">		&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</div><div class="line">	&lt;/head&gt;</div><div class="line">	&lt;style&gt;</div><div class="line">		.mask &#123;</div><div class="line">			position: fixed;</div><div class="line">			left: 0;</div><div class="line">			right: 0;</div><div class="line">			top: 0;</div><div class="line">			bottom: 0;</div><div class="line">			background-color: rgba(0, 0, 0, 0.5);</div><div class="line">		&#125;</div><div class="line">	&lt;/style&gt;</div><div class="line">	&lt;body&gt;</div><div class="line">		&lt;div&gt;</div><div class="line">			&lt;!-- 这个里面有很长很长的内容 --&gt;</div><div class="line">		&lt;/div&gt;</div><div class="line">		&lt;div class=&quot;mask&quot;&gt;&lt;/div&gt;</div><div class="line">	&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p>可以在<a href="http://114.55.133.90/scroll1.html" target="_blank" rel="external">手机打开查看效果</a>当mask弹出来后， 滑动操作会导致页面滚动(pc 上和手机上效果一样)。 不过由于我们dom结构，有这样的结果也并不稀奇。 那么可以看下面的代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">html, body &#123;</div><div class="line">	height: 100%;</div><div class="line">	-webkit-overflow-scrolling: touch;</div><div class="line">&#125;</div><div class="line">.container &#123;</div><div class="line">	height: 100%;</div><div class="line">	overflow: auto;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;container&quot;&gt;</div><div class="line">	&lt;p&gt;</div><div class="line">		&lt;!-- 这里面有很长很长的内容 --&gt;</div><div class="line">	&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;div class=&quot;mask&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>b可以<a href="http://114.55.133.90/scroll.html" target="_blank" rel="external">点这里查看效果</a>， 你会发现现在PC上和手机上的表现不一样了。在PC上， 滑动mask不会造成滚动，但是在手机上还是会有滚动效果。<br>解决方案：<br>1、当出现mask时，给原本会滚动的元素加overflow：hidden<br>对于第一种情况<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">html &#123;</div><div class="line"> height: 100%;</div><div class="line"> overflow: hidden;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><a href="http://114.55.133.90/scroll1-css-fix" target="_blank" rel="external">dom1</a></p>
+<p>对于第二种情况<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">.container &#123;</div><div class="line">	height: 100%;</div><div class="line">	overflow: hidden;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><a href="http://114.55.133.90/scroll-css-fix" target="_blank" rel="external">dom2</a></p>
+<p>2、 在mask上监听touchmove事件， 并阻止默认行为 preventDefault<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(&apos;.mask&apos;).on(&apos;touchmove&apos;, function(e)&#123;</div><div class="line">	e.preventDefault();</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>3、给body添加position:fixed属性， 这种方法适用于第二种dom结构， 但是其在IOS上，由于浏览器露底， 会出现比较<a href="http://114.55.133.90/scroll1-js-fix.html" target="_blank" rel="external">奇怪的现象</a>， 让人不省心</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">body.mask-open&#123;</div><div class="line">	position: fixed;</div><div class="line">	width: 100%;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="适配"><a href="#适配" class="headerlink" title="适配"></a>适配</h2><p>移动端适配是一大难题， 原因在于移动终端实在太过于五花八门！ 放个图感受下： </p>
+<p><img src="https://raw.githubusercontent.com/wflkaaa/dragonfly/master/code/images/device-list.png" alt=""></p>
+<p>就苹果一家， 就有这么多， 心累～～</p>
+<p>关于图片ICON之类， 需要根据屏幕像素比加载不同分辨率的图片， 之前有这方面的阐述了， 这里不在赘述， 感兴趣的可以上<a href="http://yt-dragonfly.tech/dragonfly/2017/03/16/Responsive-Image/" target="_blank" rel="external">戳这里</a>。 本次着重谈下文字适配。<br>在偷窥了<a href="http://3g.163.com/touch/news/subchannel/all?dataversion=A&amp;version=v_standard" target="_blank" rel="external">网易新闻</a>和<a href="https://m.taobao.com/?sprefer=sypc00#index" target="_blank" rel="external">阿里手淘</a>后发现两家大厂在对文字的适配上有自己理解。网易认为文字也需要根据屏幕大小变化而变化， 而阿里手淘觉得文字应该在不同的屏幕上显示一样大小的文字。两家虽然理解不同，但在实现手法上大同小异，都是围绕rem做文章。两家具体做法如下：</p>
+<ul>
+<li>以设计稿为基准， 计算各机型html的font-size大小。<br>  <strong>网易新闻的设计稿是640px的， 基准的font-size是100px。</strong> 基于这个可以计算出各个不同型号的机器的font-size大小。 比如 iphone5的屏幕宽度是320px， 所以设置其font-size = 320px / 6.4 = 50px；<br>  <strong>阿里手淘的设计稿是750px， 然后他们倾向于把设计稿分成100份， 每份为1a， 而且规定10a = 1 rem， 所以其基准的html的font-size为75px 。</strong> 那么如果手机从iphone6变成了6plus， html的font-size该怎么计算？ 由于6plus是3倍屏幕， 因此其实际物理像素是3 × 414px = 1242px, 此时，font-size =  1rem = 10a = 1242 / 10 = 124.2px 。 <pre><code>为什么阿里和网易在计算像素上会有这个差别？
+</code></pre>我猜测阿里的UI输出的尺寸是1:1的（设计尺寸是750px， 输出尺寸也是750px），而网易是2:1的（设计尺寸是640px， 输出尺寸是320px）， 但这只是表象， 真相是阿里前端在设计网页时， 希望按照750px来设计的，而不是375px！  为什么会有这种想法， 而且我怎么把750px的页面放到375px的手机上呢？</li>
+<li>根据手机型号和宽度， 动态改变viewport<br>阿里手淘根据自己经验，总结出了<a href="https://github.com/amfe/lib-flexible" target="_blank" rel="external">lib-flexible</a>这个开源库，类似下面<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var metaEl = doc.createElement(&apos;meta&apos;);</div><div class="line">var scale = isRetina ? 0.5:1;</div><div class="line">metaEl.setAttribute(&apos;name&apos;, &apos;viewport&apos;);</div><div class="line">metaEl.setAttribute(&apos;content&apos;, &apos;initial-scale=&apos; + scale + &apos;, maximum-scale=&apos; + scale + &apos;, minimum-scale=&apos; + scale + &apos;, user-scalable=no&apos;);</div><div class="line">if (docEl.firstElementChild) &#123;</div><div class="line">    document.documentElement.firstElementChild.appendChild(metaEl);</div><div class="line">&#125; else &#123;</div><div class="line">    var wrap = doc.createElement(&apos;div&apos;);</div><div class="line">    wrap.appendChild(metaEl);</div><div class="line">    documen.write(wrap.innerHTML);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>其实质是</p>
+<ul>
+<li>动态改写<meta>标签</li>
+<li>给<html>元素添加data-dpr属性，并且动态改写data-dpr的值</html></li>
+<li>给<html>元素添加font-size属性，并且动态改写font-size的值<br>在这一点上， 我并没有看出两家有什么差别， 差别在于， 网易的meta标签里面的initial-scale的数值为1.0， 而阿里手淘的initial-scale是根据屏幕倍率变化的， 对于2倍屏， 其值是0.5， 对于3倍屏， 其值是0.33333333！现在可以理解怎么把750px的东西放到375px里面而不溢出了吧！而且，这样做有一个好处， 就是可以轻松解决<a href="https://jinlong.github.io/2015/05/24/css-retina-hairlines/" target="_blank" rel="external">border 1px问题</a>， 这个或许就是阿里手淘这么做的真实原因吧<br>3、计算元素尺寸的rem值<br>如果用的scss或者less， 可以尝试定义一个辅助方法用于计算， 如下<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">px2rem（$px）&#123;</div><div class="line">	$rem: 75px;</div><div class="line">	return $px/$rem * 1rem;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</html></li>
+</ul>
+<p>网易新闻会把几乎所有的元素尺寸转换成rem的形式， 包括文字字体， 而阿里手淘则稍微复杂点，他们倾向于如下设置字体<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">.selector &#123;</div><div class="line">    width: 2rem;</div><div class="line">    border: 1px solid #ddd;</div><div class="line">&#125;</div><div class="line">[data-dpr=&quot;1&quot;] .selector &#123;</div><div class="line">    height: 32px;</div><div class="line">    font-size: 14px;</div><div class="line">&#125;</div><div class="line">[data-dpr=&quot;2&quot;] .selector &#123;</div><div class="line">    height: 64px;</div><div class="line">    font-size: 28px;</div><div class="line">&#125;</div><div class="line">[data-dpr=&quot;3&quot;] .selector &#123;</div><div class="line">    height: 96px;</div><div class="line">    font-size: 42px;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这样设置的字体在所有屏幕上看到的效果是字号没有任何变化</p>
+<p>总结： 看完了两个大厂的做法， 各有千秋， 各位看客见仁见智了！</p>
+<h2 id="1px-边框问题"><a href="#1px-边框问题" class="headerlink" title="1px 边框问题"></a>1px 边框问题</h2><p>问题描述：<br>border: 1px solid #ccc 边框在高倍屏上会显示得实际的1px要粗， 影响UI体验， 而且在IOS8之前， border： 0.5px 会被浏览器解析为0， 所以这就导致了我们需要寻找其它替代方案来弥补这个窟窿， 具体做法有如下几种<br>1、图片<br>选用一张图片（6×6）， 然后添加一些css代码(并不是直接使用这张图片， 真实的图片可以找UI要)<br><img src="https://jinlong.github.io/image/css-retina-1px/border.png" alt="enter image description here"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">.border&#123;</div><div class="line">    border-width: 1px;</div><div class="line">    border-image: url(border.gif) 2 repeat;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样的坏处是调整起来非常不方便。比如我现在需要改变颜色，那只能换一张图片；再比如我们只需要底部border， 这时候你可能需要换一张图片， 并且更改css样式；如果要实现border-radius， 你放个我吧～</p>
+<p>2、软图片<br>软图片的思路就是用渐变代替背景图片<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">.border &#123;</div><div class="line">    background: </div><div class="line">	    linear-gradient(180deg, black, black 50%, transparent 50%) top    left  / 100% 1px no-repeat,</div><div class="line">	    linear-gradient(90deg,  black, black 50%, transparent 50%) top    right / 1px 100% no-repeat,</div><div class="line">	    linear-gradient(0,      black, black 50%, transparent 50%) bottom right / 100% 1px no-repeat,</div><div class="line">	    linear-gradient(-90deg, black, black 50%, transparent 50%) bottom left  / 1px 100% no-repeat;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这种方式需要写很多css代码， 而且一样不好实现border-radius</p>
+<p>3、伪类 + transform<br>思路：利用伪类模拟border， 并用transform： scale(0.5) 进行缩放， 代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">.hairlines li&#123;</div><div class="line">    position: relative;</div><div class="line">    border:none;</div><div class="line">&#125;</div><div class="line">.hairlines li:after&#123;</div><div class="line">    content: &apos;&apos;;</div><div class="line">    position: absolute;</div><div class="line">    left: 0;</div><div class="line">    background: #000;</div><div class="line">    width: 100%;</div><div class="line">    height: 1px;</div><div class="line">    -webkit-transform: scaleY(0.5);</div><div class="line">            transform: scaleY(0.5);</div><div class="line">    -webkit-transform-origin: 0 0;</div><div class="line">            transform-origin: 0 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>该方法的问题是需要根据js设置缩放比， 而且css代码也足够复杂<br>4、利用viewport<br>根据不同的devicePixelRatio输出不同的meta标签。<br>devicePixelRatio = 2时， 输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;viewport&quot; content=&quot;initial-scale=0.5, maximum-scale=0.5, minimum-scale=0.5, user-scalable=no&quot;&gt;</div></pre></td></tr></table></figure>
+<p>devicePixelRatio = 3时， 输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;viewport&quot; content=&quot;initial-scale=0.3333333333333333, maximum-scale=0.3333333333333333, minimum-scale=0.3333333333333333, user-scalable=no&quot;&gt;</div></pre></td></tr></table></figure></p>
+<p>这样只需要在css样式中写<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">div &#123;</div><div class="line">	border: 1px solid #ccc;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>就ok了。<br>那如何动态修改meta标签呢？<br> 如果你不嫌麻烦，自己手写一个也很简单， 但是如果你比较懒， 那就用淘宝的<a href="https://github.com/amfe/lib-flexible" target="_blank" rel="external">lib-flexible</a>， 现成的解决方案， 不要太完美～</p>
+<h2 id="click-300ms延迟"><a href="#click-300ms延迟" class="headerlink" title="click 300ms延迟"></a>click 300ms延迟</h2><p>click延迟是一个历史问题。 早期手机端设计了在网页上双击放大效果， 300ms延迟就是为了确定点击是否是一个双击操作。但是对于一些单击操作， 这个延迟就会显得比较蛋疼。目前， android上的浏览器中， 如果设置了禁用缩放， 如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, user-scalable=no&quot;&gt;</div></pre></td></tr></table></figure></p>
+<p>则会优化这个点击延迟， 但是在IOS上目前还不确定是否已经有这种优化。 好在市面上有一个小型的库<a href="https://github.com/ftlabs/fastclick" target="_blank" rel="external">fastclick</a>专门处理这个问题</p>
+<h2 id="阻止屏幕旋转时字体自动调整"><a href="#阻止屏幕旋转时字体自动调整" class="headerlink" title="阻止屏幕旋转时字体自动调整"></a>阻止屏幕旋转时字体自动调整</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">html, body, form, fieldset, p, div, h1, h2, h3, h4, h5, h6 &#123;</div><div class="line">-webkit-text-size-adjust:none;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>参考<br><a href="http://am-team.github.io/amg/dev-exp-doc.html#移动-web-开发技巧" target="_blank" rel="external">无线Web开发经验谈</a><br><a href="https://segmentfault.com/a/1190000003908191" target="_blank" rel="external">web前端 —— 移动端知识的一些总结</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://wflkaaa.github.io/dragonfly/2017/05/13/mobile-web/" data-id="cj3ny3dnu0073cx4pcp7h0rsk" class="article-share-link">Partager</a>
+      
+        <a href="https://wflkaaa.github.io/dragonfly/2017/05/13/mobile-web/#disqus_thread" class="article-comment-link">Commentaires</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/mobile/">mobile</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/web/">web</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/ycma/">ycma</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/dragonfly/2017/05/17/Study-Of-Promise/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          Study Of Promise
+        
+      </div>
+    </a>
+  
+  
+    <a href="/dragonfly/2017/04/25/Archive-Tips/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">Archive Tips</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/1-7-c/">1.7.c</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Angularjs/">Angularjs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/D3/">D3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Django/">Django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Django，deploy/">Django，deploy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Ngdocs/">Ngdocs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Promise/">Promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Redux/">Redux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Reselect/">Reselect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/angular/">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/autoDeploy/">autoDeploy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/axxia/">axxia</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/bash/">bash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/browserSync/">browserSync</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/cmd/">cmd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/css-secrets/">css-secrets</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/exif/">exif</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/expect/">expect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/extend/">extend</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/face-client/">face_client</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/filter/">filter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/gulp/">gulp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/h5/">h5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/hbwang/">hbwang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/idea/">idea</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/initial/">initial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/kailiu/">kailiu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/lbao/">lbao</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/mixin/">mixin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/mobile/">mobile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/rbzhou/">rbzhou</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/responsive/">responsive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/responsive-image-background/">responsive image background</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/sass/">sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/security/">security</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/setup/">setup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/tomcat/">tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/tools/">tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/vim/">vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/xlu/">xlu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/ycma/">ycma</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/ytWebsite/">ytWebsite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/zmzhang/">zmzhang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/跨域/">跨域</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <div class="widget tagcloud">
+      <a href="/dragonfly/tags/1-7-c/" style="font-size: 10px;">1.7.c</a> <a href="/dragonfly/tags/Angularjs/" style="font-size: 19px;">Angularjs</a> <a href="/dragonfly/tags/CSS/" style="font-size: 11px;">CSS</a> <a href="/dragonfly/tags/D3/" style="font-size: 10px;">D3</a> <a href="/dragonfly/tags/Django/" style="font-size: 11px;">Django</a> <a href="/dragonfly/tags/Django，deploy/" style="font-size: 10px;">Django，deploy</a> <a href="/dragonfly/tags/JavaScript/" style="font-size: 13px;">JavaScript</a> <a href="/dragonfly/tags/Javascript/" style="font-size: 16px;">Javascript</a> <a href="/dragonfly/tags/Ngdocs/" style="font-size: 10px;">Ngdocs</a> <a href="/dragonfly/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/dragonfly/tags/React/" style="font-size: 10px;">React</a> <a href="/dragonfly/tags/Redux/" style="font-size: 10px;">Redux</a> <a href="/dragonfly/tags/Reselect/" style="font-size: 10px;">Reselect</a> <a href="/dragonfly/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/dragonfly/tags/angular/" style="font-size: 10px;">angular</a> <a href="/dragonfly/tags/autoDeploy/" style="font-size: 10px;">autoDeploy</a> <a href="/dragonfly/tags/axxia/" style="font-size: 10px;">axxia</a> <a href="/dragonfly/tags/bash/" style="font-size: 10px;">bash</a> <a href="/dragonfly/tags/browserSync/" style="font-size: 10px;">browserSync</a> <a href="/dragonfly/tags/cmd/" style="font-size: 11px;">cmd</a> <a href="/dragonfly/tags/css/" style="font-size: 11px;">css</a> <a href="/dragonfly/tags/css-secrets/" style="font-size: 10px;">css-secrets</a> <a href="/dragonfly/tags/exif/" style="font-size: 10px;">exif</a> <a href="/dragonfly/tags/expect/" style="font-size: 10px;">expect</a> <a href="/dragonfly/tags/extend/" style="font-size: 10px;">extend</a> <a href="/dragonfly/tags/face-client/" style="font-size: 10px;">face_client</a> <a href="/dragonfly/tags/filter/" style="font-size: 10px;">filter</a> <a href="/dragonfly/tags/git/" style="font-size: 10px;">git</a> <a href="/dragonfly/tags/gulp/" style="font-size: 11px;">gulp</a> <a href="/dragonfly/tags/h5/" style="font-size: 10px;">h5</a> <a href="/dragonfly/tags/hbwang/" style="font-size: 15px;">hbwang</a> <a href="/dragonfly/tags/hexo/" style="font-size: 12px;">hexo</a> <a href="/dragonfly/tags/idea/" style="font-size: 10px;">idea</a> <a href="/dragonfly/tags/initial/" style="font-size: 10px;">initial</a> <a href="/dragonfly/tags/kailiu/" style="font-size: 14px;">kailiu</a> <a href="/dragonfly/tags/lbao/" style="font-size: 20px;">lbao</a> <a href="/dragonfly/tags/linux/" style="font-size: 10px;">linux</a> <a href="/dragonfly/tags/mixin/" style="font-size: 10px;">mixin</a> <a href="/dragonfly/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/dragonfly/tags/rbzhou/" style="font-size: 18px;">rbzhou</a> <a href="/dragonfly/tags/responsive/" style="font-size: 10px;">responsive</a> <a href="/dragonfly/tags/responsive-image-background/" style="font-size: 10px;">responsive image background</a> <a href="/dragonfly/tags/sass/" style="font-size: 11px;">sass</a> <a href="/dragonfly/tags/security/" style="font-size: 10px;">security</a> <a href="/dragonfly/tags/setup/" style="font-size: 10px;">setup</a> <a href="/dragonfly/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/dragonfly/tags/tool/" style="font-size: 10px;">tool</a> <a href="/dragonfly/tags/tools/" style="font-size: 11px;">tools</a> <a href="/dragonfly/tags/vim/" style="font-size: 10px;">vim</a> <a href="/dragonfly/tags/web/" style="font-size: 10px;">web</a> <a href="/dragonfly/tags/xlu/" style="font-size: 10px;">xlu</a> <a href="/dragonfly/tags/ycma/" style="font-size: 12px;">ycma</a> <a href="/dragonfly/tags/ytWebsite/" style="font-size: 10px;">ytWebsite</a> <a href="/dragonfly/tags/zmzhang/" style="font-size: 17px;">zmzhang</a> <a href="/dragonfly/tags/跨域/" style="font-size: 10px;">跨域</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2016/10/">October 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/dragonfly/2017/06/07/Angular-Q-A/">Angular Q&amp;A</a>
+          </li>
+        
+          <li>
+            <a href="/dragonfly/2017/05/27/View-On-Vue/">View On Vue</a>
+          </li>
+        
+          <li>
+            <a href="/dragonfly/2017/05/25/underscore-js学习/">underscore.js学习</a>
+          </li>
+        
+          <li>
+            <a href="/dragonfly/2017/05/20/socket-too-many-files/">socket too many files</a>
+          </li>
+        
+          <li>
+            <a href="/dragonfly/2017/05/20/关于angular-filter/">关于angular filter</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 YT Frontend Team<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/dragonfly/" class="mobile-nav-link">Home</a>
+  
+    <a href="/dragonfly/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'dragonfly-disqus';
+  
+  var disqus_url = 'https://wflkaaa.github.io/dragonfly/2017/05/13/mobile-web/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/dragonfly/fancybox/jquery.fancybox.css">
+  <script src="/dragonfly/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/dragonfly/js/script.js"></script>
+
+  </div>
+</body>
+</html>

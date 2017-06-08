@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>directive require controller 引发controller复用问题 | Dragonfly Infinity</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="使用情景：1、多个template 使用同一个controller：( 1 )在需要使用某一个controller的地方使用ng-controller，例如在ng-include添加的template添加controller；例如：12345&amp;lt;div class=&amp;quot;metro-tile&amp;quot; ng-mouseover=&amp;quot;hoverIn()&amp;quot; ng-mous">
+<meta name="keywords" content="Angularjs,zmzhang,Javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="directive require controller 引发controller复用问题">
+<meta property="og:url" content="https://wflkaaa.github.io/dragonfly/2017/05/20/directive-require-controller-引发controller复用问题/index.html">
+<meta property="og:site_name" content="Dragonfly Infinity">
+<meta property="og:description" content="使用情景：1、多个template 使用同一个controller：( 1 )在需要使用某一个controller的地方使用ng-controller，例如在ng-include添加的template添加controller；例如：12345&amp;lt;div class=&amp;quot;metro-tile&amp;quot; ng-mouseover=&amp;quot;hoverIn()&amp;quot; ng-mous">
+<meta property="og:updated_time" content="2017-06-08T04:50:10.616Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="directive require controller 引发controller复用问题">
+<meta name="twitter:description" content="使用情景：1、多个template 使用同一个controller：( 1 )在需要使用某一个controller的地方使用ng-controller，例如在ng-include添加的template添加controller；例如：12345&amp;lt;div class=&amp;quot;metro-tile&amp;quot; ng-mouseover=&amp;quot;hoverIn()&amp;quot; ng-mous">
+  
+    <link rel="alternate" href="/atom.xml" title="Dragonfly Infinity" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/dragonfly/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/dragonfly/" id="logo">Dragonfly Infinity</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/dragonfly/" id="subtitle">Talk is cheap, Show me the code</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/dragonfly/">Home</a>
+        
+          <a class="main-nav-link" href="/dragonfly/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://wflkaaa.github.io/dragonfly"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-directive-require-controller-引发controller复用问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/dragonfly/2017/05/20/directive-require-controller-引发controller复用问题/" class="article-date">
+  <time datetime="2017-05-20T03:45:51.000Z" itemprop="datePublished">2017-05-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      directive require controller 引发controller复用问题
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>使用情景：<br>1、多个template 使用同一个controller：<br>( 1 )在需要使用某一个controller的地方使用ng-controller，例如在ng-include添加的template添加controller；例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;metro-tile&quot; ng-mouseover=&quot;hoverIn()&quot; ng-mouseleave=&quot;hoverOut()&quot;&gt;</div><div class="line">   &lt;div class=&quot;status-tile tile-default&quot; ng-show=&quot;tileData.status == 0&quot;&gt;</div><div class="line">          &lt;div class=&quot;tile-include&quot; ng-include=&quot;template.html&quot;&gt;&lt;/div&gt;</div><div class="line">   &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>template.html:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;row one-n-task&quot; ng-controller=&quot;oneNTaskTileCtrl&quot;&gt;</div><div class="line">     ......</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>( 2 )业务逻辑相同但是template不同的directive共用一个controller，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">function myExample() &#123;</div><div class="line">    var directive = &#123;</div><div class="line">        restrict: &apos;EA&apos;,</div><div class="line">        templateUrl: &apos;app/feature/example.directive.html&apos;,</div><div class="line">        scope: &#123;</div><div class="line">            max: &apos;=&apos;</div><div class="line">        &#125;,</div><div class="line">        link: linkFunc,</div><div class="line">        controller : ExampleController,</div><div class="line">        controllerAs: &apos;vm&apos;,</div><div class="line">        bindToController: true // because the scope is isolated</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    return directive;</div><div class="line">    function linkFunc(scope.elem, attr, ctrl)&#123;</div><div class="line">        console.log(&quot;This is link funciton&quot;)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">function example1() &#123;</div><div class="line">    var directive = &#123;</div><div class="line">        restrict: &apos;A&apos;,</div><div class="line">        controller : ExampleController,</div><div class="line">        controllerAs: &apos;vm&apos;,</div><div class="line">        bindToController: true // because the scope is isolated</div><div class="line">    &#125;;</div><div class="line">    return directive;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>2、上下级controller:<br>子级的controller会默认集成父作用域，无论是基本类型和引用类型都会继承例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;body ng-controller=&quot;parentController&quot;&gt;</div><div class="line">    &lt;h1&gt;基本类型:&#123;&#123;value&#125;&#125;&lt;/h1&gt;</div><div class="line">    &lt;h1&gt;引用类型:&#123;&#123;obj.value&#125;&#125;&lt;/h1&gt;</div><div class="line">    &lt;input type=&quot;button&quot; ng-click=&quot;parentChange(&apos;parent&apos;)&quot; value=&quot;parent&quot;/&gt;</div><div class="line">    &lt;div ng-controller=&quot;childController&quot;&gt;</div><div class="line">        &lt;h1&gt;基本类型:&#123;&#123;value&#125;&#125;&lt;/h1&gt;</div><div class="line">        &lt;h1&gt;引用类型:&#123;&#123;obj.value&#125;&#125;&lt;/h1&gt;</div><div class="line">        &lt;input type=&quot;button&quot; ng-click=&quot;childChange(&apos;child&apos;)&quot; value=&quot;child&quot;/&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div></pre></td></tr></table></figure></p>
+<p>3、controller的继承<br>假设有两个页面，它们的大部分功能都相同，其中完全相同的功能超过50%。两个页面的视图完全不同但是可能视图后面的逻辑非常相似。在这种情形中你可以创建一个基本的控制器来封装基本的逻辑，然后再创建两个自控制器来继承它。<br>可以使用AngularJS内置的 $controller service, 通过依赖注入的方式实现继承； 也可以不依赖$scope的情况下也可以使用javascript原生继承方式<br>创建一个base.controller.js文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">(function() &#123;</div><div class="line">    &apos;use strict&apos;;</div><div class="line">    angular.module(&apos;DemoApp&apos;).controller(&apos;BaseCtrl&apos;, BaseCtrl);</div><div class="line">    //手动注入一些服务</div><div class="line">    BaseCtrl.$inject = [&apos;$scope&apos;,&apos;CRUDServices&apos;];</div><div class="line">    /* @ngInject */</div><div class="line">    function BaseCtrl($scope,CRUDServices) &#123;</div><div class="line">        var _this = this;</div><div class="line">        _this.doSomething = doSomething;</div><div class="line">        activate();</div><div class="line">        //初始化</div><div class="line">        function activate() &#123;</div><div class="line">             _this.bList =  CRUDServices.getList();</div><div class="line">        &#125;</div><div class="line">        function doSomething()&#123;</div><div class="line">            //do some thing</div><div class="line">            return false;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure></p>
+<p>创建一个child.controller.js文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">(function() &#123;</div><div class="line">    &apos;use strict&apos;;</div><div class="line">    angular.module(&apos;DemoApp&apos;).controller(&apos;ChildCtrl&apos;, ChildCtrl);</div><div class="line">    //其中的ExtendServices 用来提供数据的 Servie</div><div class="line">    ChildCtrl.$inject = [&apos;$scope&apos;, &apos;$controller&apos;,&apos;ExtendServices&apos;];</div><div class="line">    /* @ngInject */</div><div class="line">    function ChildCtrl($scope, $controller,ExtendServices) &#123;</div><div class="line">        var vm = this;</div><div class="line">        //调用base controller 传递locals参数进去</div><div class="line">        var parentCtrl = $controller(&apos;BaseCtrl&apos;, &#123; $scope：$scope,CRUDServices:ExtendServices &#125;)</div><div class="line">        //通过 angular.extend 把父控制器上的 方法和属性 绑定到 子的对象上</div><div class="line">        angular.extend(vm, parentCtrl);</div><div class="line">        //初始化</div><div class="line">        activate();</div><div class="line">        function activate() &#123;</div><div class="line">            //调用base controller 的 doSomething 方法</div><div class="line">            vm.doSomething();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure></p>
+<p>可以直接在child的html文件中直接调用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;div&gt;</div><div class="line">    &lt;!--  直接绑定 vm.bList 就会看到输出结果--&gt;</div><div class="line">    &lt;div ng-repeat=&quot;item in vm.bList&quot;&gt;&#123;&#123;item&#125;&#125;&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>4、directive中的controller的引用<br>当多个directive 有类似的逻辑，可以require其他directive的controller： require 同级，require父级；<br>[坑] require同级必须两个指令在同一个html标签上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div></pre></td><td class="code"><pre><div class="line">var zmForm = angular.module(&apos;zmFormReq&apos;,[]);</div><div class="line">zmForm.directive(&apos;zmForm&apos;, function () &#123;</div><div class="line">    return&#123;</div><div class="line">        restrict: &apos;EA&apos;,</div><div class="line">        replace: true,</div><div class="line">        controller: function ($scope) &#123;</div><div class="line">            var _this = this;</div><div class="line">            _this.isAvailable = [];</div><div class="line">            _this.addAvailable = function (req) &#123;</div><div class="line">                _this.isAvailable.push(req)</div><div class="line">            &#125;;</div><div class="line">            _this.submit = function () &#123;</div><div class="line">                for (var i=0; i &lt; _this.isAvailable.length; i++)&#123;</div><div class="line">                    var req = _this.isAvailable[i];</div><div class="line">                    if (!req.isValid)&#123;</div><div class="line">                        if (req.message)&#123;</div><div class="line">                            alert(req.message);</div><div class="line">                        &#125;else &#123;</div><div class="line">                            $(req.element).addClass(&apos;zm-form-alert&apos;);</div><div class="line">                            $(req.element).focus();</div><div class="line">                        &#125;</div><div class="line">                        return false;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            function createAlertClass() &#123;</div><div class="line">                var style = $(&apos;&lt;style&gt;&apos; +</div><div class="line">                    &apos;.zm-form-alert&#123;border: 1px solid red !important;&#125;&apos; +</div><div class="line">                    &apos;.zm-form-alert:focus&#123;outline: red auto 5px;&#125;&apos; +</div><div class="line">                    &apos;&lt;/style&gt;&apos;);</div><div class="line">                $(&apos;html &gt; head&apos;).append(style);</div><div class="line">            &#125;</div><div class="line">            createAlertClass();</div><div class="line">        &#125;,</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line">zmForm.directive(&apos;zmSubmit&apos;, function () &#123;</div><div class="line">    return&#123;</div><div class="line">        restrict: &apos;EA&apos;,</div><div class="line">        replace: true,</div><div class="line">        require: &apos;^zmForm&apos;,</div><div class="line">        scope:&#123;</div><div class="line">            zmClick:&quot;&amp;&quot;</div><div class="line">        &#125;,</div><div class="line">        link: function (scope, element, attr, zmFormCtrl) &#123;</div><div class="line">            var zmClick;</div><div class="line">            if (angular.isUndefined(scope.zmClick))&#123;</div><div class="line">                zmClick = scope.zmClick();</div><div class="line">            &#125;else &#123;</div><div class="line">                zmClick = function () &#123;&#125;;</div><div class="line">            &#125;</div><div class="line">            $(element).bind(&apos;click&apos;, function () &#123;</div><div class="line">                if (zmFormCtrl.submit())&#123;</div><div class="line">                    zmClick();</div><div class="line">                &#125;</div><div class="line">            &#125;)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line">zmForm.directive(&apos;zmRequired&apos;, function ($interval) &#123;</div><div class="line">    return&#123;</div><div class="line">        restrict: &apos;EA&apos;,</div><div class="line">        // replace: true,</div><div class="line">        scope:&#123;</div><div class="line">            zmType:&quot;@?&quot;, zmAlert:&quot;@?&quot;, zmPattern:&quot;=?&quot;</div><div class="line">        &#125;,</div><div class="line">        require: [&apos;^zmForm&apos;,&apos;ngModel&apos;],</div><div class="line">        // require: [&apos;?zmSubmit&apos;, &apos;?ngModel&apos;],</div><div class="line">        link: function (scope, element, attrs, Ctrls) &#123;</div><div class="line">            var zmFormCtrl = Ctrls[0];</div><div class="line">            var ngModelCtrl = Ctrls[1];</div><div class="line">            var reg = /n*/;</div><div class="line">            scope.req = &#123;isValid: false, message: scope.zmAlert, element: element&#125;;</div><div class="line">            if (scope.zmType)&#123;</div><div class="line">                switch (scope.zmType)&#123;</div><div class="line">                    case &apos;int&apos;:</div><div class="line">                        reg = /^-?[1-9]\d*$/; //匹配整数</div><div class="line">                        break;</div><div class="line">                    case &apos;email&apos;:</div><div class="line">                        reg =  /^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/;</div><div class="line">                        break;</div><div class="line">                &#125;</div><div class="line">            &#125;else if(scope.zmPattern) &#123;</div><div class="line">                reg = scope.zmPattern;</div><div class="line">            &#125;</div><div class="line">            zmFormCtrl.addAvailable(scope.req);</div><div class="line">            var test = function (value) &#123;</div><div class="line">                $(element).removeClass(&quot;zm-form-alert&quot;);</div><div class="line">                if (ngModelCtrl.$isEmpty(value))&#123;</div><div class="line">                    scope.req.isValid = false;</div><div class="line">                &#125;else if(reg.test(value))&#123;</div><div class="line">                    scope.req.isValid = true;</div><div class="line">                &#125;else &#123;</div><div class="line">                    scope.req.isValid = false;</div><div class="line">                &#125;</div><div class="line">                return value;</div><div class="line">            &#125;;</div><div class="line">            ngModelCtrl.$parsers.unshift(test);</div><div class="line">            ngModelCtrl.$formatters.unshift(test)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://wflkaaa.github.io/dragonfly/2017/05/20/directive-require-controller-引发controller复用问题/" data-id="cj3ny3dm5001qcx4psm3pru7b" class="article-share-link">Partager</a>
+      
+        <a href="https://wflkaaa.github.io/dragonfly/2017/05/20/directive-require-controller-引发controller复用问题/#disqus_thread" class="article-comment-link">Commentaires</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/Angularjs/">Angularjs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/zmzhang/">zmzhang</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/dragonfly/2017/05/20/angularjs源码阅读（一）依赖注入/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          angularjs源码阅读（一）依赖注入
+        
+      </div>
+    </a>
+  
+  
+    <a href="/dragonfly/2017/05/20/debug-angularjs/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">debug angularjs</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/1-7-c/">1.7.c</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Angularjs/">Angularjs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/D3/">D3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Django/">Django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Django，deploy/">Django，deploy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Ngdocs/">Ngdocs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Promise/">Promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Redux/">Redux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Reselect/">Reselect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/angular/">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/autoDeploy/">autoDeploy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/axxia/">axxia</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/bash/">bash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/browserSync/">browserSync</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/cmd/">cmd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/css-secrets/">css-secrets</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/exif/">exif</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/expect/">expect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/extend/">extend</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/face-client/">face_client</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/filter/">filter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/gulp/">gulp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/h5/">h5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/hbwang/">hbwang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/idea/">idea</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/initial/">initial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/kailiu/">kailiu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/lbao/">lbao</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/mixin/">mixin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/mobile/">mobile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/rbzhou/">rbzhou</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/responsive/">responsive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/responsive-image-background/">responsive image background</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/sass/">sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/security/">security</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/setup/">setup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/tomcat/">tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/tools/">tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/vim/">vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/xlu/">xlu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/ycma/">ycma</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/ytWebsite/">ytWebsite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/zmzhang/">zmzhang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/跨域/">跨域</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <div class="widget tagcloud">
+      <a href="/dragonfly/tags/1-7-c/" style="font-size: 10px;">1.7.c</a> <a href="/dragonfly/tags/Angularjs/" style="font-size: 19px;">Angularjs</a> <a href="/dragonfly/tags/CSS/" style="font-size: 11px;">CSS</a> <a href="/dragonfly/tags/D3/" style="font-size: 10px;">D3</a> <a href="/dragonfly/tags/Django/" style="font-size: 11px;">Django</a> <a href="/dragonfly/tags/Django，deploy/" style="font-size: 10px;">Django，deploy</a> <a href="/dragonfly/tags/JavaScript/" style="font-size: 13px;">JavaScript</a> <a href="/dragonfly/tags/Javascript/" style="font-size: 16px;">Javascript</a> <a href="/dragonfly/tags/Ngdocs/" style="font-size: 10px;">Ngdocs</a> <a href="/dragonfly/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/dragonfly/tags/React/" style="font-size: 10px;">React</a> <a href="/dragonfly/tags/Redux/" style="font-size: 10px;">Redux</a> <a href="/dragonfly/tags/Reselect/" style="font-size: 10px;">Reselect</a> <a href="/dragonfly/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/dragonfly/tags/angular/" style="font-size: 10px;">angular</a> <a href="/dragonfly/tags/autoDeploy/" style="font-size: 10px;">autoDeploy</a> <a href="/dragonfly/tags/axxia/" style="font-size: 10px;">axxia</a> <a href="/dragonfly/tags/bash/" style="font-size: 10px;">bash</a> <a href="/dragonfly/tags/browserSync/" style="font-size: 10px;">browserSync</a> <a href="/dragonfly/tags/cmd/" style="font-size: 11px;">cmd</a> <a href="/dragonfly/tags/css/" style="font-size: 11px;">css</a> <a href="/dragonfly/tags/css-secrets/" style="font-size: 10px;">css-secrets</a> <a href="/dragonfly/tags/exif/" style="font-size: 10px;">exif</a> <a href="/dragonfly/tags/expect/" style="font-size: 10px;">expect</a> <a href="/dragonfly/tags/extend/" style="font-size: 10px;">extend</a> <a href="/dragonfly/tags/face-client/" style="font-size: 10px;">face_client</a> <a href="/dragonfly/tags/filter/" style="font-size: 10px;">filter</a> <a href="/dragonfly/tags/git/" style="font-size: 10px;">git</a> <a href="/dragonfly/tags/gulp/" style="font-size: 11px;">gulp</a> <a href="/dragonfly/tags/h5/" style="font-size: 10px;">h5</a> <a href="/dragonfly/tags/hbwang/" style="font-size: 15px;">hbwang</a> <a href="/dragonfly/tags/hexo/" style="font-size: 12px;">hexo</a> <a href="/dragonfly/tags/idea/" style="font-size: 10px;">idea</a> <a href="/dragonfly/tags/initial/" style="font-size: 10px;">initial</a> <a href="/dragonfly/tags/kailiu/" style="font-size: 14px;">kailiu</a> <a href="/dragonfly/tags/lbao/" style="font-size: 20px;">lbao</a> <a href="/dragonfly/tags/linux/" style="font-size: 10px;">linux</a> <a href="/dragonfly/tags/mixin/" style="font-size: 10px;">mixin</a> <a href="/dragonfly/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/dragonfly/tags/rbzhou/" style="font-size: 18px;">rbzhou</a> <a href="/dragonfly/tags/responsive/" style="font-size: 10px;">responsive</a> <a href="/dragonfly/tags/responsive-image-background/" style="font-size: 10px;">responsive image background</a> <a href="/dragonfly/tags/sass/" style="font-size: 11px;">sass</a> <a href="/dragonfly/tags/security/" style="font-size: 10px;">security</a> <a href="/dragonfly/tags/setup/" style="font-size: 10px;">setup</a> <a href="/dragonfly/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/dragonfly/tags/tool/" style="font-size: 10px;">tool</a> <a href="/dragonfly/tags/tools/" style="font-size: 11px;">tools</a> <a href="/dragonfly/tags/vim/" style="font-size: 10px;">vim</a> <a href="/dragonfly/tags/web/" style="font-size: 10px;">web</a> <a href="/dragonfly/tags/xlu/" style="font-size: 10px;">xlu</a> <a href="/dragonfly/tags/ycma/" style="font-size: 12px;">ycma</a> <a href="/dragonfly/tags/ytWebsite/" style="font-size: 10px;">ytWebsite</a> <a href="/dragonfly/tags/zmzhang/" style="font-size: 17px;">zmzhang</a> <a href="/dragonfly/tags/跨域/" style="font-size: 10px;">跨域</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2016/10/">October 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/dragonfly/2017/06/07/Angular-Q-A/">Angular Q&amp;A</a>
+          </li>
+        
+          <li>
+            <a href="/dragonfly/2017/05/27/View-On-Vue/">View On Vue</a>
+          </li>
+        
+          <li>
+            <a href="/dragonfly/2017/05/25/underscore-js学习/">underscore.js学习</a>
+          </li>
+        
+          <li>
+            <a href="/dragonfly/2017/05/20/socket-too-many-files/">socket too many files</a>
+          </li>
+        
+          <li>
+            <a href="/dragonfly/2017/05/20/关于angular-filter/">关于angular filter</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 YT Frontend Team<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/dragonfly/" class="mobile-nav-link">Home</a>
+  
+    <a href="/dragonfly/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'dragonfly-disqus';
+  
+  var disqus_url = 'https://wflkaaa.github.io/dragonfly/2017/05/20/directive-require-controller-引发controller复用问题/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/dragonfly/fancybox/jquery.fancybox.css">
+  <script src="/dragonfly/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/dragonfly/js/script.js"></script>
+
+  </div>
+</body>
+</html>

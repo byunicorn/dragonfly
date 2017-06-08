@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Study Of Promise | Dragonfly Infinity</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言如果回答下面的问题对你来说有点困难，那么这篇文章可能对你还是有些帮助的：  下面的代码会console出啥：  12345678let promise = $q(function(resolve, reject) &amp;#123;	resolve(233);&amp;#125;);promise.then(function() &amp;#123; throw 123; &amp;#125;).then(function">
+<meta name="keywords" content="lbao,JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Study Of Promise">
+<meta property="og:url" content="https://wflkaaa.github.io/dragonfly/2017/05/17/Study-Of-Promise/index.html">
+<meta property="og:site_name" content="Dragonfly Infinity">
+<meta property="og:description" content="前言如果回答下面的问题对你来说有点困难，那么这篇文章可能对你还是有些帮助的：  下面的代码会console出啥：  12345678let promise = $q(function(resolve, reject) &amp;#123;	resolve(233);&amp;#125;);promise.then(function() &amp;#123; throw 123; &amp;#125;).then(function">
+<meta property="og:updated_time" content="2017-06-08T04:50:10.616Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Study Of Promise">
+<meta name="twitter:description" content="前言如果回答下面的问题对你来说有点困难，那么这篇文章可能对你还是有些帮助的：  下面的代码会console出啥：  12345678let promise = $q(function(resolve, reject) &amp;#123;	resolve(233);&amp;#125;);promise.then(function() &amp;#123; throw 123; &amp;#125;).then(function">
+  
+    <link rel="alternate" href="/atom.xml" title="Dragonfly Infinity" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/dragonfly/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/dragonfly/" id="logo">Dragonfly Infinity</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/dragonfly/" id="subtitle">Talk is cheap, Show me the code</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/dragonfly/">Home</a>
+        
+          <a class="main-nav-link" href="/dragonfly/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://wflkaaa.github.io/dragonfly"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Study-Of-Promise" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/dragonfly/2017/05/17/Study-Of-Promise/" class="article-date">
+  <time datetime="2017-05-17T14:09:22.000Z" itemprop="datePublished">2017-05-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Study Of Promise
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>如果回答下面的问题对你来说有点困难，那么这篇文章可能对你还是有些帮助的：</p>
+<ol>
+<li><p>下面的代码会console出啥：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> promise = $q(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</div><div class="line">	resolve(<span class="number">233</span>);</div><div class="line">&#125;);</div><div class="line">promise</div><div class="line">.then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">throw</span> <span class="number">123</span>; &#125;)</div><div class="line">.then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="number">1</span>); &#125;)</div><div class="line">.then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="number">2</span>); &#125;, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;<span class="built_in">console</span>.log(<span class="number">3</span>);&#125;)</div><div class="line">.then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="number">4</span>); &#125;, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;<span class="built_in">console</span>.log(<span class="number">5</span>);&#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>给你一个基础的promise实现，让你extend一个finally function出来，你咋写？</p>
+</li>
+</ol>
+<a id="more"></a>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>具体的定义在这里：<a href="http://wiki.commonjs.org/wiki/Promises/A" target="_blank" rel="external">http://wiki.commonjs.org/wiki/Promises/A</a></p>
+<p>这里就讲重要的两点：</p>
+<blockquote>
+<p>A promise represents the eventual value returned from the single completion of an operation. A promise may be in one of the three states, unfulfilled, fulfilled, and failed. </p>
+<p>A promise is defined as an object that has a function as the value for the property ‘then’:<br><code>then(fulfilledHandler, errorHandler, progressHandler)</code></p>
+</blockquote>
+<p>一个promise有三个状态：<code>unfulfilled</code>， <code>fulfilled</code>， 和<code>failed</code>，也有一些实现叫做<code>pending</code>，<code>fulfilled</code>和<code>rejected</code>。<br>状态改变只可能从<code>pending</code>到<code>fulfilled</code>或者从<code>pending</code>到<code>rejected</code>。当一个promise的状态变为了<code>fulfilled</code>或者<code>rejected</code>，这个promise的值就像一个primitive（值类型）一样，不可以再改变了。得益于这样的不可变性，我们可以避免listener带来的不可预期的副作用，可以把promise像一个primitive一样传给不同的function，而不用担心它的状态或者值被修改。</p>
+<p>then function 中所有的参数都是可选的，promise resolve了调用 fulfilled handler，reject了则调用 error handler。p.s. 至于progress handler，不但handler的参数是可选的，连progress event 也是可选的，很多promise的实现都无视了progress这个阶段。</p>
+<p>then function会返回一个新的promise，这就允许了我们链式地去操作promise。如果callback里throw了error，那么返回的promise状态会被置为rejected；如果callback顺利执行，那么返回的promise状态会被置为fulfilled。若在这个返回的新promise后再接then，该then的fulfillHandler拿到的参数值，就是前面promise的fulfill值；于此相对，errorHandler拿到的参数值，是前面promise的reject值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> promise = $q.when(<span class="number">123</span>);</div><div class="line">promise</div><div class="line">.then(<span class="function"><span class="keyword">function</span>(<span class="params">value</span>) </span>&#123;<span class="built_in">console</span>.log(value); <span class="keyword">throw</span> value;&#125;) <span class="comment">// fulfillhandler value: 123</span></div><div class="line">.then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123; <span class="built_in">console</span>.log(err); <span class="keyword">return</span> <span class="number">321</span>;&#125;)  <span class="comment">// errorhandler err: 123</span></div><div class="line">.then(<span class="function"><span class="keyword">function</span>(<span class="params">value</span>) </span>&#123; <span class="built_in">console</span>.log(value); &#125;); <span class="comment">// fulfillhandler value: 321</span></div></pre></td></tr></table></figure>
+<p>那么你可能会问，如果在handler里，return的是一个promise的话会发生什么？这个行为在promise/A spec里并没有定义，但是在spec的Test Suite里，有这么一条：<br><a href="https://github.com/promises-aplus/promises-tests/blob/master/lib/tests/2.3.2.js" target="_blank" rel="external">promises-tests/2.3.2.js at master · promises-aplus/promises-tests</a></p>
+<p>简单地总结: <code>2.3.2: If x is a promise, adopt its state&quot;,</code></p>
+<p>详细地总结： 如果在handler里return一个promise(称为pA)，那么then返回的promise(称为pB)会过继pA的状态。（只是继承状态，两个promise不是同一个实例）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> p = $q.when(<span class="number">123</span>);</div><div class="line"><span class="keyword">let</span> p1;</div><div class="line"><span class="keyword">let</span> p2 = p.then(<span class="function"><span class="keyword">function</span>(<span class="params">value</span>) </span>&#123;<span class="built_in">console</span>.log(value); p1 = $q.when(value + <span class="number">1</span>); <span class="keyword">return</span> p1;&#125;); <span class="comment">// console 123</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> p3;</div><div class="line"><span class="keyword">let</span> p4 = p2.then(<span class="function"><span class="keyword">function</span>(<span class="params">value</span>) </span>&#123;<span class="built_in">console</span>.log(value); p3 = $q.reject(value + <span class="number">1</span>); <span class="keyword">return</span> p3; &#125;);	<span class="comment">// console 124</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> p5 = p4.then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;, <span class="function"><span class="keyword">function</span>(<span class="params">value</span>) </span>&#123;<span class="built_in">console</span>.log(value);&#125;); <span class="comment">// console 125</span></div><div class="line"></div><div class="line">$timeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(p1 === p2); <span class="comment">// console false</span></div><div class="line">    <span class="built_in">console</span>.log(p3 === p4);	<span class="comment">// console false</span></div><div class="line">&#125;, <span class="number">100</span>);</div></pre></td></tr></table></figure>
+<h2 id="用来做什么"><a href="#用来做什么" class="headerlink" title="用来做什么"></a>用来做什么</h2><blockquote>
+<p>aggregate callback只是Promise的很小一部分功能，Promise解决了更加深层的问题：它提供了同步function和异步function之间的直接对应。</p>
+</blockquote>
+<p>同步function有两个很重要的功能点：</p>
+<ul>
+<li>返回值：你可以把返回值丢给后续执行的function</li>
+<li>抛异常：如果一个function的执行过程中出现了问题，可以抛出异常，然后绕过所有后续的组合层，直到有人把它<code>catch</code>住。</li>
+</ul>
+<p>但在异步的世界里，你无法返回值：因为在那个时间点，应该返回的值还没ready。类似的，你也不能抛异常，因为抛出异常的时候，没有人在接它。所以我们会遇到所谓的回调地狱：你需要把返回值和抛出的异常手动地chain起来。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">step1(<span class="function"><span class="keyword">function</span> (<span class="params">value1</span>) </span>&#123;</div><div class="line">	step2(value1, <span class="function"><span class="keyword">function</span>(<span class="params">value2</span>) </span>&#123;</div><div class="line">	    step3(value2, <span class="function"><span class="keyword">function</span>(<span class="params">value3</span>) </span>&#123;</div><div class="line">	        <span class="comment">// bula bula</span></div><div class="line">	    &#125;);</div><div class="line">	&#125;, <span class="function"><span class="keyword">function</span>(<span class="params">err2</span>) </span>&#123;</div><div class="line">		<span class="comment">// recover or something else</span></div><div class="line">	&#125;);</div><div class="line">&#125;, <span class="function"><span class="keyword">function</span>(<span class="params">err1</span>) </span>&#123;</div><div class="line">	<span class="comment">// recover or something else</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>如果你使用了一个正确地实现了then方法的promise library，那么下面这段异步function，相当于后续的同步代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">step1() <span class="comment">// promise-returning function</span></div><div class="line">.then(step2)</div><div class="line">.then(step3)</div><div class="line">.then(</div><div class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">result</span>) </span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">"yeah, succeed!"</span>, result);</div><div class="line">    &#125;,</div><div class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</div><div class="line">      <span class="built_in">console</span>.error(<span class="string">"oops, something happened!"</span>, error);</div><div class="line">    &#125;</div><div class="line">);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">  <span class="keyword">var</span> value1 = step1(); <span class="comment">// blocking function</span></div><div class="line">  <span class="keyword">var</span> value2 = step2(value1);</div><div class="line">  <span class="keyword">var</span> value3 = step3(value2);</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">"yeah, succeed!"</span>, result);</div><div class="line">&#125; <span class="keyword">catch</span> (error) &#123;</div><div class="line">  <span class="built_in">console</span>.error(<span class="string">"oops, something happened!"</span>, error);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="3-0-之前的jquery-promise实现是个坑"><a href="#3-0-之前的jquery-promise实现是个坑" class="headerlink" title="3.0 之前的jquery promise实现是个坑"></a>3.0 之前的jquery promise实现是个坑</h2><p><a href="http://stackoverflow.com/questions/23744612/problems-inherent-to-jquery-deferred-jquery-1-x-2-x" target="_blank" rel="external">promise - Problems inherent to jQuery $.Deferred (jQuery 1.x/2.x) - Stack Overflow</a></p>
+<p>有兴趣的同学可以去这条里看一下，这里给个简单的总结：</p>
+<h3 id="错误的Error-Handler"><a href="#错误的Error-Handler" class="headerlink" title="错误的Error Handler"></a>错误的Error Handler</h3><p>首先unsafe throw error不会被catch住：开篇提到的console结果的问题，在jquery promise的实现里，输出会不同，throw 完 error就go die了。</p>
+<p>其次，下面这段代码，console的会是3,5，而不是3,4：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> d = $.Deferred();</div><div class="line">d</div><div class="line">.then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="number">1</span>); &#125;)</div><div class="line">.then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="number">2</span>); &#125;, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;<span class="built_in">console</span>.log(<span class="number">3</span>);&#125;)</div><div class="line">.then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="number">4</span>); &#125;, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;<span class="built_in">console</span>.log(<span class="number">5</span>);&#125;);</div><div class="line"></div><div class="line">d.reject();</div></pre></td></tr></table></figure>
+<p>如果你想在console完3之后让promise回归正常的路径，你必须return一个新的defer。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> d = $.Deferred();</div><div class="line">d</div><div class="line">.then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="number">1</span>); &#125;)</div><div class="line">.then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="number">2</span>); &#125;, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="number">3</span>); </div><div class="line">  <span class="keyword">var</span> tmp = $.Deferred(); </div><div class="line">  tmp.resolve(); </div><div class="line">  <span class="keyword">return</span> tmp;</div><div class="line">&#125;)</div><div class="line">.then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="number">4</span>); &#125;, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;<span class="built_in">console</span>.log(<span class="number">5</span>);&#125;);</div><div class="line"></div><div class="line">d.reject();</div></pre></td></tr></table></figure>
+<h3 id="无法预测的执行顺序"><a href="#无法预测的执行顺序" class="headerlink" title="无法预测的执行顺序"></a>无法预测的执行顺序</h3><p>对于已经resolve or reject的promise，jquery会立即执行then里的callback。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> d = $.Deferred();</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"what"</span>);</div><div class="line">d</div><div class="line">.then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="string">"hell"</span>); &#125;);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"the"</span>);</div><div class="line">d.resolve();</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">"what"</span>);</div><div class="line">d</div><div class="line">.then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="string">"hell"</span>); &#125;);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"the"</span>);</div></pre></td></tr></table></figure>
+<p>前半部分会console “what the hell”， 后半则会console “what hell the”。</p>
+<p>推荐使用implement了Promises/A规范的库，比如q.js，另外我们使用的angular.js里的$q，就完整地follow了这个规范，顺便做了一些自己的扩展。</p>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>当然是答案啦：</p>
+<ol>
+<li><a href="https://codepen.io/anon/pen/ybxNmO?editors=1111" target="_blank" rel="external">https://codepen.io/anon/pen/ybxNmO?editors=1111</a></li>
+<li>课后作业</li>
+</ol>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a href="https://gist.github.com/domenic/3889970" target="_blank" rel="external">You’re Missing the Point of Promises</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://wflkaaa.github.io/dragonfly/2017/05/17/Study-Of-Promise/" data-id="cj3ny3dls0019cx4pdq4hq5se" class="article-share-link">Partager</a>
+      
+        <a href="https://wflkaaa.github.io/dragonfly/2017/05/17/Study-Of-Promise/#disqus_thread" class="article-comment-link">Commentaires</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/dragonfly/tags/lbao/">lbao</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/dragonfly/2017/05/18/exif-jpeg/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          exif-jpeg
+        
+      </div>
+    </a>
+  
+  
+    <a href="/dragonfly/2017/05/13/mobile-web/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">移动端web踩坑指南</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/1-7-c/">1.7.c</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Angularjs/">Angularjs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/D3/">D3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Django/">Django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Django，deploy/">Django，deploy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Ngdocs/">Ngdocs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Promise/">Promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Redux/">Redux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Reselect/">Reselect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/angular/">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/autoDeploy/">autoDeploy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/axxia/">axxia</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/bash/">bash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/browserSync/">browserSync</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/cmd/">cmd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/css-secrets/">css-secrets</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/exif/">exif</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/expect/">expect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/extend/">extend</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/face-client/">face_client</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/filter/">filter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/gulp/">gulp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/h5/">h5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/hbwang/">hbwang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/idea/">idea</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/initial/">initial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/kailiu/">kailiu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/lbao/">lbao</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/mixin/">mixin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/mobile/">mobile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/rbzhou/">rbzhou</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/responsive/">responsive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/responsive-image-background/">responsive image background</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/sass/">sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/security/">security</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/setup/">setup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/tomcat/">tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/tool/">tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/tools/">tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/vim/">vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/xlu/">xlu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/ycma/">ycma</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/ytWebsite/">ytWebsite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/zmzhang/">zmzhang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/dragonfly/tags/跨域/">跨域</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <div class="widget tagcloud">
+      <a href="/dragonfly/tags/1-7-c/" style="font-size: 10px;">1.7.c</a> <a href="/dragonfly/tags/Angularjs/" style="font-size: 19px;">Angularjs</a> <a href="/dragonfly/tags/CSS/" style="font-size: 11px;">CSS</a> <a href="/dragonfly/tags/D3/" style="font-size: 10px;">D3</a> <a href="/dragonfly/tags/Django/" style="font-size: 11px;">Django</a> <a href="/dragonfly/tags/Django，deploy/" style="font-size: 10px;">Django，deploy</a> <a href="/dragonfly/tags/JavaScript/" style="font-size: 13px;">JavaScript</a> <a href="/dragonfly/tags/Javascript/" style="font-size: 16px;">Javascript</a> <a href="/dragonfly/tags/Ngdocs/" style="font-size: 10px;">Ngdocs</a> <a href="/dragonfly/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/dragonfly/tags/React/" style="font-size: 10px;">React</a> <a href="/dragonfly/tags/Redux/" style="font-size: 10px;">Redux</a> <a href="/dragonfly/tags/Reselect/" style="font-size: 10px;">Reselect</a> <a href="/dragonfly/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/dragonfly/tags/angular/" style="font-size: 10px;">angular</a> <a href="/dragonfly/tags/autoDeploy/" style="font-size: 10px;">autoDeploy</a> <a href="/dragonfly/tags/axxia/" style="font-size: 10px;">axxia</a> <a href="/dragonfly/tags/bash/" style="font-size: 10px;">bash</a> <a href="/dragonfly/tags/browserSync/" style="font-size: 10px;">browserSync</a> <a href="/dragonfly/tags/cmd/" style="font-size: 11px;">cmd</a> <a href="/dragonfly/tags/css/" style="font-size: 11px;">css</a> <a href="/dragonfly/tags/css-secrets/" style="font-size: 10px;">css-secrets</a> <a href="/dragonfly/tags/exif/" style="font-size: 10px;">exif</a> <a href="/dragonfly/tags/expect/" style="font-size: 10px;">expect</a> <a href="/dragonfly/tags/extend/" style="font-size: 10px;">extend</a> <a href="/dragonfly/tags/face-client/" style="font-size: 10px;">face_client</a> <a href="/dragonfly/tags/filter/" style="font-size: 10px;">filter</a> <a href="/dragonfly/tags/git/" style="font-size: 10px;">git</a> <a href="/dragonfly/tags/gulp/" style="font-size: 11px;">gulp</a> <a href="/dragonfly/tags/h5/" style="font-size: 10px;">h5</a> <a href="/dragonfly/tags/hbwang/" style="font-size: 15px;">hbwang</a> <a href="/dragonfly/tags/hexo/" style="font-size: 12px;">hexo</a> <a href="/dragonfly/tags/idea/" style="font-size: 10px;">idea</a> <a href="/dragonfly/tags/initial/" style="font-size: 10px;">initial</a> <a href="/dragonfly/tags/kailiu/" style="font-size: 14px;">kailiu</a> <a href="/dragonfly/tags/lbao/" style="font-size: 20px;">lbao</a> <a href="/dragonfly/tags/linux/" style="font-size: 10px;">linux</a> <a href="/dragonfly/tags/mixin/" style="font-size: 10px;">mixin</a> <a href="/dragonfly/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/dragonfly/tags/rbzhou/" style="font-size: 18px;">rbzhou</a> <a href="/dragonfly/tags/responsive/" style="font-size: 10px;">responsive</a> <a href="/dragonfly/tags/responsive-image-background/" style="font-size: 10px;">responsive image background</a> <a href="/dragonfly/tags/sass/" style="font-size: 11px;">sass</a> <a href="/dragonfly/tags/security/" style="font-size: 10px;">security</a> <a href="/dragonfly/tags/setup/" style="font-size: 10px;">setup</a> <a href="/dragonfly/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/dragonfly/tags/tool/" style="font-size: 10px;">tool</a> <a href="/dragonfly/tags/tools/" style="font-size: 11px;">tools</a> <a href="/dragonfly/tags/vim/" style="font-size: 10px;">vim</a> <a href="/dragonfly/tags/web/" style="font-size: 10px;">web</a> <a href="/dragonfly/tags/xlu/" style="font-size: 10px;">xlu</a> <a href="/dragonfly/tags/ycma/" style="font-size: 12px;">ycma</a> <a href="/dragonfly/tags/ytWebsite/" style="font-size: 10px;">ytWebsite</a> <a href="/dragonfly/tags/zmzhang/" style="font-size: 17px;">zmzhang</a> <a href="/dragonfly/tags/跨域/" style="font-size: 10px;">跨域</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/dragonfly/archives/2016/10/">October 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/dragonfly/2017/06/07/Angular-Q-A/">Angular Q&amp;A</a>
+          </li>
+        
+          <li>
+            <a href="/dragonfly/2017/05/27/View-On-Vue/">View On Vue</a>
+          </li>
+        
+          <li>
+            <a href="/dragonfly/2017/05/25/underscore-js学习/">underscore.js学习</a>
+          </li>
+        
+          <li>
+            <a href="/dragonfly/2017/05/20/socket-too-many-files/">socket too many files</a>
+          </li>
+        
+          <li>
+            <a href="/dragonfly/2017/05/20/关于angular-filter/">关于angular filter</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 YT Frontend Team<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/dragonfly/" class="mobile-nav-link">Home</a>
+  
+    <a href="/dragonfly/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'dragonfly-disqus';
+  
+  var disqus_url = 'https://wflkaaa.github.io/dragonfly/2017/05/17/Study-Of-Promise/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/dragonfly/fancybox/jquery.fancybox.css">
+  <script src="/dragonfly/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/dragonfly/js/script.js"></script>
+
+  </div>
+</body>
+</html>
